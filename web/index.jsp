@@ -11,6 +11,18 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  主页。 <br>
+  <%
+    if(session.getAttribute("username")!=null)
+    {
+      out.println("欢迎登录："+session.getAttribute("username"));
+      out.println("<a href=\"logout\">注销</a>");
+    }
+    else{
+      out.println("您尚未登录，请先：");
+      out.println("<a href=\"login_input\">登录</a>");
+      out.println("<a href=\"signup_input\">注册</a>");
+    }
+  %>
   </body>
 </html>

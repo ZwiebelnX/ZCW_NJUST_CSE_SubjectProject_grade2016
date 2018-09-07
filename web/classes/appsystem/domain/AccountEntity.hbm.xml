@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="appsystem.domain.AccountEntity" table="account" schema="appsystem">
+        <composite-id >
+            <key-property name="userName" column="USER_NAME"/>
+            <key-property name="userId" column="USER_ID"/>
+        </composite-id>
+        <property name="normalName" column="NORMAL_NAME"/>
+        <property name="pwd" column="PWD"/>
+        <property name="identityCard" column="IDENTITY_CARD"/>
+        <property name="idName" column="ID_NAME"/>
+        <property name="address" column="ADDRESS"/>
+        <property name="gender" column="GENDER"/>
+        <property name="birthdate" column="BIRTHDATE"/>
+        <property name="tel" column="TEL"/>
+        <property name="mail" column="MAIL"/>
+        <property name="age" column="AGE"/>
+        <property name="isManager" column="IS_MANAGER"/>
+        <property name="createDate" column="CREATE_DATE"/>
+        <property name="lastDate" column="LAST_DATE"/>
+        <property name="visitCnt" column="VISIT_CNT"/>
+        <property name="qq" column="QQ"/>
+        <property name="authority" column="AUTHORITY"/>
+    </class>
+</hibernate-mapping>

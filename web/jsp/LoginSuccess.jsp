@@ -11,8 +11,10 @@
     <title>Login Success !</title>
 </head>
 <body>
-    <h1>Login Success!</h1>
-    <p>用户名：${username}</p>
-    <p>密码：${password}</p>
+    <h1>登录成功，欢迎您</h1>
+    <p>用户名：${account.userName}</p>
+    <br>
+    三秒钟后返回主页面
+    <% response.setHeader("refresh", "3;URL=../index.jsp");%>
 </body>
 </html>

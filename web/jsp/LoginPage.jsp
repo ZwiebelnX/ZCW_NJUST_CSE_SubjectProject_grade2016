@@ -15,23 +15,19 @@
 <body>
     <fieldset>
         <legend>请登录</legend>
-        <from:form commandName="login" action="login" method="post">
+        <from:form commandName="account" action="doLogin" method="post">
             <table>
                 <tr>
                     <td>帐号：</td>
-                    <td><from:input id="name" path="username" /></td>
+                    <td><from:input id="name" path="userName" /></td>
                 </tr>
                 <tr>
                     <td>密码：</td>
-                    <td><from:password id="password" path="password" /> </td>
+                    <td><from:password id="password" path="pwd" /> </td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td><a href="<c:url value="/SignUpPage"/>">注册</a></td>
-                </tr>
-                <tr>
-                    <td><input type="reset" value="reset" /> </td>
-                    <td><input type="submit" value="submit" /> </td>
+                    <td><input type="reset" value="重置" /> </td>
+                    <td><input type="submit" value="登录" /> </td>
                 </tr>
             </table>
         </from:form>
