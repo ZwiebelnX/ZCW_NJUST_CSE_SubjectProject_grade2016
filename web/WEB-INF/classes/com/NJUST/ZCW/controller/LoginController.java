@@ -2,7 +2,7 @@ package com.NJUST.ZCW.controller;
 
 import com.NJUST.ZCW.domain.LoginInfo;
 import com.NJUST.ZCW.domain.SignupInfo;
-import com.NJUST.ZCW.service.Login.LoginCheck;
+import com.NJUST.ZCW.service.login.LoginCheck;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;

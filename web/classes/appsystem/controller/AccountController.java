@@ -1,19 +1,15 @@
 package appsystem.controller;
 
 import appsystem.domain.AccountDB;
-import appsystem.domain.AccountEntity;
+import com.NJUST.ZCW.Entities.AccountEntity;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.portlet.ModelAndView;
 
-import javax.management.modelmbean.RequiredModelMBean;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 import static org.springframework.orm.hibernate3.SessionFactoryUtils.getSession;
 

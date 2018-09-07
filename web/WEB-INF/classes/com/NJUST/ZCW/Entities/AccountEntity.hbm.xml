@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="appsystem.domain.AccountEntity" table="account" schema="appsystem">
+    <class name="com.NJUST.ZCW.Entities.AccountEntity" table="account" schema="appsystem">
         <composite-id >
             <key-property name="userName" column="USER_NAME"/>
             <key-property name="userId" column="USER_ID"/>

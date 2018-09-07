@@ -1,4 +1,4 @@
-package com.NJUST.ZCW.service.Login;
+package com.NJUST.ZCW.service.login;
 
 import org.springframework.stereotype.Repository;
 

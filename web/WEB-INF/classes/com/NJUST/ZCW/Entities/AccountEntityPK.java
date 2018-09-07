@@ -1,4 +1,4 @@
-package appsystem.domain;
+package com.NJUST.ZCW.Entities;
 
 import java.io.Serializable;
 import java.util.Objects;

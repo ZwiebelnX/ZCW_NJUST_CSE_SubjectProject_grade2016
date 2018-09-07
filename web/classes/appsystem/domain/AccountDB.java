@@ -1,4 +1,5 @@
 package appsystem.domain;
+import com.NJUST.ZCW.Entities.AccountEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
