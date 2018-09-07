@@ -57,6 +57,7 @@ public class AccountDB {
                     id=a.getUserId();
             }
             id++;
+
             System.out.println("正在尝试注册");
             System.out.println(tmp.getUserName()+"??"+id);
             tmp.setUserId(id);
