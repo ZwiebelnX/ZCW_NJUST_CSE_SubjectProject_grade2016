@@ -14,7 +14,7 @@
 <body>
     <fieldset>
         <legend>注册</legend>
-        <form:form commandName="AccountEntity" action="SignUp.login" method="post" onsubmit="return finalcheck(this)">
+        <form:form commandName="AccountEntity" action="signUp.login" method="post" onsubmit="return finalcheck(this)">
             <table>
                 <tr>
                     <td>用户名*</td>
@@ -65,8 +65,8 @@
     </fieldset>
 </body>
 <script type="text/javascript">
-    function finalcheck(thisform){
-        with (thisform)
+    function finalcheck(form){
+        with (form)
         {
             if (p0.value.length<=0){
                 p0.focus();

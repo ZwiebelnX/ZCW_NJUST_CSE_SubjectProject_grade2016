@@ -20,8 +20,8 @@
     }
     else{
       out.println("您尚未登录，请先：");
-      out.println("<a href=\"loginPage\">登录</a>");
-      out.println("<a href=\"signUpPage\">注册</a>");
+      out.println("<a href=\"loginPage.login\">登录</a>");
+      out.println("<a href=\"signUpPage.login\">注册</a>");
     }
   %>
   </body>

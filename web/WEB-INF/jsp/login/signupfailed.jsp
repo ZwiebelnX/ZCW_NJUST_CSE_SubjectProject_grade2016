@@ -14,6 +14,6 @@
 注册失败 您的用户名可能重复，请重新注册！
 <br>
 三秒后返回主页面
-<% response.setHeader("refresh", "3;URL=../index.jsp");%>
+<% response.setHeader("refresh", "3;URL=/index.jsp");%>
 </body>
 </html>

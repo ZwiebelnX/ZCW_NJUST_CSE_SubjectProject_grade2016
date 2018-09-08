@@ -24,6 +24,9 @@ public class ThreadLocal {
         values.put(Thread.currentThread(), newValue);
     }
 
+    public void clean(){
+        values.clear();
+    }
     public Object initialValue(){
         return null;
     }

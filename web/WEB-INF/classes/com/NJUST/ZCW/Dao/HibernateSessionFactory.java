@@ -14,7 +14,7 @@ public class HibernateSessionFactory {
     private static final ThreadLocal threadLocal = new ThreadLocal();
 
     public static Session currentSession() throws HibernateException{
-        Session session = (Session)threadLocal.get();
+        Session session = (Session)threadLocal.get(); //获取当前线程下的Session 保证当前线程的Session是专用的
         if(session == null){
             if(sessionFactory == null){
                 try{
@@ -26,7 +26,7 @@ public class HibernateSessionFactory {
                 }
             }
             session = sessionFactory.openSession();
-            threadLocal.set(session);
+            threadLocal.set(session); //保存获取到的Session到线程-Session键值对表中
         }
         return session;
     }
@@ -36,6 +36,20 @@ public class HibernateSessionFactory {
         threadLocal.set(null);
         if(session != null){
             session.close();
+        }
+    }
+
+    public static void closeFactory(){
+        if(sessionFactory != null){
+            sessionFactory.close();
+        }
+        threadLocal.clean();
+    }
+
+    public static void buildFactory(){
+        if(sessionFactory == null){
+            cfg.configure("hibernate.cfg.xml");
+            sessionFactory = cfg.buildSessionFactory();
         }
     }
 }

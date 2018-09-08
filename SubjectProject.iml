@@ -6,6 +6,7 @@
         <datasource-map>
           <unit-entry name="a.xml" value="9bbf59d0-d19f-4209-b6ce-6aae110ab301" />
           <unit-entry name="foo" value="9bbf59d0-d19f-4209-b6ce-6aae110ab301" />
+          <unit-entry name="hibernateCfg" value="336cf92a-f357-4dae-a07e-a42fa1a6e50e" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/web/WEB-INF/classes/hibernate.cfg.xml" />
@@ -47,14 +48,6 @@
     <orderEntry type="library" name="Spring-4.3.18.RELEASE" level="project" />
     <orderEntry type="library" name="Spring MVC-4.3.18.RELEASE" level="project" />
     <orderEntry type="library" name="jakarta-taglibs-standard-1.1.2" level="application" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.12.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="mysql-connector-java-8.0.12" level="project" />
   </component>
 </module>

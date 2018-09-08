@@ -1,7 +1,9 @@
 package com.NJUST.ZCW.Dao;
 import com.NJUST.ZCW.Entities.AccountEntity;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.*;
 import java.util.List;
 
@@ -10,11 +12,8 @@ public class AccountDB {
     登录检查
      */
     public boolean CheckAccountExist(AccountEntity tmp){
-        Session session = null;
-        Transaction tran = null;
+        Session session = HibernateSessionFactory.currentSession();
         try{
-            session = HibernateSessionFactory.currentSession();
-            tran = session.beginTransaction(); //开启事务
 
             /*这里指明你要获得哪个类型，Hibernate会根据类名查询映射配置文件到数据库查询哪张表，根据指定
              * id查询实体，通过反射机制创建实体对象
@@ -37,6 +36,7 @@ public class AccountDB {
             throw(e);
         }finally{
             HibernateSessionFactory.closeSession(); //关闭数据库会话
+
         }
     }
 
@@ -62,6 +62,7 @@ public class AccountDB {
             System.out.println("正在尝试注册");
             System.out.println(tmp.getUserName()+"??"+id);
             tmp.setUserId(id);
+            tmp.setAuthority("0");
             session.save(tmp);
             tran.commit();
             return true;
