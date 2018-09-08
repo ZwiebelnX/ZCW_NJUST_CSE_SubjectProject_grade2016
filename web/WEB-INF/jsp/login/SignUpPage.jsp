@@ -14,7 +14,7 @@
 <body>
     <fieldset>
         <legend>注册</legend>
-        <form:form commandName="SignUpInfo" action="doSignup" method="post" onsubmit="return finalcheck(this)">
+        <form:form commandName="AccountEntity" action="SignUp.login" method="post" onsubmit="return finalcheck(this)">
             <table>
                 <tr>
                     <td>用户名*</td>
@@ -42,11 +42,11 @@
                 </tr>
                 <tr>
                     <td>身份证名称</td>
-                    <td><form:input id="idname" path="identityCard" /></td>
+                    <td><form:input id="idname" path="idName" /></td>
                 </tr>
                 <tr>
                     <td>身份证号</td>
-                    <td><form:input id="idcard" path="idName" /></td>
+                    <td><form:input id="idcard" path="identityCard" /></td>
                 </tr>
                 <tr>
                     <td>手机号</td>

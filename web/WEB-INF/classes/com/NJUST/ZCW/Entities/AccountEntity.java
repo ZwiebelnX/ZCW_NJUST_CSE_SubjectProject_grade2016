@@ -1,11 +1,13 @@
 package com.NJUST.ZCW.Entities;
 
-import java.io.Serializable;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class AccountEntity implements Serializable {
-    private static final long serialVersionUID = 6623462074330062039L;
+@Entity
+@Table(name = "account", schema = "subjectproject")
+@IdClass(AccountEntityPK.class)
+public class AccountEntity {
     private String userName;
     private String normalName;
     private int userId;
@@ -25,6 +27,8 @@ public class AccountEntity implements Serializable {
     private String qq;
     private String authority;
 
+    @Id
+    @Column(name = "USER_NAME", nullable = false, length = 30)
     public String getUserName() {
         return userName;
     }
@@ -33,6 +37,8 @@ public class AccountEntity implements Serializable {
         this.userName = userName;
     }
 
+    @Basic
+    @Column(name = "NORMAL_NAME", nullable = false, length = 30)
     public String getNormalName() {
         return normalName;
     }
@@ -41,6 +47,8 @@ public class AccountEntity implements Serializable {
         this.normalName = normalName;
     }
 
+    @Id
+    @Column(name = "USER_ID", nullable = false)
     public int getUserId() {
         return userId;
     }
@@ -49,6 +57,8 @@ public class AccountEntity implements Serializable {
         this.userId = userId;
     }
 
+    @Basic
+    @Column(name = "PWD", nullable = false, length = 30)
     public String getPwd() {
         return pwd;
     }
@@ -57,6 +67,8 @@ public class AccountEntity implements Serializable {
         this.pwd = pwd;
     }
 
+    @Basic
+    @Column(name = "IDENTITY_CARD", nullable = true, length = 30)
     public String getIdentityCard() {
         return identityCard;
     }
@@ -65,6 +77,8 @@ public class AccountEntity implements Serializable {
         this.identityCard = identityCard;
     }
 
+    @Basic
+    @Column(name = "ID_NAME", nullable = true, length = 30)
     public String getIdName() {
         return idName;
     }
@@ -73,6 +87,8 @@ public class AccountEntity implements Serializable {
         this.idName = idName;
     }
 
+    @Basic
+    @Column(name = "ADDRESS", nullable = true, length = 60)
     public String getAddress() {
         return address;
     }
@@ -81,6 +97,8 @@ public class AccountEntity implements Serializable {
         this.address = address;
     }
 
+    @Basic
+    @Column(name = "GENDER", nullable = true, length = 2)
     public String getGender() {
         return gender;
     }
@@ -89,6 +107,8 @@ public class AccountEntity implements Serializable {
         this.gender = gender;
     }
 
+    @Basic
+    @Column(name = "BIRTHDATE", nullable = true)
     public Timestamp getBirthdate() {
         return birthdate;
     }
@@ -97,6 +117,8 @@ public class AccountEntity implements Serializable {
         this.birthdate = birthdate;
     }
 
+    @Basic
+    @Column(name = "TEL", nullable = true, length = 30)
     public String getTel() {
         return tel;
     }
@@ -105,6 +127,8 @@ public class AccountEntity implements Serializable {
         this.tel = tel;
     }
 
+    @Basic
+    @Column(name = "MAIL", nullable = true, length = 30)
     public String getMail() {
         return mail;
     }
@@ -113,6 +137,8 @@ public class AccountEntity implements Serializable {
         this.mail = mail;
     }
 
+    @Basic
+    @Column(name = "AGE", nullable = true)
     public Integer getAge() {
         return age;
     }
@@ -121,6 +147,8 @@ public class AccountEntity implements Serializable {
         this.age = age;
     }
 
+    @Basic
+    @Column(name = "IS_MANAGER", nullable = true, length = 2)
     public String getIsManager() {
         return isManager;
     }
@@ -129,6 +157,8 @@ public class AccountEntity implements Serializable {
         this.isManager = isManager;
     }
 
+    @Basic
+    @Column(name = "CREATE_DATE", nullable = true)
     public Timestamp getCreateDate() {
         return createDate;
     }
@@ -137,6 +167,8 @@ public class AccountEntity implements Serializable {
         this.createDate = createDate;
     }
 
+    @Basic
+    @Column(name = "LAST_DATE", nullable = true)
     public Timestamp getLastDate() {
         return lastDate;
     }
@@ -145,6 +177,8 @@ public class AccountEntity implements Serializable {
         this.lastDate = lastDate;
     }
 
+    @Basic
+    @Column(name = "VISIT_CNT", nullable = true)
     public Integer getVisitCnt() {
         return visitCnt;
     }
@@ -153,6 +187,8 @@ public class AccountEntity implements Serializable {
         this.visitCnt = visitCnt;
     }
 
+    @Basic
+    @Column(name = "QQ", nullable = true, length = 30)
     public String getQq() {
         return qq;
     }
@@ -161,6 +197,8 @@ public class AccountEntity implements Serializable {
         this.qq = qq;
     }
 
+    @Basic
+    @Column(name = "AUTHORITY", nullable = false, length = 30)
     public String getAuthority() {
         return authority;
     }

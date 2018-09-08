@@ -15,15 +15,15 @@
 <body>
     <fieldset>
         <legend>请登录</legend>
-        <from:form commandName="account" action="doLogin" method="post">
+        <from:form commandName="login" action="login.login" method="post">
             <table>
                 <tr>
                     <td>帐号：</td>
-                    <td><from:input id="name" path="userName" /></td>
+                    <td><from:input id="name" path="username" /></td>
                 </tr>
                 <tr>
                     <td>密码：</td>
-                    <td><from:password id="password" path="pwd" /> </td>
+                    <td><from:password id="password" path="password" /> </td>
                 </tr>
                 <tr>
                     <td><input type="reset" value="重置" /> </td>
