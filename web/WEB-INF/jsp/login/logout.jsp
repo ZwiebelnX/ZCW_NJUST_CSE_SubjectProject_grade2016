@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    注销成功，3秒后返回主页面<br>
   <%
       response.setHeader("refresh","3;URL=../index.jsp");
-      session.removeAttribute("username");
+      session.removeAttribute("nickname");
    %>
   </body>
 

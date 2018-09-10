@@ -23,6 +23,7 @@ public class LoginInfo implements Serializable {
     }
 
     public String getUsername() {
+
         return username;
     }
 }

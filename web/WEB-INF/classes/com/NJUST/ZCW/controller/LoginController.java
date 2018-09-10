@@ -1,7 +1,6 @@
 package com.NJUST.ZCW.controller;
 
 import com.NJUST.ZCW.Dao.AccountDB;
-import com.NJUST.ZCW.Entities.AccountEntity;
 import com.NJUST.ZCW.domain.LoginInfo;
 import com.NJUST.ZCW.service.login.LoginCheck;
 import org.springframework.context.ApplicationContext;
@@ -9,8 +8,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.NJUST.ZCW.Entities.AccountEntity;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -34,13 +34,19 @@ public class LoginController {
     并对登录是否成功进行判断
      */
     @RequestMapping(value = "login.login")
-    public String Login(@ModelAttribute LoginInfo loginInfo, Model model){
+    public String Login(@ModelAttribute LoginInfo loginInfo, Model model, HttpSession session){
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setUserName(loginInfo.getUsername());
         accountEntity.setPwd(loginInfo.getPassword());
+        System.out.println(accountEntity.getUserName()+accountEntity.getPwd());
         if(db.CheckAccountExist(accountEntity)){
-            model.addAttribute("username", loginInfo.getUsername());
-            return "index";
+            accountEntity=db.getUser(accountEntity);
+            session.setAttribute("nickname", accountEntity.getNormalName());
+            model.addAttribute("account",accountEntity.getNormalName());
+            //System.out.println(accountEntity.getUserName()+accountEntity.getNormalName());
+            session.setAttribute("user",accountEntity);
+            session.setAttribute("userid",accountEntity.getUserId());
+            return "login/loginSuccess";
         }
         else{
             return "login/loginFailed";
@@ -68,5 +74,19 @@ public class LoginController {
     }
 
     //TODO 主页取消URL跳转 改为控制器跳转
+    @RequestMapping(value="mainPage.login")
+    public String jumptoMainPage(Model model){
+        return "mainpage";
+    }
+
+    @RequestMapping(value="logout.login")
+    public String doLogOut(Model model){
+        return "login/logout";
+    }
+    @RequestMapping(value="toMainPage.login")
+    public String toMainPage(Model model){
+        //System.out.println("????");
+        return "mainpage";
+    }
     //TODO 改为依赖注入形式执行外部调用
 }

@@ -11,6 +11,7 @@
           <element id="library" level="project" name="Hibernate 5.3.2-5.3.2" />
           <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
           <element id="library" level="project" name="Spring MVC-4.3.18.RELEASE" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/mysql-connector-java-8.0.12.jar" />
         </element>
       </element>
     </root>

@@ -1,19 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: 10447
-  Date: 2018/9/7
-  Time: 13:59
+  Date: 2018/9/10
+  Time: 21:39
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>注册失败</title>
+    <title>Title</title>
 </head>
 <body>
-注册失败 您的用户名可能重复，请重新注册！
-<br>
-一秒后返回主页面
-<% response.setHeader("refresh", "1;URL=mainPage.login");%>
+<h1>您已操作该审核，请刷新网页</h1>
 </body>
 </html>

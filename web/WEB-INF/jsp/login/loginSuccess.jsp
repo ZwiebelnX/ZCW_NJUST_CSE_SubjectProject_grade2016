@@ -12,9 +12,9 @@
 </head>
 <body>
     <h1>登录成功，欢迎您</h1>
-    <p>用户名：${account.userName}</p>
+    <p>用户名：${account}</p>
     <br>
-    三秒钟后返回主页面
-    <% response.setHeader("refresh", "3; URL=index.jsp");%>
+    一秒钟后返回主页面
+    <% response.setHeader("refresh", "1; URL=mainPage.login");%>
 </body>
 </html>

@@ -5,8 +5,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "account", schema = "subjectproject")
-@IdClass(AccountEntityPK.class)
+@Table(name = "account", schema = "appsystem", catalog = "")
 public class AccountEntity {
     private String userName;
     private String normalName;
@@ -27,8 +26,8 @@ public class AccountEntity {
     private String qq;
     private String authority;
 
-    @Id
-    @Column(name = "USER_NAME", nullable = false, length = 30)
+    @Basic
+    @Column(name = "USER_NAME")
     public String getUserName() {
         return userName;
     }
@@ -38,7 +37,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "NORMAL_NAME", nullable = false, length = 30)
+    @Column(name = "NORMAL_NAME")
     public String getNormalName() {
         return normalName;
     }
@@ -48,7 +47,7 @@ public class AccountEntity {
     }
 
     @Id
-    @Column(name = "USER_ID", nullable = false)
+    @Column(name = "USER_ID")
     public int getUserId() {
         return userId;
     }
@@ -58,7 +57,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "PWD", nullable = false, length = 30)
+    @Column(name = "PWD")
     public String getPwd() {
         return pwd;
     }
@@ -68,7 +67,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "IDENTITY_CARD", nullable = true, length = 30)
+    @Column(name = "IDENTITY_CARD")
     public String getIdentityCard() {
         return identityCard;
     }
@@ -78,7 +77,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "ID_NAME", nullable = true, length = 30)
+    @Column(name = "ID_NAME")
     public String getIdName() {
         return idName;
     }
@@ -88,7 +87,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "ADDRESS", nullable = true, length = 60)
+    @Column(name = "ADDRESS")
     public String getAddress() {
         return address;
     }
@@ -98,7 +97,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "GENDER", nullable = true, length = 2)
+    @Column(name = "GENDER")
     public String getGender() {
         return gender;
     }
@@ -108,7 +107,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "BIRTHDATE", nullable = true)
+    @Column(name = "BIRTHDATE")
     public Timestamp getBirthdate() {
         return birthdate;
     }
@@ -118,7 +117,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "TEL", nullable = true, length = 30)
+    @Column(name = "TEL")
     public String getTel() {
         return tel;
     }
@@ -128,7 +127,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "MAIL", nullable = true, length = 30)
+    @Column(name = "MAIL")
     public String getMail() {
         return mail;
     }
@@ -138,7 +137,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "AGE", nullable = true)
+    @Column(name = "AGE")
     public Integer getAge() {
         return age;
     }
@@ -148,7 +147,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "IS_MANAGER", nullable = true, length = 2)
+    @Column(name = "IS_MANAGER")
     public String getIsManager() {
         return isManager;
     }
@@ -158,7 +157,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "CREATE_DATE", nullable = true)
+    @Column(name = "CREATE_DATE")
     public Timestamp getCreateDate() {
         return createDate;
     }
@@ -168,7 +167,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "LAST_DATE", nullable = true)
+    @Column(name = "LAST_DATE")
     public Timestamp getLastDate() {
         return lastDate;
     }
@@ -178,7 +177,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "VISIT_CNT", nullable = true)
+    @Column(name = "VISIT_CNT")
     public Integer getVisitCnt() {
         return visitCnt;
     }
@@ -188,7 +187,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "QQ", nullable = true, length = 30)
+    @Column(name = "QQ")
     public String getQq() {
         return qq;
     }
@@ -198,7 +197,7 @@ public class AccountEntity {
     }
 
     @Basic
-    @Column(name = "AUTHORITY", nullable = false, length = 30)
+    @Column(name = "AUTHORITY")
     public String getAuthority() {
         return authority;
     }
