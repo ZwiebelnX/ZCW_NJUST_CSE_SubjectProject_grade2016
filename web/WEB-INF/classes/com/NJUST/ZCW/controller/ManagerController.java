@@ -1,23 +1,24 @@
 package com.NJUST.ZCW.controller;
 
 import com.NJUST.ZCW.Dao.AccountDB;
+import com.NJUST.ZCW.Dao.ApplicationDB;
+import com.NJUST.ZCW.Entities.AccountEntity;
+import com.NJUST.ZCW.Entities.ApplicationEntity;
 import com.NJUST.ZCW.domain.PersonalInformationInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.NJUST.ZCW.Entities.AccountEntity;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.io.File;
 
 @Controller
 public class ManagerController {
 
     AccountDB db = new AccountDB();
-
+    ApplicationDB appdb=new ApplicationDB();
     @RequestMapping(value = "accountmanage.manager")
     public String jumptopersonalinformation(Model model){
         model.addAttribute("personal",new PersonalInformationInfo());
@@ -75,7 +76,7 @@ public class ManagerController {
             return "manager/jumptpAccuntManage";
     }
 
-    @RequestMapping(value = "askforK,manager")
+    @RequestMapping(value = "askforK.manager")
     public String doAskforK(HttpSession session){
         AccountEntity ae=(AccountEntity) session.getAttribute("user");
         int f=ae.getUserId();
@@ -110,15 +111,132 @@ public class ManagerController {
         int id=Integer.parseInt(idd);
         System.out.println("perper"+id);
         db.ChangeAuthority(id);
-        return "manager/jumptoAuthorityQuery";
+        model.addAttribute("Querylist",db.getAllAuthorityQuery());
+        return "manager/AuthorityManage";
     }
     @RequestMapping(value = "authority_wa/{idd}")//执行拒绝
     public String waAuthoritychange(Model model, @PathVariable String idd){
         int id=Integer.parseInt(idd);
         System.out.println("delete"+id);
         db.deleteAuthority(id);
-        return "manager/jumptoAuthorityQuery";
+        model.addAttribute("Querylist",db.getAllAuthorityQuery());
+        return "manager/AuthorityManage";
+
+    }
+    @RequestMapping(value = "Accountlist.manager")
+    public String getAccountInformation(Model model){
+        model.addAttribute("Accountlist",db.getAllAccounts());
+        return "manager/AppManageList";
+    }
+
+    @RequestMapping(value = "accountinformation/{id}")//执行拒绝
+    public String getaccountdetail(Model model, @PathVariable int id){
+        AccountEntity ae=db.getAccount(id);
+        String s;
+        if(ae.getIsManager().equals("N"))
+            s="普通用户";
+        else if(ae.getIsManager().equals("K"))
+            s="开发商用户";
+        else s="管理员";
+        model.addAttribute("account",ae);
+        model.addAttribute("authority",s);
+        return "manager/AppManageDetail";
 
     }
 
+    @RequestMapping(value = "accountdelete/{id}")//用户删除
+    public String deleteaccount(Model model, @PathVariable int id){
+        db.deleteAccount(id);
+        model.addAttribute("Accountlist",db.getAllAccounts());
+        return "manager/AppManageList";
+    }
+
+    @RequestMapping(value = "askforN/{id}")//更改成为普通用户
+    public String doN(Model model, @PathVariable int id){
+        db.doChangeAuthority(id,"N");
+        model.addAttribute("Accountlist",db.getAllAccounts());
+        return "manager/AppManageList";
+    }
+
+    @RequestMapping(value = "askforK/{id}")//更改成为普通用户
+    public String doK(Model model, @PathVariable int id){
+        db.doChangeAuthority(id,"K");
+        model.addAttribute("Accountlist",db.getAllAccounts());
+        return "manager/AppManageList";
+    }
+
+    @RequestMapping(value = "askforC/{id}")//更改成为普通用户
+    public String doC(Model model, @PathVariable int id){
+        db.doChangeAuthority(id,"C");
+        model.addAttribute("Accountlist",db.getAllAccounts());
+        return "manager/AppManageList";
+    }
+
+    //应用审核
+    @RequestMapping(value="AppCheck.manager")
+    public String getAllCheckApps(Model model){
+        model.addAttribute("list",appdb.getAllCheckApps("F"));
+        return "manager/checkedapplist";
+    }
+
+    @RequestMapping(value = "appac/{id}")//审核通过
+    public String appAccepted(Model model, @PathVariable int id){
+        appdb.ChangeChecked(id,"Y");
+        model.addAttribute("list",appdb.getAllCheckApps("F"));
+        return "manager/checkedapplist";
+    }
+
+    @RequestMapping(value = "appwa/{id}")//审核不通过
+    public String appRefused(Model model, @PathVariable int id){
+        appdb.ChangeChecked(id,"N");
+        model.addAttribute("list",appdb.getAllCheckApps("F"));
+        return "manager/checkedapplist";
+    }
+    @RequestMapping(value = "appinformation/{id}")//详细信息
+    public String getDetailedInformation(Model model, @PathVariable int id){
+        ApplicationEntity app=appdb.getApp(id);
+        model.addAttribute("app",app);
+        model.addAttribute("publishername",db.getAccount(app.getPublisherId()).getUserName());
+        return "search/AppDetail";
+    }
+    //获取某一位开发者的全部应用信息
+    @RequestMapping(value = "getappbypublisher/{id}")
+    public String getAppbyPublisher(Model model,@PathVariable int id){
+        model.addAttribute("applist",appdb.getAppbyPublisherid(id));
+        return "search/AppList";
+    }
+
+    //应用管理
+    @RequestMapping(value="AppManage.manager")
+    public String getAllCheckApps(Model model,HttpSession session){
+        AccountEntity ae=(AccountEntity) session.getAttribute("user");
+        if(ae.getIsManager().equals("C"))
+            model.addAttribute("applist",appdb.getAllApps());
+        else if(ae.getIsManager().equals("K"))
+            model.addAttribute("applist",appdb.getAppbyPublisherid(ae.getUserId()));
+        return "manager/manageapplist";
+    }
+
+    //重新编辑一个app的页面
+    @RequestMapping(value = "appedit/{id}")
+    public String jumptpappedit(Model model,@PathVariable int id,HttpSession session){
+        session.setAttribute("app",appdb.getApp(id));
+        return "manager/Appedit";
+    }
+
+    //删除app appdelete
+    @RequestMapping(value = "appdelete/{id}")
+    public String dodeleteapp(Model model,@PathVariable int id,HttpSession session){
+        ApplicationEntity app=appdb.getApp(id);
+        File filepath=new File(app.getDownloadUrl());
+        if(filepath.exists()&&filepath.isFile())
+            filepath.delete();
+        appdb.deleteapp(app);
+        AccountEntity ae=(AccountEntity) session.getAttribute("user");
+        if(ae.getIsManager().equals("C"))
+            model.addAttribute("applist",appdb.getAllApps());
+        else if(ae.getIsManager().equals("K"))
+            model.addAttribute("applist",appdb.getAppbyPublisherid(ae.getUserId()));
+        return "manager/manageapplist";
+    }
 }

@@ -26,7 +26,13 @@
       out.println("<a href=\"accountmanage.manager\">个人管理</a>");
       if(s2!=null&&s2.equals("C")){
         out.println("<a href=\"AuthorityManagee.manager\">权限管理</a>");
-        out.println("<a href=\"AccountManagee.manager\">用户管理</a>");
+        out.println("<a href=\"Accountlist.manager\">用户管理</a>");
+        out.println("<a href=\"AppCheck.manager\">应用审核</a>");
+        out.println("<a href=\"AppManage.manager\">应用管理</a>");
+      }
+      if(s2!=null&&s2.equals("K")){
+          out.print("<a href=\"AppUpload.upload\">应用上传</a>");
+          out.print("<a href=\"AppManage.manager\">应用管理</a>");
       }
     }
     else{

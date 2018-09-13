@@ -1,9 +1,11 @@
 package com.NJUST.ZCW.Dao;
-import org.hibernate.Transaction;
+import com.NJUST.ZCW.Entities.AccountEntity;
+import com.NJUST.ZCW.Entities.AuthorityrequireEntity;
 import org.hibernate.Session;
-import org.hibernate.query.*;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import java.util.List;
-import com.NJUST.ZCW.Entities.*;
 public class AccountDB {
     /*
     登录检查
@@ -191,6 +193,40 @@ public class AccountDB {
         Session session = HibernateSessionFactory.currentSession();
         tran = session.beginTransaction();
         AuthorityrequireEntity ar=session.get(AuthorityrequireEntity.class,id);
+        session.delete(ar);
+        tran.commit();
+        HibernateSessionFactory.closeSession();
+    }
+    public List<AccountEntity>getAllAccounts(){
+        Session session = HibernateSessionFactory.currentSession();
+        try{
+
+            Query query = session.createQuery("from AccountEntity ");
+
+            List<AccountEntity> list = query.list();
+            return list;
+        }catch(Exception e){
+            throw(e);
+        }finally{
+            HibernateSessionFactory.closeSession(); //关闭数据库会话
+        }
+    }
+    public AccountEntity getAccount(int id){
+        Session session = HibernateSessionFactory.currentSession();
+        try{
+            AccountEntity ae=session.get(AccountEntity.class,id);
+            return ae;
+        }catch(Exception e){
+            throw(e);
+        }finally{
+            HibernateSessionFactory.closeSession(); //关闭数据库会话
+        }
+    }
+    public void deleteAccount(int id){
+        Transaction tran = null;
+        Session session = HibernateSessionFactory.currentSession();
+        tran = session.beginTransaction();
+        AccountEntity ar=session.get(AccountEntity.class,id);
         session.delete(ar);
         tran.commit();
         HibernateSessionFactory.closeSession();

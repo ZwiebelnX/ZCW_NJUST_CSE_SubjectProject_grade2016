@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>应用列表</title>
 </head>
 <body>
-
+    <h1>应用列表</h1>
 </body>
 </html>

@@ -23,6 +23,6 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.NJUST.ZCW.Entities.AccountEntity"/>
         <mapping class="com.NJUST.ZCW.Entities.AuthorityrequireEntity"/>
-
+        <mapping class="com.NJUST.ZCW.Entities.ApplicationEntity"/>
     </session-factory>
 </hibernate-configuration>

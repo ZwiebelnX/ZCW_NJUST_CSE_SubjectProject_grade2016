@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.NJUST.ZCW.Entities.ApplicationEntity" table="application" schema="appsystem">
+        <id name="id" column="ID"/>
+        <property name="name" column="NAME"/>
+        <property name="type" column="TYPE"/>
+        <property name="introduction" column="INTRODUCTION"/>
+        <property name="version" column="VERSION"/>
+        <property name="publisherId" column="PUBLISHER_ID"/>
+        <property name="downloadUrl" column="DOWNLOAD_URL"/>
+        <property name="size" column="SIZE"/>
+        <property name="language" column="LANGUAGE"/>
+        <property name="limitAge" column="LIMIT_AGE"/>
+        <property name="compatibility" column="COMPATIBILITY"/>
+        <property name="price" column="PRICE"/>
+        <property name="img" column="IMG"/>
+        <property name="visitCnt" column="VISIT_CNT"/>
+        <property name="auriorityNeed" column="AURIORITY_NEED"/>
+        <property name="requireVersion" column="REQUIRE_VERSION"/>
+        <property name="downloadCnt" column="DOWNLOAD_CNT"/>
+        <property name="checked" column="CHECKED"/>
+    </class>
+</hibernate-mapping>

@@ -30,21 +30,21 @@
                 <td>${Querylist.askerName}</td>
                 <td>${Querylist.authorityrealname}</td>
                 <td><button  onclick="
-                    window.open('/authority_ac/${Querylist.id}');
-                        location.reload();">同意</button>&nbsp;
+                        window.location.href=('/authority_ac/${Querylist.id}');
+                        ">同意</button>&nbsp;
                     <button onclick="
-                            window.open('/authority_ac/${Querylist.id}');
-                            location.reload();">拒绝</button></td>
+                            window.location.href=('/authority_wa/${Querylist.id}');
+                            ">拒绝</button></td>
             </tr>
         </e:forEach>
     </table></fieldset>
 </div>
 </body>
 
-    <script language="JavaScript">
+    <!--<script language="JavaScript">
         function myrefresh() {
             window.location.reload();
         }
         setTimeout('myrefresh()', 2000);
-    </script>
+    </script>-->
 </html>
