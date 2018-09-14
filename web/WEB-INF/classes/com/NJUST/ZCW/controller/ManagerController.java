@@ -197,7 +197,7 @@ public class ManagerController {
     public String getDetailedInformation(Model model, @PathVariable int id){
         appdb.VisCntIncrease(id);
         ApplicationEntity app=appdb.getApp(id);
-        if(app.getChecked().equals("T"))model.addAttribute("zt","通过审核");
+        if(app.getChecked().equals("Y"))model.addAttribute("zt","通过审核");
         else if(app.getChecked().equals("F"))model.addAttribute("zt","等待审核");
         else    model.addAttribute("zt","未通过审核");
         model.addAttribute("app",app);

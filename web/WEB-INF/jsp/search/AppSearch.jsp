@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td><a href="/getappbytp/美食.search">美食</a> </td>
-            <td><a href="/getappbytp/音乐.search">美食</a> </td>
+            <td><a href="/getappbytp/音乐.search">音乐</a> </td>
         </tr>
     </table>
 </fieldset>
