@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 
@@ -106,7 +107,7 @@ public class ManagerController {
         return "manager/jumptpAccuntManage";
     }
 
-    @RequestMapping(value = "authority_ac/{idd}")
+    @RequestMapping(value = "authority_ac/{idd}.manager")
     public String acAuthoritychange(Model model, @PathVariable String idd){
         int id=Integer.parseInt(idd);
         System.out.println("perper"+id);
@@ -114,7 +115,7 @@ public class ManagerController {
         model.addAttribute("Querylist",db.getAllAuthorityQuery());
         return "manager/AuthorityManage";
     }
-    @RequestMapping(value = "authority_wa/{idd}")//执行拒绝
+    @RequestMapping(value = "authority_wa/{idd}.manager")//执行拒绝
     public String waAuthoritychange(Model model, @PathVariable String idd){
         int id=Integer.parseInt(idd);
         System.out.println("delete"+id);
@@ -129,7 +130,7 @@ public class ManagerController {
         return "manager/AppManageList";
     }
 
-    @RequestMapping(value = "accountinformation/{id}")//执行拒绝
+    @RequestMapping(value = "accountinformation/{id}.manager")//执行拒绝
     public String getaccountdetail(Model model, @PathVariable int id){
         AccountEntity ae=db.getAccount(id);
         String s;
@@ -144,28 +145,28 @@ public class ManagerController {
 
     }
 
-    @RequestMapping(value = "accountdelete/{id}")//用户删除
+    @RequestMapping(value = "accountdelete/{id}.manager")//用户删除
     public String deleteaccount(Model model, @PathVariable int id){
         db.deleteAccount(id);
         model.addAttribute("Accountlist",db.getAllAccounts());
         return "manager/AppManageList";
     }
 
-    @RequestMapping(value = "askforN/{id}")//更改成为普通用户
+    @RequestMapping(value = "askforN/{id}.manager")//更改成为普通用户
     public String doN(Model model, @PathVariable int id){
         db.doChangeAuthority(id,"N");
         model.addAttribute("Accountlist",db.getAllAccounts());
         return "manager/AppManageList";
     }
 
-    @RequestMapping(value = "askforK/{id}")//更改成为普通用户
+    @RequestMapping(value = "askforK/{id}.manager")//更改成为普通用户
     public String doK(Model model, @PathVariable int id){
         db.doChangeAuthority(id,"K");
         model.addAttribute("Accountlist",db.getAllAccounts());
         return "manager/AppManageList";
     }
 
-    @RequestMapping(value = "askforC/{id}")//更改成为普通用户
+    @RequestMapping(value = "askforC/{id}.manager")//更改成为普通用户
     public String doC(Model model, @PathVariable int id){
         db.doChangeAuthority(id,"C");
         model.addAttribute("Accountlist",db.getAllAccounts());
@@ -179,28 +180,33 @@ public class ManagerController {
         return "manager/checkedapplist";
     }
 
-    @RequestMapping(value = "appac/{id}")//审核通过
+    @RequestMapping(value = "appac/{id}.manager")//审核通过
     public String appAccepted(Model model, @PathVariable int id){
         appdb.ChangeChecked(id,"Y");
         model.addAttribute("list",appdb.getAllCheckApps("F"));
         return "manager/checkedapplist";
     }
 
-    @RequestMapping(value = "appwa/{id}")//审核不通过
+    @RequestMapping(value = "appwa/{id}.manager")//审核不通过
     public String appRefused(Model model, @PathVariable int id){
         appdb.ChangeChecked(id,"N");
         model.addAttribute("list",appdb.getAllCheckApps("F"));
         return "manager/checkedapplist";
     }
-    @RequestMapping(value = "appinformation/{id}")//详细信息
+    @RequestMapping(value = "appinformation/{id}.manager")//详细信息
     public String getDetailedInformation(Model model, @PathVariable int id){
+        appdb.VisCntIncrease(id);
         ApplicationEntity app=appdb.getApp(id);
+        if(app.getChecked().equals("T"))model.addAttribute("zt","通过审核");
+        else if(app.getChecked().equals("F"))model.addAttribute("zt","等待审核");
+        else    model.addAttribute("zt","未通过审核");
         model.addAttribute("app",app);
         model.addAttribute("publishername",db.getAccount(app.getPublisherId()).getUserName());
         return "search/AppDetail";
     }
+
     //获取某一位开发者的全部应用信息
-    @RequestMapping(value = "getappbypublisher/{id}")
+    @RequestMapping(value = "getappbypublisher/{id}.manager")
     public String getAppbyPublisher(Model model,@PathVariable int id){
         model.addAttribute("applist",appdb.getAppbyPublisherid(id));
         return "search/AppList";
@@ -218,19 +224,24 @@ public class ManagerController {
     }
 
     //重新编辑一个app的页面
-    @RequestMapping(value = "appedit/{id}")
+    @RequestMapping(value = "appedit/{id}.manager")
     public String jumptpappedit(Model model,@PathVariable int id,HttpSession session){
         session.setAttribute("app",appdb.getApp(id));
         return "manager/Appedit";
     }
 
     //删除app appdelete
-    @RequestMapping(value = "appdelete/{id}")
-    public String dodeleteapp(Model model,@PathVariable int id,HttpSession session){
+    @RequestMapping(value = "appdelete/{id}.manager")
+    public String dodeleteapp(Model model, @PathVariable int id, HttpSession session, HttpServletRequest request){
         ApplicationEntity app=appdb.getApp(id);
-        File filepath=new File(app.getDownloadUrl());
+        File filepath=new File( request.getServletContext().getRealPath("")+app.getDownloadUrl());
+
+        File imgpath=new File(request.getServletContext().getRealPath("")+app.getImg());
+        //System.out.println(filepath);
         if(filepath.exists()&&filepath.isFile())
             filepath.delete();
+        if(imgpath.exists()&&imgpath.isFile())
+            imgpath.delete();
         appdb.deleteapp(app);
         AccountEntity ae=(AccountEntity) session.getAttribute("user");
         if(ae.getIsManager().equals("C"))

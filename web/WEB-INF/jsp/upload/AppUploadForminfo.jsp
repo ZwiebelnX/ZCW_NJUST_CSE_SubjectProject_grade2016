@@ -38,14 +38,6 @@
             <td><input type="text" name="compability" /></td>
         </tr>
         <tr>
-            <td>版本号:</td>
-            <td><input type="text" name="version"/></td>
-        </tr>
-        <tr>
-            <td>最低运行要求:</td>
-            <td><input type="text" name="requireVersion"/></td>
-        </tr>
-        <tr>
             <td>语言:</td>
             <td><input type="text" name="language"/></td>
         </tr>

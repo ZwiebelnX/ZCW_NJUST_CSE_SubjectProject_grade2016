@@ -130,10 +130,18 @@ public class ApplicationDB {
     }
     public void Updateapp(ApplicationEntity app){
         try{
+            System.out.println("尝试更新APP"+app.getId());
             Transaction tran = null;
             Session session = HibernateSessionFactory.currentSession();
             tran = session.beginTransaction();
-            session.save(app);
+            ApplicationEntity f=session.get(ApplicationEntity.class,app.getId());
+            f.setCompatibility(app.getCompatibility());
+            f.setIntroduction(app.getIntroduction());
+            f.setRequireVersion(app.getRequireVersion());
+            f.setType(app.getType());
+            f.setLanguage(app.getLanguage());
+            f.setName(app.getName());
+            session.save(f);
             tran.commit();
         }catch(Exception e){
             e.printStackTrace();
@@ -154,14 +162,48 @@ public class ApplicationDB {
             HibernateSessionFactory.closeSession(); //关闭数据库会话
         }
     }
-    public void UpdateAppurl(int id,String url,String f){
+    public void UpdateAppurl(int id,String url,String authority,String version,String minsdkversion){
         try{
             Transaction tran = null;
             Session session = HibernateSessionFactory.currentSession();
             tran = session.beginTransaction();
             ApplicationEntity app=session.get(ApplicationEntity.class,id);
             app.setDownloadUrl(url);
-            app.setAuriorityNeed(f);
+            app.setAuriorityNeed(authority);
+            app.setVersion(version);
+            app.setRequireVersion(minsdkversion);
+            session.save(app);
+            tran.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            HibernateSessionFactory.closeSession(); //关闭数据库会话
+        }
+    }
+
+    public void UpdateAppIcourl(int id,String url){
+        try{
+            Transaction tran = null;
+            Session session = HibernateSessionFactory.currentSession();
+            tran = session.beginTransaction();
+            ApplicationEntity app=session.get(ApplicationEntity.class,id);
+            app.setImg(url);
+            session.save(app);
+            tran.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            HibernateSessionFactory.closeSession(); //关闭数据库会话
+        }
+    }
+
+    public void VisCntIncrease(int id){
+        try{
+            Transaction tran = null;
+            Session session = HibernateSessionFactory.currentSession();
+            tran = session.beginTransaction();
+            ApplicationEntity app=session.get(ApplicationEntity.class,id);
+            app.setVisitCnt(app.getVisitCnt()+1);
             session.save(app);
             tran.commit();
         }catch(Exception e){

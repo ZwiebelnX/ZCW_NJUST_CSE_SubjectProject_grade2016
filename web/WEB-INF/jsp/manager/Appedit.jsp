@@ -15,7 +15,6 @@
 <body>
 <%
     ApplicationEntity app=(ApplicationEntity)session.getAttribute("app");
-    request.setAttribute("aid",app.getId());
     request.setAttribute("aname",app.getName());
     request.setAttribute("atype",app.getType());
     request.setAttribute("aintroduction",app.getIntroduction());
@@ -26,7 +25,7 @@
 %>
 <h1>编辑应用</h1>
 <fieldset>
-    <form action="appreuplod.upload"  method="post">
+    <form action="/appreupload.upload"  method="post">
         <table>
             <tr>
                 <td>应用名称:</td>
@@ -36,17 +35,13 @@
                 <td>应用类型:</td>
                 <td><input type="text" name="type" value="${atype}" /></td>
             </tr>
-            <tr rowspan="2">
+            <tr>
                 <td>介绍:</td>
                 <td><input type="text" name="introduction" value="${aintroduction}" /></td>
             </tr>
             <tr>
                 <td>兼容性:</td>
                 <td><input type="text" name="compability" value="${acompatibility}"/></td>
-            </tr>
-            <tr>
-                <td>版本号:</td>
-                <td><input type="text" name="version" value="${aversion}"/></td>
             </tr>
             <tr>
                 <td>最低运行要求:</td>
@@ -62,8 +57,7 @@
         </table>
     </form>
 </fieldset>
-    <a href="/reuploadapp/${aid}">重新上传App</a>
-    <a href="/uploadpng/${aid}">上传App图片</a>
-
+<a href="/uploadico.upload">上传图标</a>&nbsp;
+<a href="/reuploadapp.upload">重新上传apk</a>
 </body>
 </html>

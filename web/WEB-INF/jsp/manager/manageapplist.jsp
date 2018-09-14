@@ -27,8 +27,8 @@
             <tr>
                 <td>${applist.id}</td>
                 <td>${applist.name}</td>
-                <td><a href="/appinformation/${applist.id}">查看详情</a></td>
-                <td><a href="/appedit/${applist.id}">重新编辑</a><a href="/appdelete/${applist.id}">删除</a></td>
+                <td><a href="/appinformation/${applist.id}.manager">查看详情</a></td>
+                <td><a href="/appedit/${applist.id}.manager">重新编辑</a><a href="/appdelete/${applist.id}.manager">删除</a></td>
             </tr>
         </e:forEach>
     </table>

@@ -30,10 +30,10 @@
                 <td>${Querylist.askerName}</td>
                 <td>${Querylist.authorityrealname}</td>
                 <td><button  onclick="
-                        window.location.href=('/authority_ac/${Querylist.id}');
+                        window.location.href=('/authority_ac/${Querylist.id}.manager');
                         ">同意</button>&nbsp;
                     <button onclick="
-                            window.location.href=('/authority_wa/${Querylist.id}');
+                            window.location.href=('/authority_wa/${Querylist.id}.manager');
                             ">拒绝</button></td>
             </tr>
         </e:forEach>

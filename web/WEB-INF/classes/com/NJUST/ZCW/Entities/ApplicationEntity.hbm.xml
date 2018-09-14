@@ -23,5 +23,6 @@
         <property name="requireVersion" column="REQUIRE_VERSION"/>
         <property name="downloadCnt" column="DOWNLOAD_CNT"/>
         <property name="checked" column="CHECKED"/>
+        <property name="publisherName" column="PUBLISHER_NAME"/>
     </class>
 </hibernate-mapping>

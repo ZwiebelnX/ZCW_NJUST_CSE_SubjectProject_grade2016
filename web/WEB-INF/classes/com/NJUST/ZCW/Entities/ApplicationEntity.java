@@ -24,6 +24,7 @@ public class ApplicationEntity {
     private String requireVersion;
     private Integer downloadCnt;
     private String checked;
+    private String publisherName;
 
     @Id
     @Column(name = "ID")
@@ -205,6 +206,16 @@ public class ApplicationEntity {
         this.checked = checked;
     }
 
+    @Basic
+    @Column(name = "PUBLISHER_NAME")
+    public String getPublisherName() {
+        return publisherName;
+    }
+
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -227,11 +238,12 @@ public class ApplicationEntity {
                 Objects.equals(auriorityNeed, that.auriorityNeed) &&
                 Objects.equals(requireVersion, that.requireVersion) &&
                 Objects.equals(downloadCnt, that.downloadCnt) &&
-                Objects.equals(checked, that.checked);
+                Objects.equals(checked, that.checked) &&
+                Objects.equals(publisherName, that.publisherName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, type, introduction, version, publisherId, downloadUrl, size, language, limitAge, compatibility, price, img, visitCnt, auriorityNeed, requireVersion, downloadCnt, checked);
+        return Objects.hash(id, name, type, introduction, version, publisherId, downloadUrl, size, language, limitAge, compatibility, price, img, visitCnt, auriorityNeed, requireVersion, downloadCnt, checked, publisherName);
     }
 }

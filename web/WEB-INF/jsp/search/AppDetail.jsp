@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td>开发商:</td>
-            <td><a href="getappbypublisher/${app.publisherId}">${publishername}</a></td>
+            <td><a href="/getappbypublisher/${app.publisherId}.manager">${publishername}</a></td>
         </tr>
         <tr>
             <td>分类:</td>
@@ -55,6 +55,14 @@
         <tr>
             <td>浏览总数:</td>
             <td>${app.visitCnt}</td>
+        </tr>
+        <tr>
+            <td>所需权限:</td>
+            <td>${app.auriorityNeed}</td>
+        </tr>
+        <tr>
+            <td>审核状态</td>
+            <td>${zt}</td>
         </tr>
         <tr>
             <td>下载链接:</td>

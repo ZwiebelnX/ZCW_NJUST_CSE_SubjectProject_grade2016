@@ -24,6 +24,7 @@
       out.println("欢迎登录："+session.getAttribute("nickname"));
       out.println("<a href=\"logout.login\">注销</a>");
       out.println("<a href=\"accountmanage.manager\">个人管理</a>");
+      out.println("<a href=\"app.search\">应用查询</a>");
       if(s2!=null&&s2.equals("C")){
         out.println("<a href=\"AuthorityManagee.manager\">权限管理</a>");
         out.println("<a href=\"Accountlist.manager\">用户管理</a>");

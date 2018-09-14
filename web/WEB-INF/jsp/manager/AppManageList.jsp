@@ -32,19 +32,19 @@
                     <td>${Accountlist.userName}</td>
                     <td>${Accountlist.isManager}</td>
                     <td><button  onclick="
-                            window.open('/accountinformation/${Accountlist.userId}');
+                            window.open('/accountinformation/${Accountlist.userId}.manager');
                             ">查看</button></td>
                     <td><button  onclick="
-                            window.location.href=('/askforN/${Accountlist.userId}');
+                            window.location.href=('/askforN/${Accountlist.userId}.manager');
                             ">更改成普通用户</button> &nbsp;
                         <button  onclick="
-                                window.location.href=('/askforK/${Accountlist.userId}');
+                                window.location.href=('/askforK/${Accountlist.userId}.manager');
                                 ">更改成开发商用户</button>
                         <button  onclick="
-                                window.location.href=('/askforC/${Accountlist.userId}');
+                                window.location.href=('/askforC/${Accountlist.userId}.manager');
                                 ">更改成管理员</button>
                         <button  onclick="
-                                window.location.href=('/accountdelete/${Accountlist.userId}');
+                                window.location.href=('/accountdelete/${Accountlist.userId}.manager');
                                 ">删除用户</button>
                     </td>
                 </tr>
