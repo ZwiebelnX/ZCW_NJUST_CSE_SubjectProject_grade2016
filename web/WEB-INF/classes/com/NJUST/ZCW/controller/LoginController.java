@@ -3,6 +3,7 @@ package com.NJUST.ZCW.controller;
 import com.NJUST.ZCW.Dao.AccountDB;
 import com.NJUST.ZCW.domain.LoginInfo;
 import com.NJUST.ZCW.service.login.LoginCheck;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -10,13 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.NJUST.ZCW.Entities.AccountEntity;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
-    ApplicationContext cfg = new ClassPathXmlApplicationContext("applicationContext.xml");
-    LoginCheck login =cfg.getBean("Login", LoginCheck.class);
-    AccountDB db = new AccountDB();
+
+    @Resource
+    private AccountDB db;
 
     /*
     展示登录页面

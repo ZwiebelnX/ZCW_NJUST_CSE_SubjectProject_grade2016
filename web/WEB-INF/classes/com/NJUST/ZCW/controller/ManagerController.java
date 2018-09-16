@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -18,8 +19,10 @@ import java.io.File;
 @Controller
 public class ManagerController {
 
-    AccountDB db = new AccountDB();
-    ApplicationDB appdb=new ApplicationDB();
+    @Resource
+    private AccountDB db;
+    @Resource
+    private ApplicationDB appdb;
     @RequestMapping(value = "accountmanage.manager")
     public String jumptopersonalinformation(Model model){
         model.addAttribute("personal",new PersonalInformationInfo());

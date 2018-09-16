@@ -24,9 +24,9 @@ public class ServerListener implements ServletContextListener {
     //服务器关闭监听器
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        //TODO 卸载数据库驱动
         HibernateSessionFactory.closeFactory();//关闭SessionFactory
 
+        //卸载JDBC驱动
         Enumeration<Driver> drivers = DriverManager.getDrivers();
         while (drivers.hasMoreElements()) {
             Driver driver = drivers.nextElement();
