@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td>开发商:</td>
-            <td><a href="/getappbypublisher/${app.publisherId}.manager">${publishername}</a></td>
+            <td><a href="<%=request.getContextPath()%>/getappbypublisher/${app.publisherId}.manager">${publishername}</a></td>
         </tr>
         <tr>
             <td>分类:</td>

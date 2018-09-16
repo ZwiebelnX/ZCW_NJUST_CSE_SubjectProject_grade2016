@@ -36,20 +36,20 @@
 <fieldset>
     <table>
         <tr>
-            <td><a href="/getappbytp/游戏.search">游戏</a> </td>
-            <td><a href="/getappbytp/视频.search">视频</a> </td>
-            <td><a href="/getappbytp/聊天.search">聊天</a> </td>
-            <td><a href="/getappbytp/浏览器.search">浏览器</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/游戏.search">游戏</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/视频.search">视频</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/聊天.search">聊天</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/浏览器.search">浏览器</a> </td>
         </tr>
         <tr>
-            <td><a href="/getappbytp/网购金融.search">网购金融</a> </td>
-            <td><a href="/getappbytp/生活.search">生活</a> </td>
-            <td><a href="/getappbytp/新闻.search">新闻</a> </td>
-            <td><a href="/getappbytp/摄影.search">摄影</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/网购金融.search">网购金融</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/生活.search">生活</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/新闻.search">新闻</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/摄影.search">摄影</a> </td>
         </tr>
         <tr>
-            <td><a href="/getappbytp/美食.search">美食</a> </td>
-            <td><a href="/getappbytp/音乐.search">音乐</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/美食.search">美食</a> </td>
+            <td><a href="<%=request.getContextPath()%>/getappbytp/音乐.search">音乐</a> </td>
         </tr>
     </table>
 </fieldset>

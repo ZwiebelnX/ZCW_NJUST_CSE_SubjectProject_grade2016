@@ -30,7 +30,7 @@
                 <td><img src="${applist.img}" width="100" height="100"/></td>
                 <td>${applist.publisherName}</td>
                 <td>${applist.type}</td>
-                <td><a href="/appinformation/${applist.id}.manager">查看详情</a></td>
+                <td><a href="<%=request.getContextPath()%>/appinformation/${applist.id}.manager">查看详情</a></td>
                 <td><a href="${applist.downloadUrl}">点击下载</a></td>
             </tr>
         </e:forEach>

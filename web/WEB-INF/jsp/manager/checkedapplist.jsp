@@ -27,8 +27,8 @@
                 <tr>
                     <td>${list.id}</td>
                     <td>${list.name}</td>
-                    <td><a href="/appinformation/${list.id}.manager">查看详情</a></td>
-                    <td><a href="/appac/${list.id}.manager">通过</a><a href="/appwa/${list.id}.manager">拒绝</a></td>
+                    <td><a href="<%=request.getContextPath()%>/appinformation/${list.id}.manager">查看详情</a></td>
+                    <td><a href="<%=request.getContextPath()%>/appac/${list.id}.manager">通过</a><a href="/appwa/${list.id}.manager">拒绝</a></td>
                 </tr>
             </e:forEach>
         </table>

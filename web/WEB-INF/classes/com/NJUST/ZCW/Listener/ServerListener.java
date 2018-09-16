@@ -4,6 +4,10 @@ import com.NJUST.ZCW.Dao.HibernateSessionFactory;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Enumeration;
 
 /*
 本类是服务器启动和关闭时的监听器
@@ -22,5 +26,15 @@ public class ServerListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         //TODO 卸载数据库驱动
         HibernateSessionFactory.closeFactory();//关闭SessionFactory
+
+        Enumeration<Driver> drivers = DriverManager.getDrivers();
+        while (drivers.hasMoreElements()) {
+            Driver driver = drivers.nextElement();
+            try {
+                DriverManager.deregisterDriver(driver);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

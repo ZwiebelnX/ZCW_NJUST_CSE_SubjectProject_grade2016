@@ -57,7 +57,7 @@
         </table>
     </form>
 </fieldset>
-<a href="/uploadico.upload">上传图标</a>&nbsp;
-<a href="/reuploadapp.upload">重新上传apk</a>
+<a href="<%=request.getContextPath()%>/uploadico.upload">上传图标</a>&nbsp;
+<a href="<%=request.getContextPath()%>/reuploadapp.upload">重新上传apk</a>
 </body>
 </html>
