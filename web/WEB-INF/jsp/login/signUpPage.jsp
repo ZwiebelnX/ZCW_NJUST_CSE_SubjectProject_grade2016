@@ -9,60 +9,81 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href="<%=request.getContextPath()%>/css/sign2.css" rel="stylesheet" type="text/css">
     <title>注册</title>
 </head>
 <body>
-    <fieldset>
-        <legend>注册</legend>
-        <form:form commandName="AccountEntity" action="signUp.login" method="post" onsubmit="return finalcheck(this)">
-            <table>
-                <tr>
-                    <td>用户名*</td>
-                    <td><form:input id="p0" path="userName" /></td>
-                </tr>
-                <tr>
-                    <td>昵称*</td>
-                    <td><form:input id="p5" path="normalName" /></td>
+<div id="canvas">
+    <div id="header"><img src="<%=request.getContextPath()%>/imgs/1.jpg" width="809" height="111" alt="la"></div>
+    <div id="content">
+        <fieldset id="fil">
+            <legend id="legen">注册</legend>
+            <form:form commandName="AccountEntity" action="signUp.login" method="post" onsubmit="return finalcheck(this)">
+                <table>
+                    <tr>
+                        <td width="123">用户名<span style="color: red;">*</span>：</td>
+                        <td><form:input id="p0" path="userName" /></td>
+                    </tr>
+                    <tr>
+                        <td>昵称<span style="color: red;">*</span>：</td>
+                        <td><form:input id="p5" path="normalName" /></td>
 
-                </tr>
-                <tr>
-                    <td>密码*</td>
-                    <td><form:password onkeyup="check1()" id="p1" path="pwd" /></td>
-                    <td><div id=check_tip1></div> </td>
-                </tr>
-                <tr>
-                    <td>确认密码*</td>
-                    <td><input  onkeyup="check2()" id="p2" type="password" /> </td>
-                    <td><div id=check_tip2></div></td>
-                </tr>
-                <tr>
-                    <td>邮箱*</td>
-                    <td><form:input id="p3" onkeyup="check3()" path="mail" /></td>
-                    <td><div id=check_tip3></div></td>
-                </tr>
-                <tr>
-                    <td>身份证名称</td>
-                    <td><form:input id="idname" path="idName" /></td>
-                </tr>
-                <tr>
-                    <td>身份证号</td>
-                    <td><form:input id="idcard" path="identityCard" /></td>
-                </tr>
-                <tr>
-                    <td>手机号</td>
-                    <td><form:input id="tel" path="tel" /> </td>
-                </tr>
-                <tr>
-                    <td>QQ</td>
-                    <td><form:input id="qq" path="qq" /></td>
-                </tr>
-                <tr>
-                    <td><input value="重置"type="reset"></td>
-                    <td><input value="注册"type="submit"></td>
-                </tr>
-            </table>
-        </form:form>
-    </fieldset>
+                    </tr>
+                    <tr>
+                        <td>密码<span style="color: red;">*</span>：</td>
+                        <td><form:password onkeyup="check1()" id="p1" path="pwd" /></td>
+                        <td><div id=check_tip1></div> </td>
+                    </tr>
+                    <tr>
+                        <td>确认密码<span style="color: red;">*</span>：</td>
+                        <td><input  onkeyup="check2()" id="p2" type="password" /> </td>
+                        <td><div id=check_tip2></div></td>
+                    </tr>
+                    <tr>
+                        <td>邮箱<span style="color: red;">*</span>：</td>
+                        <td><form:input id="p3" onkeyup="check3()" path="mail" /></td>
+                        <td><div id=check_tip3></div></td>
+                    </tr>
+                    <tr>
+                        <td>身份证名称：</td>
+                        <td><form:input id="idname" path="idName" /></td>
+                    </tr>
+                    <tr>
+                        <td>身份证号：</td>
+                        <td><form:input id="idcard" path="identityCard" /></td>
+                    </tr>
+                    <tr>
+                        <td>手机号：</td>
+                        <td><form:input id="tel" path="tel" /> </td>
+                    </tr>
+                    <tr>
+                        <td>QQ号：</td>
+                        <td><form:input id="qq" path="qq" /></td>
+                    </tr>
+                    <tr>
+                        <td>性别：</td>
+                        <td style="text-align: left">
+                            <input type="radio" name="gen" value="男"/>
+                            <img src="<%=request.getContextPath()%>/imgs/Male.gif" alt="alt"/>男
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="gen" value="女"/>
+                            <img src="<%=request.getContextPath()%>/imgs/Female.gif" alt="alt"/>女
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" text-align="center"><input value="重置" type="reset" class="buttom"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" text-align="center"><input value="注册" type="submit" class="buttom"/></td>
+                    </tr>
+                </table>
+            </form:form>
+        </fieldset>
+    </div>
+    <div id="footer">
+        <p>Copyright&nbsp;&copy;&nbsp;2018&nbsp;&#183;&nbsp;All Rights Reserved</p>
+    </div>
+</div>
 </body>
 <script type="text/javascript">
     function finalcheck(form){

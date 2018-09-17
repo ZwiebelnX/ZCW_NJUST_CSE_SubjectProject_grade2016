@@ -1,0 +1,98 @@
+/* CSS Document */
+body{
+    background-color: #FFFFFF;
+    background-image: url(../imgs/1.jpg);
+    background-repeat: no-repeat;
+    background-position: 0px -80px;
+    height: 100%;
+    margin: 0px;
+}
+*{
+    font-family: Arial,sans-serif;
+    font-size: 1em;
+    margin: 0px;
+    padding: 0px;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: Georgia,Serif;
+    color:#b09c30;
+}
+a{color: #000;}
+h1{font-size: 1.8em;}
+#canvas{
+    width: 859px;
+    height: 817px;
+    margin: 0px auto;
+    display: block;
+    background-image: url(../imgs/1.jpg);
+    overflow: hidden;
+    text-align: center;
+}
+#header{
+    text-align: center;
+    height: 113px;
+    width: 100%;
+    margin: 40px auto 0px;
+    left: 0px;
+    top: 0px;
+    float: left;
+}
+#content{
+    font-size: 1.0em;
+    padding: 30px;
+    float: right;
+    width: 380px;
+    margin: 0px 220px 0px 0px;
+    height: auto;
+}
+#fil{
+    width: 340px;
+    text-align: center;
+    height: 545px;
+}
+#content table{
+    border: 1;
+    text-align: center;
+    margin-top: -15px;
+    padding-right: 50px;
+    padding-top: 15px;
+
+}
+#content td{
+    text-align: right;
+    height: 40px;
+    vertical-align: bottom;
+}
+.re{
+    height: 40px;
+    margin: 20px 0px 0px 15px;
+
+}
+.buttom {
+    background: #947B97;
+    width: 245px;
+    height: 30px;
+    text-align: center;
+    overflow: hidden;
+    border: #807777;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+#legen{
+    font-size: 17px;
+    font-family: Arial, sans-serif;
+}
+#footer{
+    clear: both;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    background-image: url(../imgs/1.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 top;
+    background-color: #202c22;
+    padding: 20px 0;
+    color: #97862b;
+}
+
