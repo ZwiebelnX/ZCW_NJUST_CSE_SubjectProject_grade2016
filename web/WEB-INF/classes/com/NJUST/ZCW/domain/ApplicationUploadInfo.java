@@ -1,6 +1,10 @@
 package com.NJUST.ZCW.domain;
 
-public class ApplicationUploadInfo {
+import java.io.Serializable;
+
+public class ApplicationUploadInfo implements Serializable {
+    private static final long serialVersionUID = 7786501899876296280L;
+
     private int id;
     private String name;
     private String type;

@@ -16,7 +16,7 @@
 <body>
 <h1>应用统计</h1>
 <fieldset>
-    <form method="post" action="/getapp.statistics">
+    <form method="post" action="<%=request.getContextPath()%>/getapp.statistics">
         关键字:<input type="text" name="keyword">&nbsp;
         类型:<select name="tp">
         <option value="全部">全部</option>

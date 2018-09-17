@@ -1,6 +1,11 @@
 package com.NJUST.ZCW.domain;
 
-public class SignupInfo {
+import java.io.Serializable;
+
+public class SignupInfo implements Serializable {
+
+    private static final long serialVersionUID = -1521025064965962788L;
+
     private String username;
     private String nickname;
     private String password;

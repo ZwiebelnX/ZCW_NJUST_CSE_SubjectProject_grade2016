@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -18,8 +19,9 @@ import java.util.List;
 
 @Controller
 public class AppStatisticsController {
+    @Resource
+   private ApplicationDB appdb;
 
-    ApplicationDB appdb=new ApplicationDB();
     @RequestMapping(value = "app.statistics")
     public String jumptostatisticspage(){
         System.out.println("FFFF~~~");

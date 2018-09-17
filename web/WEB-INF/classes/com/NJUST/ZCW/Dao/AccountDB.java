@@ -4,12 +4,16 @@ import com.NJUST.ZCW.Entities.AuthorityrequireEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+@Repository("AccountDB")
 public class AccountDB {
     /*
     登录检查
      */
+
     public boolean CheckAccountExist(AccountEntity tmp){
         Session session = HibernateSessionFactory.currentSession();
         try{
