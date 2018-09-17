@@ -1,19 +1,19 @@
 package com.NJUST.ZCW.controller;
 
 import com.NJUST.ZCW.Dao.AccountDB;
+import com.NJUST.ZCW.Entities.AccountEntity;
 import com.NJUST.ZCW.domain.LoginInfo;
-import com.NJUST.ZCW.service.login.LoginCheck;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.NJUST.ZCW.service.login.MailSystem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.NJUST.ZCW.Entities.AccountEntity;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Random;
 
 @Controller
 public class LoginController {
@@ -92,4 +92,75 @@ public class LoginController {
         return "mainpage";
     }
     //TODO 改为依赖注入形式执行外部调用
+    @RequestMapping(value="forgetPassword.login")
+    public String jumptoForgetPwdPage(){
+        return "login/forgetPWD";
+    }
+
+    public String getRandomnumber(){
+        Random random = new Random();
+        String fourRandom = random.nextInt(10000) + "";
+        int randLength = fourRandom.length();
+        if(randLength<4){
+            for(int i=1; i<=4-randLength; i++)
+                fourRandom = "0" + fourRandom  ;
+        }
+        return fourRandom;
+    }
+    //执行邮件认证
+    @RequestMapping(value = "postEmail.login")
+    public String postthemail(ServletRequest request,Model model,HttpSession session){
+        String msg="";
+        String yzm=getRandomnumber();
+        System.out.println(yzm);
+        String str="您好，您的验证码为"+yzm+"为了您的账号信息安全，请勿将此验证码交给他人";
+        List<AccountEntity> list=db.getAllAccounts();
+        String to="";
+        int id=0;
+        for(AccountEntity ae:list){
+            if(ae.getUserName().equals(request.getParameter("account"))){
+                to=ae.getMail();
+                id=ae.getUserId();
+                session.setAttribute("userid",ae.getUserId());
+                session.setAttribute("user",ae);
+            }
+        }
+        System.out.println("userid="+id);
+        MailSystem sender=new MailSystem();
+        try {
+            if(to.equals("")) {
+                System.out.println("无当前账号");
+                throw new Exception("no such account");
+            }
+            sender.sendMail(to,str);
+            db.InsertpwdchgInformation(id,yzm,"1");
+        }catch (Exception e){
+            e.printStackTrace();
+            msg="无此邮箱或邮件发送失败！";
+            return  "login/Failed";
+        }
+        msg="邮件已经发送，请检查";
+
+        model.addAttribute("msg",msg);
+        return "login/forgetPWD";
+    }
+    @RequestMapping(value = "checkemailyzm.login")
+    public String checkyzm(ServletRequest request,HttpSession session,Model model){
+        String idd=session.getAttribute("userid").toString();
+        System.out.println(idd+";;;;");
+        if(idd!=null) {
+            int id = Integer.parseInt(idd);
+            String yzm = "";
+            yzm = db.getYzm(id);
+            System.out.println("id="+id);
+            String inputyzm = request.getParameter("yzm");
+            if (inputyzm.equals(yzm)) {
+                db.CHGPWD(request.getParameter("pwd"), id);
+            }return "mainpage";
+        }else{
+            model.addAttribute("msg","请先获取验证码");
+            return "login/forgetPWD";
+        }
+
+    }
 }

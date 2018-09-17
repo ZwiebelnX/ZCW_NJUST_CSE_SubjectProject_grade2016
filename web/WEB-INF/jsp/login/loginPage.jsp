@@ -39,6 +39,9 @@
                     <tr id="sign">
                         <td colspan="2" height="34"><a href="signUpPage.login">用户注册</a></td>
                     </tr>
+                    <tr id="forgetpwd">
+                        <td colspan="2" height="34"><a href="forgetPassword.login">找回密码</a></td>
+                    </tr>
                 </table>
             </from:form>
         </fieldset>

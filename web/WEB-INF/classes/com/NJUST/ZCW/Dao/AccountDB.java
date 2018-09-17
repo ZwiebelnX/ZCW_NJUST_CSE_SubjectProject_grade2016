@@ -1,6 +1,7 @@
 package com.NJUST.ZCW.Dao;
 import com.NJUST.ZCW.Entities.AccountEntity;
 import com.NJUST.ZCW.Entities.AuthorityrequireEntity;
+import com.NJUST.ZCW.Entities.ChgpwdEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -232,6 +233,51 @@ public class AccountDB {
         tran = session.beginTransaction();
         AccountEntity ar=session.get(AccountEntity.class,id);
         session.delete(ar);
+        tran.commit();
+        HibernateSessionFactory.closeSession();
+    }
+    public void InsertpwdchgInformation(int id,String yzm,String pwd){
+        Transaction tran = null;
+        Session session = HibernateSessionFactory.currentSession();
+        tran = session.beginTransaction();
+        ChgpwdEntity chgpwdEntity=session.get(ChgpwdEntity.class,id);
+        if(chgpwdEntity==null) {
+            chgpwdEntity=new ChgpwdEntity();
+            chgpwdEntity.setPwd(pwd);
+            chgpwdEntity.setUserid(id);
+            chgpwdEntity.setYzm(yzm);
+            session.save(chgpwdEntity);
+        }else{
+            chgpwdEntity.setYzm(yzm);
+            session.update(chgpwdEntity);
+        }
+        tran.commit();
+        HibernateSessionFactory.closeSession();
+    }
+    public String getYzm(int id) {
+        String ans = "";
+        try {
+            Transaction tran = null;
+            Session session = HibernateSessionFactory.currentSession();
+            tran = session.beginTransaction();
+            ChgpwdEntity chgpwdEntity = session.get(ChgpwdEntity.class, id);
+            ans = chgpwdEntity.getYzm();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            HibernateSessionFactory.closeSession();
+            return ans;
+        }
+    }
+    public  void CHGPWD(String pwd,int id){
+        Transaction tran = null;
+        Session session = HibernateSessionFactory.currentSession();
+        tran = session.beginTransaction();
+        AccountEntity accountEntity=session.get(AccountEntity.class,id);
+        accountEntity.setPwd(pwd);
+        session.save(accountEntity);
+        ChgpwdEntity chgpwdEntity=session.get(ChgpwdEntity.class,id);
+        session.delete(chgpwdEntity);
         tran.commit();
         HibernateSessionFactory.closeSession();
     }
