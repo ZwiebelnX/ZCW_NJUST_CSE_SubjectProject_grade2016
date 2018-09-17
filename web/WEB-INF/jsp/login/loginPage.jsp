@@ -12,11 +12,59 @@
 <head>
     <link href="<%=request.getContextPath()%>/css/login1.css" rel="stylesheet" type="text/css">
     <title>登录</title>
+    <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){ window.scrollTo(0,1);
+        }
+    </script>
+    <link href="<%=request.getContextPath()%>/http//fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var pull 		= $('#pull');
+            menu 		= $('nav ul');
+            menuHeight	= menu.height();
+            $(pull).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css">
 </head>
 <body>
-<div id="canvas">
-    <div id="header"><img src="<%=request.getContextPath()%>/imgs/1.jpg" width="809" height="111" alt="la"></div>
-    <div id="menu"><img src="<%=request.getContextPath()%>/imgs/2.jpg" width="310" height="265" alt="shi"></div>
+<div class="header_bg" id="home"><!-- start header -->
+    <div class="container">
+        <div class="row header text-center specials">
+            <div class="h_logo">
+                <a href="<%=request.getContextPath()%>/toMainPage.login"><img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a>
+            </div>
+            <nav class="top-nav">
+                <ul class="top-nav nav_list">
+                    <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
+                    <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/toMainPage.login">
+                        <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
+                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
+                </ul>
+                <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
+            </nav>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="slider_bg" style="height: 750px;"><!-- start slider -->
+    <div class="container">
     <div id="content">
         <fieldset id="fil">
             <legend align="center">请登录</legend>
@@ -43,9 +91,39 @@
             </from:form>
         </fieldset>
     </div>
-    <div id="footer">
-        <p>Copyright&nbsp;&copy;&nbsp;2018&nbsp;&#183;&nbsp;All Rights Reserved</p>
     </div>
 </div>
+<div class="footer_bg" id="contact">
+    <div class="container"> </div>
+</div>
+<div class="footer1_bg">
+    <div class="container">
+        <div class="row  footer">
+            <div class="copy text-center">
+                <p class="link"><span>Copyright &copy; 2018.Company name All rights reserved.</span></p>
+                <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>
+<div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+<br>
 </body>
 </html>
