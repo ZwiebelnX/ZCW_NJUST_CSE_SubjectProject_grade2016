@@ -24,5 +24,6 @@
         <mapping class="com.NJUST.ZCW.Entities.AccountEntity"/>
         <mapping class="com.NJUST.ZCW.Entities.AuthorityrequireEntity"/>
         <mapping class="com.NJUST.ZCW.Entities.ApplicationEntity"/>
+        <mapping class="com.NJUST.ZCW.Entities.ChgpwdEntity"/>
     </session-factory>
 </hibernate-configuration>
