@@ -1,9 +1,11 @@
+
+
 a{
     text-decoration: none;
     color:#e0eacf;
 }
 
-a:hover{
+a:hover, .actionDiv li:hover{
     text-decoration: none;
     color:#2EB398;
 
@@ -14,26 +16,74 @@ a:hover{
 
 }
 
-.welcomeText{
-    position: relative;
-    top:30px;
-    text-align: center;
-
-    color:white;
-}
-
-.logAction{
-    position: relative;
-    top:50px;
-    text-align: center;
-
-}
-
 #mainContainer{
     background: url("../imgs/background.jpg");
     background-size:cover;
     min-height: 650px;
     width:100%;
 
+}
+
+.welcomeDiv{
+    position: relative;
+    width:400px;
+    top:150px;
+    left:250px;
+    color:white;
+    text-align: center;
+}
+
+.actionDiv{
+    position: relative;
+    width: 400px;
+    left: 900px;
+}
+
+.appSearchAction{
+    top: 50px;
+    font-size: 15px;
+    height: 100px;
+}
+
+.actionDiv ul{
+    width:300px;
+
+    float:left;
+
+    color:#e0eacf;
+}
+
+.actionDiv li{
+    width:100px;
+    height: 30px;
+    float:left;
+}
+
+.logAction{
+    top:50px;
+    text-align: center;
+
+}
+
+
+
+.userAction{
+    position: relative;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+
+.managerDiv, .developerDiv{
+    position: relative;
+    font-size: 15px;
+}
+
+.loginText{
+    position: relative;
+    text-align: center;
+    top:150px;
+    font-size: 15px;
 }
 
