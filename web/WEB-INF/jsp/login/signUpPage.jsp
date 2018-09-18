@@ -11,7 +11,7 @@
 <head>
 
     <title>注册</title>
-    <link href="<%=request.getContextPath()%>/css/login1.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/css/sign2.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/mainPageCss.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -66,73 +66,70 @@
 </div>
 <div class="slider_bg" id="mainContainer"><!-- start slider -->
     <div class="container">
-    <div id="content">
         <div id="word">
-        <h1>注册</h1>
+            <h1>SIGNUP</h1>
             <div id="form">
             <form:form commandName="AccountEntity" action="signUp.login" method="post" onsubmit="return finalcheck(this)">
                 <table>
                     <tr>
-                        <td width="123">用户名<span style="color: red;">*</span>：</td>
-                        <td><form:input id="p0" path="userName" /></td>
-                    </tr>
-                    <tr>
-                        <td>昵称<span style="color: red;">*</span>：</td>
-                        <td><form:input id="p5" path="normalName" /></td>
+                        <td>性 别：</td>
+                        <td style="text-align: left">
+                            &nbsp;&nbsp;<input type="radio" name="gen" value="男"/>
+                            <img src="<%=request.getContextPath()%>/imgs/Male.gif" alt="alt"/>男
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="gen" value="女"/>
+                            <img src="<%=request.getContextPath()%>/imgs/Female.gif" alt="alt"/>女
+                        </td>
+                        <td width="250">&nbsp;</td>
+                        <td width="100">用户名<span style="color: red;">*</span>：</td>
+                        <td width="235" style="text-align: left"><form:input id="p0" path="userName" /></td>
 
-                    </tr>
-                    <tr>
-                        <td>密码<span style="color: red;">*</span>：</td>
-                        <td><form:password onkeyup="check1()" id="p1" path="pwd" /></td>
-                        <td><div id=check_tip1></div> </td>
-                    </tr>
-                    <tr>
-                        <td>确认密码<span style="color: red;">*</span>：</td>
-                        <td><input  onkeyup="check2()" id="p2" type="password" /> </td>
-                        <td><div id=check_tip2></div></td>
-                    </tr>
-                    <tr>
-                        <td>邮箱<span style="color: red;">*</span>：</td>
-                        <td><form:input id="p3" onkeyup="check3()" path="mail" /></td>
-                        <td><div id=check_tip3></div></td>
-                    </tr>
-                    <tr>
-                        <td>身份证名称：</td>
-                        <td><form:input id="idname" path="idName" /></td>
-                    </tr>
-                    <tr>
-                        <td>身份证号：</td>
-                        <td><form:input id="idcard" path="identityCard" /></td>
-                    </tr>
-                    <tr>
-                        <td>手机号：</td>
-                        <td><form:input id="tel" path="tel" /> </td>
+
                     </tr>
                     <tr>
                         <td>QQ号：</td>
                         <td><form:input id="qq" path="qq" /></td>
+                        <td>&nbsp;</td>
+                        <td>昵 称<span style="color: red;">*</span>：</td>
+                        <td style="text-align: left"><form:input id="p5" path="normalName" /></td>
+
                     </tr>
                     <tr>
-                        <td>性别：</td>
-                        <td style="text-align: left">
-                            <input type="radio" name="gen" value="男"/>
-                            <img src="<%=request.getContextPath()%>/imgs/Male.gif" alt="alt"/>男
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="gen" value="女"/>
-                            <img src="<%=request.getContextPath()%>/imgs/Female.gif" alt="alt"/>女
+                        <td>手机号：</td>
+                        <td><form:input id="tel" path="tel" /> </td>
+                        <td>&nbsp;</td>
+                        <td>邮 箱<span style="color: red;">*</span>：</td>
+                        <td style="text-align: left"><form:input id="p3" onkeyup="check3()" path="mail" /></td>
+                        <td style="text-align: left"<div id=check_tip3></div></td>
+                    </tr>
+                    <tr>
+                        <td>身份证号：</td>
+                        <td><form:input id="idcard" path="identityCard" /></td>
+                        <td>&nbsp;</td>
+                        <td>密 码<span style="color: red;">*</span>：</td>
+                        <td style="text-align: left"><form:password onkeyup="check1()" id="p1" path="pwd" /></td>
+                        <td style="text-align: left"><div id=check_tip1></div> </td>
+
+                    </tr>
+                    <tr>
+                        <td width="123">身份证姓名：</td>
+                        <td><form:input id="idname" path="idName" /></td>
+                        <td>&nbsp;</td>
+                        <td>确认密码<span style="color: red;">*</span>：</td>
+                        <td style="text-align: left"><input  onkeyup="check2()" id="p2" type="password" /> </td>
+                        <td style="text-align: left"><div id=check_tip2></div></td>
+                    <tr><td colspan="5"  style="height: 30px;">&nbsp;</td> </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: center;"><input value="重置" type="reset" class="buttom"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input value="注册" type="submit" class="buttom"/>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2" text-align="center"><input value="重置" type="reset" class="buttom"/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" text-align="center"><input value="注册" type="submit" class="buttom"/></td>
-                    </tr>
+
                 </table>
             </form:form>
             </div>
         </div>
-         </div>
     </div>
 </div>
     <div class="footer1_bg">

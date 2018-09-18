@@ -19,7 +19,7 @@ a:hover, .actionDiv li:hover{
 #mainContainer{
     background: url("../imgs/background.jpg");
     background-size:cover;
-    min-height: 650px;
+    min-height: 750px;
     width:100%;
 
 }
