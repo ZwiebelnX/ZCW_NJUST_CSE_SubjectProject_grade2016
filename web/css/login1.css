@@ -1,82 +1,58 @@
 body{
     background-color: #FFFFFF;
-    background-image: url(../imgs/1.jpg);
+    background-image: url(../iimage/1.jpg);
     background-repeat: no-repeat;
     background-position: 0px -80px ;
     height: 70%;
     margin: 0px;
     text-align: center;
 }
-*{
-    font-family: Arial,sans-serif;
-    font-size: 1em;
-    margin: 0px;
-    padding: 0px;
-}
-h1,h2,h3,h4,h5,h6{
-    font-family: Georgia,Serif;
-    color:#b09c30;
-}
-a{color: #000;}
 
-h1{font-size: 1.8em;}
-
-#canvas{
-    width: 860px;
-    height: 673px;
-    margin: 0px auto;
-    display: block;
-    background-image: url(../imgs/1.jpg);
-    overflow: hidden;
+#form a{
+    color: #97862b;
+    font-size: 0.8em;
 }
-#header{
+
+#word h1{
+    font-size: 2.8em;
     text-align: center;
-    height: 113px;
-    width: 100%;
-    margin: 40px auto 0px;
-    left: 0px;
-    top: 0px;
-    float: left;
+    margin-left: -120px;
+    color: #2DC0F1;
 }
-#menu{
-    padding: 20px;
-    float: left;
-    height: 400px;
-    width: 160px;
-    margin: 25px 0px 0px 5px;
-    list-style-type: none;
-}
+
 #fil{
     width: 288px;
-    height: 254px;
+    height: 300px;
     text-align: center;
+    border: solid thin;
+    margin-top: 20px;
 }
 #content{
-    background-image: url(../imgs/3.jpg);
-    font-size: 1.0em;
-    padding: 30px;
-
-    width: 280px;
-    margin: 190px  0px 0px 490px;
-    height: auto;
-
-
+    width: 100%;
+    height: 428px;
+    margin-top: 80px;
+    text-align: center;
+    align-items: center;
 }
 #content td{
-    text-align: center;
     height: 20px;
     vertical-align: bottom;
+    text-align: left;
 }
-#re{
-    height: 230px;
-    padding-left: 6px;
+#form{
+    height: 428px;
+    width: 100%;
+    font-size: 2.0em;
+    margin-top: -30px;
+    text-align: center;
+
 }
+
 .buttom {
-    background: #C0A9C1;
-    width: 245px;
+    background: #05b7a7;
+    width: 195px;
     height: 30px;
     text-align: center;
-    overflow: hidden;
     border: #807777;
     font-size: 14px;
     font-weight: bold;
@@ -90,60 +66,32 @@ h1{font-size: 1.8em;}
     line-height: 20px;
     vertical-align: middle;
     font-size: 12px;
+    text-align: left;
 }
 #sign{
     text-align: center;
     height: 10px;
-    padding: 20px 0;
 
 }
 #sign a{
     font-size: 0.8em;
     color: #97862b;
     text-decoration:none;
+    width: 80px;
 }
 #sign a:hover{
     text-decoration: underline;
 }
-#footer{
-    clear: both;
-    width: 100%;
-    text-align: center;
-    font-size: 0.8em;
-    background-image: url(../imgs/1.jpg);
-    background-repeat: no-repeat;
-    background-position: 0 top;
-    background-color: #202c22;
-    padding: 20px 0;
-    color: #97862b;
-}
-#menu li{
-    text-align: right;
-    margin: 5px;
-    height: 70px;
-    width: 158px;
+
+
+#word {
+    margin-left: 100px;
+
+
 }
 
-#menu li a{
-    display: block;
-    color: #93842b;
-    text-decoration: none;
-    height: 50px;
-    width: 138px;
-    line-height: 48px;
-    padding-right: 20px;
-    background-image: url(../imgs/pic04.jpg);
-    background-repeat: no-repeat;
-}
-#menu li a:hover{
-    text-decoration: underline;
-    background-image: url(../imgs/pic05.jpg);
-    color: #cfe8d3;
-}
-#menu li.home a{
-    background-image: url(../imgs/pic02.jpg);
-    color: #cfe8d3;
-}
-#content img{
-    margin: 8px 15px 15px 15px;
+#tab {
+    margin-left: 300px;
+    margin-top: 50px;
+
 }

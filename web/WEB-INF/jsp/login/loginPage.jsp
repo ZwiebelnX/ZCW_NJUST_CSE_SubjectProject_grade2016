@@ -10,8 +10,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="<%=request.getContextPath()%>/css/login1.css" rel="stylesheet" type="text/css">
     <title>登录</title>
+    <link href="<%=request.getContextPath()%>/css/login1.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/css/mainPageCss.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +24,7 @@
     </script>
     <link href="<%=request.getContextPath()%>/http//fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
     <script>
         $(function() {
             var pull 		= $('#pull');
@@ -63,36 +64,38 @@
         </div>
     </div>
 </div>
-<div class="slider_bg" style="height: 750px;"><!-- start slider -->
+<div class="slider_bg" id="mainContainer"><!-- start slider -->
     <div class="container">
     <div id="content">
-        <fieldset id="fil">
-            <legend align="center">请登录</legend>
+        <div id="word">
+            <h1>LOGIN</h1>
+            <div id="form">
             <from:form commandName="login" action="login.login" method="post">
-                <table id="re">
+                <table height="253" id="tab">
                     <tr>
-                        <td width="64" height="53">用户：</td>
-                        <td width="206"><from:input id="name" path="username" placeholder="请输入用户名" class="ipt"/></td>
+                        <td width="75" height="68" style="color: aliceblue; text-align: right;" >用 户：</td>
+                        <td width="80"><from:input id="name" path="username" placeholder="请输入用户名" class="ipt"/></td>
                     </tr>
                     <tr>
-                        <td height="53">密码：</td>
+                        <td height="58" style="color: aliceblue; text-align: right;">密 码：</td>
                         <td><from:password id="password" path="password"  placeholder="请输入密码" class="ipt"/> </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="reset" value="重置" class="buttom"/></td>
+                        <td colspan="2" style="text-align: right;"><a href="signUpPage.login">用户注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="forgetPassword.login">找回密码&nbsp;</a></td>
+                     </tr>
+                    <tr>
+                        <td style="text-align: center;"><img src="<%=request.getContextPath()%>/imgs/Male.gif"/></td>
+                        <td  style="text-align: center;"><input type="reset" value="重置" class="buttom"/></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="登录" class="buttom" /></td>
+                        <td style="text-align: center"><img src="<%=request.getContextPath()%>/imgs/Female.gif"/>
+                        <td  style="text-align: center;"><input type="submit" value="登录" class="buttom" /></td>
                     </tr>
-                    <tr id="sign">
-                        <td colspan="2" height="34"><a href="signUpPage.login">用户注册</a></td>
-                    </tr>
-                    <tr id="forgetpwd">
-                        <td colspan="2" height="34"><a href="forgetPassword.login">找回密码</a></td>
-                    </tr>
+
                 </table>
             </from:form>
-        </fieldset>
+            </div>
+        </div>
     </div>
     </div>
 </div>
