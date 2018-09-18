@@ -25,7 +25,7 @@
 %>
 <h1>编辑应用</h1>
 <fieldset>
-    <form action="/appreupload.upload"  method="post">
+    <form action="<%=request.getContextPath()%>/appreupload.upload"  method="post">
         <table>
             <tr>
                 <td>应用名称:</td>

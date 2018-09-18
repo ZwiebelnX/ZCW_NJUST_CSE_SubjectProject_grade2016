@@ -86,6 +86,6 @@
         </tr>
     </table></form>
 </fieldset>
-<a href="<%=request.getContextPath()%>/accountauthority.manager" a>查看更改权限</a>
+<a href="<%=request.getContextPath()%>/accountauthority.manager">查看更改权限</a>
 </body>
 </html>
