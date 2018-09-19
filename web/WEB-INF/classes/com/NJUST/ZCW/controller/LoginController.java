@@ -76,7 +76,6 @@ public class LoginController {
         return "login/signUpsucceed";
     }
 
-    //TODO 主页取消URL跳转 改为控制器跳转
     @RequestMapping(value="mainPage.login")
     public String jumptoMainPage(){
         return "mainpage";
@@ -86,13 +85,13 @@ public class LoginController {
     public String toIndex(){
         return "index";
     }
+
     @RequestMapping(value="logout.login")
     public String doLogOut(HttpSession session){
-        session.removeAttribute("nickname");
         session.removeAttribute("user");
-        session.removeAttribute("userid");
         return "index";
     }
+
     @RequestMapping(value="toMainPage.login")
     public String toMainPage(){
         return "mainpage";

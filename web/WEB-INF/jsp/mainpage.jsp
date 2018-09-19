@@ -20,6 +20,13 @@
         }, false);
         function hideURLbar(){ window.scrollTo(0,1);
         }
+
+        if(${sessionScope.user == null}){
+            alert("请先登录！");
+            window.location.replace("<%=request.getContextPath()%>/index.login");
+
+        }
+
     </script>
     <link href="<%=request.getContextPath()%>/http://fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -74,7 +81,7 @@
   <div class="slider_bg" style="min-height: 650px; width:100%;">
     <div class="container" id="mainContainer">
       <c:choose>
-        <c:when  test="${sessionScope.nickname != null}">
+        <c:when  test="${sessionScope.user != null}">
           <%
             AccountEntity ac=(AccountEntity) session.getAttribute("user");
             switch (ac.getIsManager()){
@@ -87,10 +94,11 @@
               default:
                   pageContext.setAttribute("userType", "一般用户");
             }
-            request.setAttribute("authority",ac.getAuthority());
+            pageContext.setAttribute("authority",ac.getAuthority());
+            pageContext.setAttribute("nickName", ac.getNormalName());
           %>
           <div class="welcomeDiv">
-            <h2><strong>欢迎使用：${sessionScope.nickname}</strong></h2>
+            <h2><strong>欢迎使用：${pageScope.nickName}</strong></h2>
             <h4>———————${pageScope.userType}———————</h4>
             <a href="<%=request.getContextPath()%>/accountmanage.manager" style="color:grey;">个人管理</a>
           </div>

@@ -17,6 +17,7 @@
           }, false);
           function hideURLbar(){ window.scrollTo(0,1);
           }
+
           // 如果用户已经登录则跳转至用户主界面
           if(${sessionScope.user !=null}){
               window.location.replace("<%=request.getContextPath()%>/toMainPage.login")
