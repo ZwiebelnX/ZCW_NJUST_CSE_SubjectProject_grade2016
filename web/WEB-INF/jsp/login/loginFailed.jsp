@@ -15,6 +15,6 @@
 登录失败，请检查您的账号和密码！
 <br>
 三秒钟后返回主页面
-<% response.setHeader("refresh", "3;URL=mainPage.login");%>
+<% response.setHeader("refresh", "3;URL=loginPage.login");%>
 </body>
 </html>

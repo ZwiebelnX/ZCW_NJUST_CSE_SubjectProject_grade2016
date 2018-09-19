@@ -42,6 +42,7 @@ nav ul {
 }
 nav li {
 	display: inline-block;
+	width:100px;
 	margin: 10px 8px;
 }
 nav li.active a,nav li  a:hover{
@@ -53,7 +54,6 @@ nav li  a {
 	display: block;
 	text-align: center;
 	text-decoration: none;
-	padding: 5px;
 	text-transform: uppercase;
 	font-size: 14px;
 	-webkit-transition: all 0.3s ease-in-out;
@@ -78,7 +78,7 @@ nav a#pull {
 	border-left: 40px solid rgba(0, 0, 0, 0)!important;
 	left: 50%;
 	bottom: -40px;
-	margin-left: -45px;
+	margin-left: -40px;
 }
 /*Styles for screen 600px and lower*/
 @media screen and (max-width: 768px) {

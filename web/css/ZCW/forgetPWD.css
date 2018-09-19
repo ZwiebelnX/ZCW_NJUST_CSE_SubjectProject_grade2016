@@ -1,0 +1,51 @@
+.titleText{
+    position: relative;
+    top:100px;
+    color:white;
+    text-align: center;
+}
+
+.warningText{
+    position: relative;
+    top:120px;
+    color:darkred;
+    text-align: center;
+}
+
+.inputDiv{
+    position:relative;
+    top:150px;
+    width:800px;
+    left:50%;
+    margin-left:-400px;
+}
+
+.inputDiv table tr td{
+    padding:10px;
+    text-align: center;
+
+}
+
+.inputDiv table tr td p{
+    color: white;
+}
+
+.mailInputDiv{
+    position: relative;
+    top:25px;
+
+    width:400px;
+    height: 100px;
+
+}
+
+.passwordInputDiv{
+    position: relative;
+    left:400px;
+    top:-100px;
+
+    width:400px;
+    height: 200px;
+}
+
+

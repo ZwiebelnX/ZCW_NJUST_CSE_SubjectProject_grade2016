@@ -4,7 +4,6 @@ import com.NJUST.ZCW.Dao.AccountDB;
 import com.NJUST.ZCW.Entities.AccountEntity;
 import com.NJUST.ZCW.domain.LoginInfo;
 import com.NJUST.ZCW.service.login.MailSystem;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Random;
@@ -72,31 +73,42 @@ public class LoginController {
      */
     @RequestMapping(value = "signUp.login")
     public String SignUp(@ModelAttribute AccountEntity accountEntity){
-        db.InsertAccount(accountEntity);
-        return "login/signUpsucceed";
+        if(db.InsertAccount(accountEntity)){
+            return "login/signUpsucceed";
+        }
+        else{
+            return "login/signupfailed";
+        }
     }
 
-    @RequestMapping(value="mainPage.login")
-    public String jumptoMainPage(){
-        return "mainpage";
-    }
 
+    //跳转至欢迎主页
     @RequestMapping(value = "index.login")
     public String toIndex(){
         return "index";
     }
 
-    @RequestMapping(value="logout.login")
-    public String doLogOut(HttpSession session){
-        session.removeAttribute("user");
-        return "index";
-    }
-
+    //跳转至个人主页
     @RequestMapping(value="toMainPage.login")
     public String toMainPage(){
         return "mainpage";
     }
-    //TODO 改为依赖注入形式执行外部调用
+
+    //注销动作
+    @RequestMapping(value="logout.login")
+    public String doLogOut(HttpSession session, HttpServletResponse response, HttpServletRequest request)throws Exception{
+        //清除用户标识
+        session.removeAttribute("user");
+
+        //输出注销信息
+        String path = request.getContextPath();
+        response.setContentType("text/html;charset=gb2312");
+        response.getWriter().print("<script language=\"javascript\">alert('注销成功！');" +
+                "window.location.href='" + path + "/index.login'</script>");
+        return null;
+    }
+
+
     @RequestMapping(value="forgetPassword.login")
     public String jumptoForgetPwdPage(){
         return "login/forgetPWD";
@@ -104,10 +116,15 @@ public class LoginController {
 
     //执行邮件认证
     @RequestMapping(value = "postEmail.login")
-    public String postthemail(ServletRequest request,Model model,HttpSession session){
-        String msg="";
-        String yzm=getRandomnumber();
-        out.println(yzm);
+    public String postVerifyEmail(HttpServletRequest request,Model model,HttpSession session, HttpServletResponse response){
+        //获取web应用路径 设置输出字符集
+        String path = request.getContextPath();
+        response.setContentType("text/html;charset=gb2312");
+
+        //发送邮件
+        String msg;
+        String yzm= getRandomNumber();
+        //out.println(yzm);
         String str="您好，您的验证码为"+yzm+"为了您的账号信息安全，请勿将此验证码交给他人";
         List<AccountEntity> list=db.getAllAccounts();
         String to="";
@@ -116,43 +133,54 @@ public class LoginController {
             if(ae.getUserName().equals(request.getParameter("account"))){
                 to=ae.getMail();
                 id=ae.getUserId();
-                session.setAttribute("userid",ae.getUserId());
-                session.setAttribute("user",ae);
+                session.setAttribute("forgetPasswordUserId",ae.getUserId());
+                session.setAttribute("forgetPasswordUser",ae);
             }
         }
-        out.println("userid="+id);
+        //out.println("userid="+id);
         MailSystem sender=new MailSystem();
         try {
             if(to.equals("")) {
-                out.println("无当前账号");
-                throw new Exception("no such account");
+                //out.println("无当前账号");
+                response.getWriter().print("<script language=\"javascript\">alert('无当前账号！');" +
+                        "window.location.href='" + path + "/forgetPassword.login'</script>");
+                return null;
             }
             sender.sendMail(to,str);
             db.InsertpwdchgInformation(id,yzm,"1");
         }catch (Exception e){
             e.printStackTrace();
-            msg="无此邮箱或邮件发送失败！";
-            return  "login/Failed";
+            msg="无此用户名或邮件发送失败！";
+            try{
+                response.getWriter().print("<script language=\"javascript\">alert('" + msg + "');" +
+                        "window.location.href='" + path + "/forgetPassword.login'</script>");
+                return null;
+            } catch (Exception e2){
+                e2.printStackTrace();
+            }
         }
-        msg="邮件已经发送，请检查";
+        msg="邮件已经发送，请查收";
 
         model.addAttribute("msg",msg);
         return "login/forgetPWD";
     }
 
     @RequestMapping(value = "checkemailyzm.login")
-    public String checkyzm(ServletRequest request,HttpSession session,Model model){
-        String idd=session.getAttribute("userid").toString();
-        out.println(idd+";;;;");
-        if(idd!=null) {
+    public String checkYzm(ServletRequest request,HttpSession session,Model model){
+        if(session.getAttribute("forgetPasswordUserId") != null) {
+            String idd=session.getAttribute("forgetPasswordUserId").toString();
             int id = Integer.parseInt(idd);
-            String yzm = "";
-            yzm = db.getYzm(id);
-            out.println("id="+id);
+            String yzm = db.getYzm(id);
+            //out.println("id="+id);
             String inputyzm = request.getParameter("yzm");
             if (inputyzm.equals(yzm)) {
                 db.CHGPWD(request.getParameter("pwd"), id);
-            }return "index";
+                return "index";
+            }
+            else{
+                model.addAttribute("msg", "验证码错误");
+                return "login/forgetPWD";
+            }
         }else{
             model.addAttribute("msg","请先获取验证码");
             return "login/forgetPWD";
@@ -160,7 +188,7 @@ public class LoginController {
 
     }
 
-    private String getRandomnumber() {
+    private String getRandomNumber() {
         Random random = new Random();
         String fourRandom = random.nextInt(10000) + "";
         int randLength = fourRandom.length();

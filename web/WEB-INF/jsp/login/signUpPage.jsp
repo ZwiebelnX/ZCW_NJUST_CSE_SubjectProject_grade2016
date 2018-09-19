@@ -12,7 +12,7 @@
 
     <title>注册</title>
     <link href="<%=request.getContextPath()%>/css/sign2.css" rel="stylesheet" type="text/css">
-    <link href="<%=request.getContextPath()%>/css/mainPageCss.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/css/ZCW/global.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,6 @@
         function hideURLbar(){ window.scrollTo(0,1);
         }
     </script>
-    <link href="<%=request.getContextPath()%>/http//fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
     <script>
@@ -54,7 +53,7 @@
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
                     <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
-                    <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/toMainPage.login">
+                    <li class="logo page-scroll"><a title="返回欢迎页" href="<%=request.getContextPath()%>/index.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
                     <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
                 </ul>
@@ -100,7 +99,7 @@
                         <td>&nbsp;</td>
                         <td>邮 箱<span style="color: red;">*</span>：</td>
                         <td style="text-align: left"><form:input id="p3" onkeyup="check3()" path="mail" /></td>
-                        <td style="text-align: left"<div id=check_tip3></div></td>
+                        <td style="text-align: left"><div id=check_tip3></div></td>
                     </tr>
                     <tr>
                         <td>身份证号：</td>

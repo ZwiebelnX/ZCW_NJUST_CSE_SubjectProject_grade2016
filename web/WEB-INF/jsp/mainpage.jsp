@@ -49,7 +49,8 @@
         });
     </script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/mainPageCss.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/mainPage.css" />
+     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/global.css" />
   </head>
   <body>
   <div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
