@@ -53,7 +53,14 @@
         </div>
         <nav class="top-nav">
           <ul class="top-nav nav_list">
-            <li><a href="<%=request.getContextPath()%>/logout.login">logout</a></li>
+            <c:choose>
+              <c:when test="${sessionScope.user != null}">
+                <li><a href="<%=request.getContextPath()%>/logout.login">logout</a></li>
+              </c:when>
+              <c:otherwise>
+                <li><a href="<%=request.getContextPath()%>/index.login">i&nbsp;n&nbsp;d&nbsp;e&nbsp;x</a></li>
+              </c:otherwise>
+            </c:choose>
             <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
               <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
             <li class="page-scroll"><a href="#">about us</a></li>

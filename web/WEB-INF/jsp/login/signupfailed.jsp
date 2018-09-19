@@ -14,6 +14,6 @@
 注册失败 您的用户名可能重复，请重新注册！
 <br>
 一秒后返回主页面
-<% response.setHeader("refresh", "1;URL=mainPage.login");%>
+<% response.setHeader("refresh", "1;URL=loginPage.login");%>
 </body>
 </html>
