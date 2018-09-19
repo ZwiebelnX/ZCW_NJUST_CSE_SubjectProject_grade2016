@@ -1,0 +1,70 @@
+.appSearchInputDiv{
+    position:relative;
+    top:80px;
+    left:20%;
+
+    margin-left:-150px;
+
+    width:300px;
+    height:300px;
+
+    color:white;
+}
+
+.appSearchInputDiv table tr td{
+    padding:15px;
+    vertical-align: middle;
+
+}
+
+.appSearchInputDiv table tr td p {
+    color:#e0eacf;
+    vertical-align: middle;
+    margin:0;
+}
+
+.appKindSearchInput{
+    position:relative;
+    top:50px;
+    left:20%;
+
+    margin-left:-150px;
+
+    width:300px;
+    height:300px;
+
+    color:white;
+}
+
+.appKindSearchInput table tr td{
+    width:80px;
+    padding: 2px;
+    text-align: center;
+}
+
+.appListDiv{
+    position:absolute;
+    left:75%;
+    top:150px;
+
+    margin-left:-300px;
+
+    width:600px;
+    min-height: 500px;
+
+    border: solid 2px;
+}
+
+.appListDiv table tr td{
+    width: 100px;
+    text-align: center;
+    color: white;
+}
+
+.appListDiv table tr th{
+    width: 100px;
+    color: #b7f0ff;
+    text-align: center;
+    padding-bottom: 15px;
+
+}

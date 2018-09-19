@@ -23,12 +23,12 @@
             <th>详情</th>
             <th>操作</th>
         </tr>
-        <e:forEach items="${applist}" var="applist">
+        <e:forEach items="${applist}" var="appList">
             <tr>
-                <td>${applist.id}</td>
-                <td>${applist.name}</td>
-                <td><a href="<%=request.getContextPath()%>/appinformation/${applist.id}.manager">查看详情</a></td>
-                <td><a href="<%=request.getContextPath()%>/appedit/${applist.id}.manager">重新编辑</a><a href="appdelete/${applist.id}.manager">删除</a></td>
+                <td>${appList.id}</td>
+                <td>${appList.name}</td>
+                <td><a href="<%=request.getContextPath()%>/appinformation/${appList.id}.manager">查看详情</a></td>
+                <td><a href="<%=request.getContextPath()%>/appedit/${appList.id}.manager">重新编辑</a><a href="appdelete/${appList.id}.manager">删除</a></td>
             </tr>
         </e:forEach>
     </table>

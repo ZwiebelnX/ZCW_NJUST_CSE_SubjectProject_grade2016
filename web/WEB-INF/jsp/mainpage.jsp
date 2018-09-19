@@ -28,7 +28,6 @@
         }
 
     </script>
-    <link href="<%=request.getContextPath()%>/http://fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
     <script>
@@ -151,7 +150,6 @@
       <div class="clearfix"></div >
       </div>
     </div>
-  </div>
   <div class="footer_bg" id="contact">
     <div class="container"> </div>
   </div>

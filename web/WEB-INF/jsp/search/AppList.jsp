@@ -24,14 +24,14 @@
             <th>详情</th>
             <th>下载</th>
         </tr>
-        <e:forEach items="${applist}" var="applist">
+        <e:forEach items="${applist}" var="appList">
             <tr>
-                <td>${applist.name}</td>
-                <td><img src="${applist.img}" width="100" height="100"/></td>
-                <td>${applist.publisherName}</td>
-                <td>${applist.type}</td>
-                <td><a href="<%=request.getContextPath()%>/appinformation/${applist.id}.manager">查看详情</a></td>
-                <td><a href="${applist.downloadUrl}">点击下载</a></td>
+                <td>${appList.name}</td>
+                <td><img src="${appList.img}" width="100" height="100"/></td>
+                <td>${appList.publisherName}</td>
+                <td>${appList.type}</td>
+                <td><a href="<%=request.getContextPath()%>/appinformation/${appList.id}.manager">查看详情</a></td>
+                <td><a href="${appList.downloadUrl}">点击下载</a></td>
             </tr>
         </e:forEach>
     </table>
