@@ -85,11 +85,11 @@
                      </tr>
                     <tr>
                         <td style="text-align: center;"><img src="<%=request.getContextPath()%>/imgs/Male.gif"/></td>
-                        <td  style="text-align: center;"><input type="reset" value="重置" class="buttom"/></td>
+                        <td  style="text-align: center;"><input type="submit" value="登录" class="buttom"/></td>
                     </tr>
                     <tr>
                         <td style="text-align: center"><img src="<%=request.getContextPath()%>/imgs/Female.gif"/>
-                        <td  style="text-align: center;"><input type="submit" value="登录" class="buttom" /></td>
+                        <td  style="text-align: center;"><input type="reset" value="重置" class="buttom" /></td>
                     </tr>
 
                 </table>

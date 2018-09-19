@@ -17,6 +17,10 @@
           }, false);
           function hideURLbar(){ window.scrollTo(0,1);
           }
+          // 如果用户已经登录则跳转至用户主界面
+          if(${sessionScope.user !=null}){
+              window.location.replace("<%=request.getContextPath()%>/toMainPage.login")
+          }
       </script>
       <link href="http://fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
       <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -50,7 +54,7 @@
         <nav class="top-nav">
           <ul class="top-nav nav_list">
             <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
-            <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/toMainPage.login">
+            <li class="logo page-scroll"><a title="返回主页" href="<%=request.getContextPath()%>/index.login">
               <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
             <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
           </ul>
@@ -84,7 +88,7 @@
             <li><a href="#" class="">0</a></li>
             <li><a href="#" class="">1</a></li>
           </ul>
-          <script src="js/jquery.wmuSlider.js"></script>
+          <script src="<%=request.getContextPath()%>/js/jquery.wmuSlider.js"></script>
           <script>
               $('.example1').wmuSlider();
           </script>
