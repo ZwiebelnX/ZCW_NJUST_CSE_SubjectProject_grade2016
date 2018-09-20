@@ -21,7 +21,6 @@
         function hideURLbar(){ window.scrollTo(0,1);
         }
     </script>
-    <link href="<%=request.getContextPath()%>/http//fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
     <script>
@@ -80,10 +79,10 @@
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
+                    <li><a href="<%=request.getContextPath()%>/accountmanage.manager">BACK</a></li>
                     <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/index.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
+                    <li class="page-scroll"><a href="#">about us</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
             </nav>
@@ -135,7 +134,7 @@
         <tr>
             <td>管理员用户</td>
             <td style="color: green;font-size: 25px;">√</td>
-            <td style="color: green;font-size: 25px;">√</td>
+            <td style="color: red;font-size: 25px;">×</td>
             <td style="color: green;font-size: 25px;">√</td>
             <td style="color: green;font-size: 25px;">√</td>
             <td style="color: green;font-size: 25px;">√</td>
@@ -191,7 +190,6 @@
         </script>
     </div>
 </div>
-<div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 <br>
 </body>
 </html>

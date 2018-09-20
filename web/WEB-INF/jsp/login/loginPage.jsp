@@ -22,7 +22,6 @@
         function hideURLbar(){ window.scrollTo(0,1);
         }
     </script>
-    <link href="<%=request.getContextPath()%>/http//fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
     <script>
@@ -53,7 +52,7 @@
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
+                    <li><a href="<%=request.getContextPath()%>/index.login">index</a></li>
                     <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/index.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
                     <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
@@ -70,7 +69,7 @@
         <div id="word">
             <h1>LOGIN</h1>
             <div id="form">
-            <from:form commandName="login" action="login.login" method="post">
+            <from:form commandName="login" action="login.login" method="post" onsubmit="return finalCheck()">
                 <table height="253" id="tab">
                     <tr>
                         <td width="75" height="68" style="color: aliceblue; text-align: right;" >用 户：</td>
@@ -91,7 +90,6 @@
                         <td style="text-align: center"><img src="<%=request.getContextPath()%>/imgs/Female.gif"/>
                         <td  style="text-align: center;"><input type="reset" value="重置" class="buttom" /></td>
                     </tr>
-
                 </table>
             </from:form>
             </div>
@@ -126,10 +124,23 @@
                     }
                 });
             });
+
+            function finalCheck() {
+                var name = $("#name").val();
+                var password = $("#password").val();
+                if(name === "" || name == null){
+                    alert("请输入用户名！");
+                    return false;
+                }
+                if(password === "" || password == null){
+                    alert("请输入密码！");
+                    return false;
+                }
+                return true;
+            }
         </script>
     </div>
 </div>
-<div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 <br>
 </body>
 </html>

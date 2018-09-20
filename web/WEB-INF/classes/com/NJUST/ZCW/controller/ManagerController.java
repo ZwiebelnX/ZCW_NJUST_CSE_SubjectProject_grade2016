@@ -34,7 +34,6 @@ public class ManagerController {
 
         @RequestMapping(value = "personal.manager")
     public String doUpdatepersonalinformation(@ModelAttribute PersonalInformationInfo personalInformationInfo, Model model, HttpSession session){
-        System.out.println("@#!@#!");
             AccountEntity tmp=new AccountEntity();
             if(personalInformationInfo.getAddress()==null)
                 tmp.setAddress("");
@@ -211,8 +210,8 @@ public class ManagerController {
     //获取某一位开发者的全部应用信息
     @RequestMapping(value = "getappbypublisher/{id}.manager")
     public String getAppbyPublisher(Model model,@PathVariable int id){
-        model.addAttribute("applist",appdb.getAppbyPublisherid(id));
-        return "search/AppList";
+        model.addAttribute("appList",appdb.getAppbyPublisherid(id));
+        return "search/AppSearch";
     }
 
     //应用管理

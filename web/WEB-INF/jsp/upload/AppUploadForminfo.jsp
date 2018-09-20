@@ -69,26 +69,26 @@
         <div class="welcomeDiv1"><h2 style="color: #2DC0F1;">应用上传</h2></div>
         <div id="form">
         <fieldset>
-        <form action="douploadinfo.upload"  method="post">
+        <form action="douploadinfo.upload"  method="post" onsubmit="return finalCheck()">
         <table>
         <tr>
             <td style="color: aliceblue;text-align: right;">应用名称 <span style="color: red;">*</span> ：</td>
-            <td style="text-align: center;width: 250px;"><input type="text" name="appname"  /></td>
+            <td style="text-align: center;width: 250px;"><input type="text" name="appname" id="appname" /></td>
         </tr>
         <tr>
             <td style="color: aliceblue; ">应用类型 <span style="color: red;">*</span> ：</td>
-            <td style="text-align: center"><select name="type" style="width: 199px; border-radius: 5px;">
-                <option value=" " select="selected">[请选择相应类型]</option>
-                <option value="0">游戏</option>
-                <option value="1">视频</option>
-                <option value="2">聊天</option>
-                <option value="3">浏览器</option>
-                <option value="4">网购金融</option>
-                <option value="5">生活</option>
-                <option value="6">新闻</option>
-                <option value="7">摄影</option>
-                <option value="8">美食</option>
-                <option value="9">音乐</option>
+            <td style="text-align: center"><select name="type" id="type" style="width: 199px; border-radius: 5px;">
+                <option value="-1" selected="selected">[请选择相应类型]</option>
+                <option value="游戏">游戏</option>
+                <option value="视频">视频</option>
+                <option value="聊天">聊天</option>
+                <option value="浏览器">浏览器</option>
+                <option value="网购金融">网购金融</option>
+                <option value="生活">生活</option>
+                <option value="新闻">新闻</option>
+                <option value="摄影">摄影</option>
+                <option value="美食">美食</option>
+                <option value="音乐">音乐</option>
             </select></td>
         </tr>
         <tr>
@@ -105,7 +105,7 @@
         </tr>
             <tr rowspan="3">
                 <td style="color: aliceblue;height: 110px;">介  绍 <span style="color: red;">*</span> ：</td>
-                <td style="text-align: center"><textarea name="introduction" cols="39" rows="4" placeholder="请输入相关应用的介绍" style="width: 199px; border-radius: 5px;"></textarea></td>
+                <td style="text-align: center"><textarea name="introduction" id="introduction" cols="39" rows="4" placeholder="请输入相关应用的介绍" style="width: 199px; border-radius: 5px;"></textarea></td>
             </tr>
         <tr>
             <td width="120">&nbsp;</td>
@@ -144,13 +144,28 @@
                     }
                 });
             });
+
+            function finalCheck() {
+                var appName = $("#appname").val();
+                var appType = $("#type").val();
+                var appIntroduction = $("#introduction").val();
+                if(appName === "" || appName == null){
+                    alert("请输入App名称！");
+                    return false;
+                }
+                if(appType === "-1"){
+                    alert("请选择App类别！");
+                    return false;
+                }
+                if(appIntroduction === "" || appIntroduction == null){
+                    alert("请输入App介绍！");
+                    return false;
+                }
+                return true;
+            }
         </script>
     </div>
 </div>
 <div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
-<script type="text/javascript">
-    function finalcheck(form) {
-        with (form)
-            }
 </html>

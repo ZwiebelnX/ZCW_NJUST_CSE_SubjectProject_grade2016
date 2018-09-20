@@ -60,7 +60,7 @@ public class AppStatisticsController {
         }
 
 
-        JFreeChart chart = ChartFactory.createPieChart3D("应用热度统计", // 主标题的名称
+        JFreeChart chart = ChartFactory.createPieChart3D("应用浏览热度统计", // 主标题的名称
                 dataset, // 图标显示的数据集合
                 true, // 是否显示子标题
                 true, // 是否生成提示的标签
@@ -69,9 +69,9 @@ public class AppStatisticsController {
         JfreeUtil.setJfreePie(chart);
 
         // 6. 将图形转换为图片，传到前台
-        String fileName = ServletUtilities.saveChartAsJPEG(chart, 700, 400, null, request.getSession());
+        String fileName = ServletUtilities.saveChartAsJPEG(chart, 600, 400, null, request.getSession());
         String chartURL = request.getContextPath() + "/chart?filename=" + fileName;
         model.addAttribute("chartURLPie", chartURL);
-        return "statistics/AppStatistic";
+        return "statistics/AppStatisticForm";
     }
 }

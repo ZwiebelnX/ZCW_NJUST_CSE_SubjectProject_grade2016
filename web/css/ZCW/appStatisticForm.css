@@ -1,0 +1,32 @@
+.searchDiv{
+    position: relative;
+    top: 150px;
+    left:30%;
+
+    width:300px;
+
+    margin-left:-150px;
+
+    color: white;
+}
+
+.searchDiv table tr td{
+    padding:10px;
+}
+
+.searchDiv th{
+    color:white;
+}
+
+.chartDiv{
+    position: relative;
+    left: 75%;
+    top:-150px;
+
+    width:600px;
+    height: 400px;
+
+    margin-left: -300px;
+
+
+}

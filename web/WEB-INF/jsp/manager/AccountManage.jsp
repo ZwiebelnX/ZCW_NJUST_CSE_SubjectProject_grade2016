@@ -76,10 +76,10 @@
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
+                    <li><a href="<%=request.getContextPath()%>/toMainPage.login">main page</a></li>
                     <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/toMainPage.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
+                    <li class="page-scroll"><a href="#">about us</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
             </nav>
@@ -90,7 +90,7 @@
 <div class="slider_bg" id="mainContainer"><!-- start slider -->
     <div class="container">
         <div class="welcomeDiv1">
-            <h2><strong>您好，${pageScope.username}用户</strong></h2>
+            <h2><strong>您好，${pageScope.username}</strong></h2>
         </div>
 <div id="personalInformation">
     <fieldset>
@@ -100,7 +100,7 @@
         <table>
             <tr>
                 <td style="color: aliceblue;">昵 称：</td>
-                <td style="text-align: left"><from:input id="nickname" path="nickname" value="${pageScope.nickname}"/></td>
+                <td><from:input id="nickname" path="nickname" value="${pageScope.nickname}"/></td>
             </tr>
             <tr>
                 <td style="color: aliceblue;">邮 箱：</td>
@@ -147,7 +147,7 @@
     <table>
         <tr>
             <td width="120" style="color: aliceblue;">旧密码：</td>
-            <td style="left"><input type="password" id="pwd"></td>
+            <td><input type="password" id="pwd"></td>
         </tr>
         <tr>
             <td style="color: aliceblue;">新密码：</td>
@@ -193,7 +193,6 @@
             </script>
         </div>
     </div>
- <div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
     <br>
 </body>
 </html>
