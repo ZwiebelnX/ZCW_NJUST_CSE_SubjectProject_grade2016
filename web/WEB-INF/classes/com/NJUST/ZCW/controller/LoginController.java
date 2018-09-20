@@ -42,7 +42,9 @@ public class LoginController {
      */
     //TODO Ajax响应
     @RequestMapping(value = "login.login")
-    public String Login(@ModelAttribute LoginInfo loginInfo,HttpSession session){
+    public String Login(@ModelAttribute LoginInfo loginInfo,HttpSession session, HttpServletRequest request,
+                        HttpServletResponse response) throws Exception{
+
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setUserName(loginInfo.getUsername());
         accountEntity.setPwd(loginInfo.getPassword());
@@ -50,10 +52,15 @@ public class LoginController {
         if(db.CheckAccountExist(accountEntity)){
             accountEntity=db.getUser(accountEntity);
             session.setAttribute("user",accountEntity);
+            session.setAttribute("userType", accountEntity.getIsManager());
             return "mainpage";
         }
         else{
-            return "login/loginFailed";
+            String path = request.getContextPath();
+            response.setContentType("text/html;charset=gb2312");
+            response.getWriter().print("<script language=\"javascript\">alert('登录失败，请检查您的账号和密码！');" +
+                    "window.location.href='" + path + "/loginPage.login'</script>");
+            return null;
         }
     }
 
@@ -72,12 +79,20 @@ public class LoginController {
     数据库直接写入
      */
     @RequestMapping(value = "signUp.login")
-    public String SignUp(@ModelAttribute AccountEntity accountEntity){
+    public String SignUp(@ModelAttribute AccountEntity accountEntity, HttpServletRequest request,
+                         HttpServletResponse response) throws Exception{
+        String path = request.getContextPath();
+        response.setContentType("text/html;charset=gb2312");
+
         if(db.InsertAccount(accountEntity)){
-            return "login/signUpsucceed";
+            response.getWriter().print("<script language=\"javascript\">alert('注册成功！请登录。');" +
+                    "window.location.href='" + path + "/loginPage.login'</script>");
+            return null;
         }
         else{
-            return "login/signupfailed";
+            response.getWriter().print("<script language=\"javascript\">alert('注册失败 您的用户名可能重复，请重新注册！');" +
+                    "window.location.href='" + path + "/loginPage.login'</script>");
+            return null;
         }
     }
 

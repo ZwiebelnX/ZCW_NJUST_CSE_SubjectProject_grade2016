@@ -12,26 +12,123 @@
 <html>
 <head>
     <title>应用列表</title>
+    <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){ window.scrollTo(0,1);
+        }
+
+        if(${sessionScope.user == null}){
+            alert("请先登录！");
+            window.location.replace("<%=request.getContextPath()%>/index.login");
+        }
+        if(${sessionScope.userType == "N"}){
+            alert("对不起，您没有权限进行操作！");
+            window.location.replace("<%=request.getContextPath()%>/toMainPage.login");
+        }
+
+    </script>
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var pull 		= $('#pull');
+            menu 		= $('nav ul');
+            menuHeight	= menu.height();
+            $(pull).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/manageAppList.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/global.css" />
 </head>
 <body>
-<h1>应用管理列表</h1>
-<fieldset>
-    <table>
-        <tr>
-            <th>序号</th>
-            <th>名称</th>
-            <th>详情</th>
-            <th>操作</th>
-        </tr>
-        <e:forEach items="${applist}" var="appList">
-            <tr>
-                <td>${appList.id}</td>
-                <td>${appList.name}</td>
-                <td><a href="<%=request.getContextPath()%>/appinformation/${appList.id}.manager">查看详情</a></td>
-                <td><a href="<%=request.getContextPath()%>/appedit/${appList.id}.manager">重新编辑</a><a href="appdelete/${appList.id}.manager">删除</a></td>
-            </tr>
-        </e:forEach>
-    </table>
-</fieldset>
+<div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
+    <div class="container">
+        <div class="row header text-center specials">
+            <div class="h_logo">
+                <a href="<%=request.getContextPath()%>/toMainPage.login"><img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a>
+            </div>
+            <nav class="top-nav">
+                <ul class="top-nav nav_list">
+                    <li><a href="<%=request.getContextPath()%>/toMainPage.login">back to main</a></li>
+                    <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
+                        <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
+                    <li class="page-scroll"><a href="#">about us</a></li>
+                </ul>
+                <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
+            </nav>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="slider_bg" style="min-height: 650px; width:100%;">
+    <div class="container" id="mainContainer">
+        <h2 class="titleText">应用管理列表</h2>
+            <div class="appListDiv">
+                <table>
+                    <tr>
+                        <th>序号</th>
+                        <th>名称</th>
+                        <th>详情</th>
+                        <th colspan="2">操作</th>
+                    </tr>
+                    <e:forEach items="${applist}" var="appList">
+                        <tr>
+                            <td>${appList.id}</td>
+                            <td>${appList.name}</td>
+                            <td><a href="<%=request.getContextPath()%>/appinformation/${appList.id}.manager">查看详情</a></td>
+                            <td><a href="<%=request.getContextPath()%>/appedit/${appList.id}.manager">重新编辑</a></td>
+                            <td><a href="<%=request.getContextPath()%>/appdelete/${appList.id}.manager">删除</a></td>
+                        </tr>
+                    </e:forEach>
+                </table>
+            </div>
+        <div class="clearfix"></div >
+    </div>
+</div>
+<div class="footer_bg" id="contact">
+    <div class="container"> </div>
+</div>
+<div class="footer1_bg">
+    <div class="container">
+        <div class="row  footer">
+            <div class="copy text-center">
+                <p class="link"><span>Copyright &copy; 2018.Company name All rights reserved.</span></p>
+                <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>
+
 </body>
 </html>

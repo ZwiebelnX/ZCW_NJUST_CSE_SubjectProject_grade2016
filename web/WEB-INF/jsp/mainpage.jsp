@@ -65,7 +65,7 @@
                 <li><a href="<%=request.getContextPath()%>/logout.login">logout</a></li>
               </c:when>
               <c:otherwise>
-                <li><a href="<%=request.getContextPath()%>/index.login">i&nbsp;n&nbsp;d&nbsp;e&nbsp;x</a></li>
+                <li><a href="<%=request.getContextPath()%>/index.login">index</a></li>
               </c:otherwise>
             </c:choose>
             <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
@@ -94,7 +94,6 @@
               default:
                   pageContext.setAttribute("userType", "一般用户");
             }
-            pageContext.setAttribute("authority",ac.getAuthority());
             pageContext.setAttribute("nickName", ac.getNormalName());
           %>
           <div class="welcomeDiv">

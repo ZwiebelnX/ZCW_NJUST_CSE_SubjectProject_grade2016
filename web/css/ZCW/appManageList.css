@@ -1,0 +1,38 @@
+
+
+.titleText{
+    position:relative;
+    left:50%;
+    top:15px;
+
+    width:500px;
+
+    margin-left: -250px;
+
+    color:white;
+    text-align: center;
+    padding:15px;
+}
+
+.accountListDiv{
+    position: relative;
+    top:15px;
+    left:50%;
+
+    width:1000px;
+
+    margin-left: -500px;
+}
+.accountListDiv table tr th{
+    width:100px;
+    text-align: center;
+    color:white;
+    padding-bottom: 15px;
+}
+
+.accountListDiv table tr td{
+    width:100px;
+    text-align: center;
+    color:white;
+    padding:10px;
+}

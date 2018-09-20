@@ -68,52 +68,60 @@
     <div class="container">
         <div class="welcomeDiv1"><h2 style="color: #2DC0F1;">应用上传</h2></div>
         <div id="form">
-        <fieldset>
-        <form action="douploadinfo.upload"  method="post" onsubmit="return finalCheck()">
-        <table>
-        <tr>
-            <td style="color: aliceblue;text-align: right;">应用名称 <span style="color: red;">*</span> ：</td>
-            <td style="text-align: center;width: 250px;"><input type="text" name="appname" id="appname" /></td>
-        </tr>
-        <tr>
-            <td style="color: aliceblue; ">应用类型 <span style="color: red;">*</span> ：</td>
-            <td style="text-align: center"><select name="type" id="type" style="width: 199px; border-radius: 5px;">
-                <option value="-1" selected="selected">[请选择相应类型]</option>
-                <option value="游戏">游戏</option>
-                <option value="视频">视频</option>
-                <option value="聊天">聊天</option>
-                <option value="浏览器">浏览器</option>
-                <option value="网购金融">网购金融</option>
-                <option value="生活">生活</option>
-                <option value="新闻">新闻</option>
-                <option value="摄影">摄影</option>
-                <option value="美食">美食</option>
-                <option value="音乐">音乐</option>
-            </select></td>
-        </tr>
-        <tr>
-            <td style="color: aliceblue;">适宜年龄：</td>
-            <td style="text-align: center"><input type="text" name="limitAge" /></td>
-        </tr>
-        <tr>
-            <td style="color: aliceblue;">兼容性：</td>
-            <td style="text-align: center"><input type="text" name="compability" /></td>
-        </tr>
-        <tr>
-            <td style="color: aliceblue;">语  言：</td>
-            <td style="text-align: center"><input type="text" name="language"/></td>
-        </tr>
-            <tr rowspan="3">
-                <td style="color: aliceblue;height: 110px;">介  绍 <span style="color: red;">*</span> ：</td>
-                <td style="text-align: center"><textarea name="introduction" id="introduction" cols="39" rows="4" placeholder="请输入相关应用的介绍" style="width: 199px; border-radius: 5px;"></textarea></td>
-            </tr>
-        <tr>
-            <td width="120">&nbsp;</td>
-0            <td style="text-align: center"><input type="submit" value="提交" class="buttom"></td>
-        </tr>
-    </table>
-        </form>
-        </fieldset>
+            <form action="appInfoUpgrade.upload" enctype="multipart/form-data" method="post" onsubmit="return finalCheck()">
+                <table>
+                    <tr>
+                        <td style="color: aliceblue;text-align: right;">应用名称 <span style="color: red;">*</span> ：</td>
+                        <td style="text-align: center;width: 250px;"><input type="text" name="appname" id="appname" /></td>
+                    </tr>
+                    <tr>
+                        <td style="color: aliceblue; ">应用类型 <span style="color: red;">*</span> ：</td>
+                        <td style="text-align: center">
+                            <select name="type" id="type" style="width: 199px; border-radius: 5px;">
+                                <option value="-1" selected="selected">[请选择相应类型]</option>
+                                <option value="游戏">游戏</option>
+                                <option value="视频">视频</option>
+                                <option value="聊天">聊天</option>
+                                <option value="浏览器">浏览器</option>
+                                <option value="网购金融">网购金融</option>
+                                <option value="生活">生活</option>
+                                <option value="新闻">新闻</option>
+                                <option value="摄影">摄影</option>
+                                <option value="美食">美食</option>
+                                <option value="音乐">音乐</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color: aliceblue;">适宜年龄：</td>
+                        <td style="text-align: center"><input type="text" name="limitAge" /></td>
+                    </tr>
+                    <tr>
+                        <td style="color: aliceblue;">兼容性：</td>
+                        <td style="text-align: center"><input type="text" name="compability" /></td>
+                    </tr>
+                    <tr>
+                        <td style="color: aliceblue;">语  言：</td>
+                        <td style="text-align: center"><input type="text" name="language"/></td>
+                    </tr>
+                    <tr rowspan="3">
+                        <td style="color: aliceblue;height: 110px;">介  绍 <span style="color: red;">*</span> ：</td>
+                        <td style="text-align: center"><textarea name="introduction" id="introduction" cols="39" rows="4" placeholder="请输入相关应用的介绍" style="width: 199px; border-radius: 5px;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Apk文件<span style="color: red;">*</span> ：</td>
+                        <td><input type="file" name="apkFile" /></td>
+                    </tr>
+                    <tr>
+                        <td>图标：</td>
+                        <td><input type="file" name="iconFile" /></td>
+                    </tr>
+                    <tr>
+                        <td width="120">&nbsp;</td>
+0                       <td style="text-align: center"><input type="submit" value="提交" class="buttom"></td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
 </div>
