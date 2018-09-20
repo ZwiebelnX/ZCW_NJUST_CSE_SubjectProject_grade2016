@@ -42,7 +42,7 @@ public class AppSearchController {
                     continue;
             }
             if(!require_name.equals("")){
-                if(app.getName().contains(require_name))
+                if(!app.getName().contains(require_name))
                     continue;
             }
             if(!require_publisher.equals("")){

@@ -1,0 +1,35 @@
+.titleText{
+    position: relative;
+
+    top:20px;
+
+    color:white;
+}
+
+.detailDiv{
+    position: relative;
+
+    top:30px;
+
+}
+
+.detailDiv table tr th{
+    width: 100px;
+    padding: 5px;
+
+    color:#05b7a7;
+}
+
+.detailDiv table tr td{
+    width:200px;
+    padding:2px;
+
+    color: whitesmoke;
+}
+
+.permissionText{
+    background: rgba(0,0,0,0);
+    width: 350px;
+    height:100px;
+    border:none;
+}

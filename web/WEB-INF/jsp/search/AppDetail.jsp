@@ -11,64 +11,160 @@
 <html>
 <head>
     <title>应用详细信息</title>
+    <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){ window.scrollTo(0,1);
+        }
+
+        if(${sessionScope.user == null}){
+            alert("请先登录！");
+            window.location.replace("<%=request.getContextPath()%>/index.login");
+
+        }
+
+    </script>
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var pull 		= $('#pull');
+            menu 		= $('nav ul');
+            menuHeight	= menu.height();
+            $(pull).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/appDetail.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/global.css" />
 </head>
 <body>
-<h1>应用详细信息</h1>
-<fieldset>
-    <table>
-        <tr>
-            <td>应用名称:</td>
-            <td>${app.name}</td>
-        </tr>
-        <tr>
-            <td>开发商:</td>
-            <td><a href="<%=request.getContextPath()%>/getappbypublisher/${app.publisherId}.manager">${publishername}</a></td>
-        </tr>
-        <tr>
-            <td>分类:</td>
-            <td>${app.type}</td>
-        </tr>
-        <tr>
-            <td>简介:</td>
-            <td>${app.introduction}</td>
-        </tr>
-        <tr>
-            <td>版本号:</td>
-            <td>${app.version}</td>
-        </tr>
-        <tr>
-            <td>限制年龄:</td>
-            <td>${app.limitAge}</td>
-        </tr>
-        <tr>
-            <td>语言:</td>
-            <td>${app.language}</td>
-        </tr>
-        <tr>
-            <td>兼容性:</td>
-            <td>${app.compatibility}</td>
-        </tr>
-        <tr>
-            <td>最低版本:</td>
-            <td>${app.requireVersion}</td>
-        </tr>
-        <tr>
-            <td>浏览总数:</td>
-            <td>${app.visitCnt}</td>
-        </tr>
-        <tr>
-            <td>所需权限:</td>
-            <td>${app.auriorityNeed}</td>
-        </tr>
-        <tr>
-            <td>审核状态</td>
-            <td>${zt}</td>
-        </tr>
-        <tr>
-            <td>下载链接:</td>
-            <td><a href="${app.downloadUrl}">点此下载</a></td>
-        </tr>
-    </table>
-</fieldset>
+<div class="header_bg" id="home"><!-- start header -->
+    <div class="container">
+        <div class="row header text-center specials">
+            <div class="h_logo">
+                <a href="#" onclick="window.close()"><img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a>
+            </div>
+            <nav class="top-nav">
+                <ul class="top-nav nav_list">
+                    <li class="logo page-scroll"><a title="关闭" href="#" onclick="window.close()">
+                        <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
+                </ul>
+                <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
+            </nav>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="slider_bg" style="min-height: 650px; width:100%;">
+    <div class="container" id="mainContainer">
+        <div class="titleText">
+            <h2>${app.name}的详细信息</h2>
+        </div>
+        <div class="detailDiv">
+            <table>
+                <tr>
+                    <th>应用名称:</th>
+                    <td>${app.name}</td>
+                </tr>
+                <tr>
+                    <th>开发商:</th>
+                    <td><a href="<%=request.getContextPath()%>/getappbypublisher/${app.publisherId}.manager">${publishername}</a></td>
+                </tr>
+                <tr>
+                    <th>分类:</th>
+                    <td>${app.type}</td>
+                </tr>
+                <tr>
+                    <th>简介:</th>
+                    <td>${app.introduction}</td>
+                </tr>
+                <tr>
+                    <th>版本号:</th>
+                    <td>${app.version}</td>
+                </tr>
+                <tr>
+                    <th>限制年龄:</th>
+                    <td>${app.limitAge}</td>
+                </tr>
+                <tr>
+                    <th>语言:</th>
+                    <td>${app.language}</td>
+                </tr>
+                <tr>
+                    <th>兼容性:</th>
+                    <td>${app.compatibility}</td>
+                </tr>
+                <tr>
+                    <th>最低版本:</th>
+                    <td>${app.requireVersion}</td>
+                </tr>
+                <tr>
+                    <th>浏览总数:</th>
+                    <td>${app.visitCnt}</td>
+                </tr>
+                <tr>
+                    <th>所需权限:</th>
+                    <td>
+                        <textarea class="permissionText" readonly="readonly">
+                        ${app.auriorityNeed}
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>审核状态</th>
+                    <td>${zt}</td>
+                </tr>
+                <tr>
+                    <th>下载链接:</th>
+                    <td><a href="${app.downloadUrl}">点此下载</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="clearfix"></div >
+    </div>
+</div>
+<div class="footer_bg" id="contact">
+    <div class="container"> </div>
+</div>
+<div class="footer1_bg">
+    <div class="container">
+        <div class="row  footer">
+            <div class="copy text-center">
+                <p class="link"><span>Copyright &copy; 2018.Company name All rights reserved.</span></p>
+                <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $('a[href*=#]:not([href=#])').click(function() {
+                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>
 </body>
 </html>

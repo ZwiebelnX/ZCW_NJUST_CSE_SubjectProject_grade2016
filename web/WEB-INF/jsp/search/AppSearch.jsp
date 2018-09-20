@@ -134,7 +134,21 @@
 
         <div class="appListDiv">
             <c:if test="${requestScope.appList != null}">
-                <table>
+            <%
+
+
+                List appList = (List) request.getAttribute("appList");
+                if(appList != null){
+                    int appsPerPage = 8;
+                    int totalPages = appList.size() % appsPerPage == 0 ? appList.size() / appsPerPage : appList.size() / appsPerPage + 1;
+                    pageContext.setAttribute("appList", appList);
+                    pageContext.setAttribute("curPage", 1);
+                    pageContext.setAttribute("totalPages", totalPages);
+                    pageContext.setAttribute("totalApps", appList.size());
+                }
+
+            %>
+                <table id="theTable">
                     <thead>
                         <tr>
                             <th>名称</th>
@@ -151,19 +165,73 @@
                             <td><img src="${appList.img}" style="width:50px;height: 50px;"/></td>
                             <td>${appList.publisherName}</td>
                             <td>${appList.type}</td>
-                            <td><a href="<%=request.getContextPath()%>/appinformation/${appList.id}.manager">查看详情</a></td>
+                            <td><a href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${appList.id}.manager', '应用详情',
+                                    'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')">查看详情</a></td>
                             <td><a href="${appList.downloadUrl}">点击下载</a></td>
                         </tr>
                     </c:forEach>
                 </table>
-                <nav>
-                    <ul>
-                        <li></li>
-                    </ul>
-                </nav>
-            </c:if>
+        </div>
+        <div class="pageDiv">
+            <div class="gridItem" style="padding: 5px; width: 250px; float: left; text-align: center; height: 20px; font-size: 15px;" >
+                共<span id="spanTotalInfor">${totalApps}</span> 条记录&nbsp; &nbsp;
+                当前第<span id="spanPageNum">${curPage}</span>页
+                &nbsp; &nbsp; &nbsp; 共<span id="spanTotalPage">${totalPages}</span>页
+            </div>
+            <div class="gridItem" style="margin-left:25px;  padding: 5px; width: 400px; float: left; text-align: center; height: 20px; vertical-align: middle; font-size: 15px;">
+                <span id="spanFirst" >首页</span> &nbsp;
+                <span id="spanPre">上一页</span>&nbsp;
+                <span id="spanInput" style="margin: 0; padding: 0 0 4px 0; height:100%; ">
+                第<input id="Text1" type="text" class="TextBox" onkeyup="changepage()"   style="height:20px; text-align: center;width:50px" />页
+            </span>&nbsp;
+                <span id="spanNext">下一页</span> &nbsp;
+                <span  id="spanLast">尾页</span>
+            </div>
+        </div>
+    </c:if>
+            <script type="text/javascript">
+                var theTable = document.getElementById("theTable");
+                var txtValue = document.getElementById("Text1").value;
+                function changepage() {
+                    var txtValue2 = document.getElementById("Text1").value;
+                    if (txtValue != txtValue2) {
+                        if (txtValue2 > pageCount()) {
 
+                        }
+                        else if (txtValue2 <= 0) {
 
+                        }
+                        else if (txtValue2 == 1) {
+                            first();
+                        }
+                        else if (txtValue2 == pageCount()) {
+                            last();
+                        }
+                        else {
+                            hideTable();
+                            page = txtValue2;
+                            pageNum2.value = page;
+
+                            currentRow = pageSize * page;
+                            maxRow = currentRow - pageSize;
+                            if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+                            for (var i = maxRow; i < currentRow; i++) {
+                                theTable.rows[i].style.display = '';
+                            }
+                            if (maxRow == 0) { preText(); firstText(); }
+                            showPage();
+                            nextLink();
+                            lastLink();
+                            preLink();
+                            firstLink();
+                        }
+
+                        txtValue = txtValue2;
+                    }
+                }
+
+            </script>
+            <script type="text/javascript" src="<%=request.getContextPath()%>/js/pagging.js"></script>
         </div>
         <!--
         <h3>为您推荐</h3>
@@ -202,6 +270,7 @@
                 });
             });
         </script>
+
     </div>
 </div>
 

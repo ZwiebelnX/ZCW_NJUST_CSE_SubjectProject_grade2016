@@ -78,13 +78,15 @@ public class AppUploadController {
         app.setCompatibility(request.getParameter("compability"));
         //app.setRequireVersion(request.getParameter("requireVersion"));
         app.setLanguage(request.getParameter("language"));
-        app.setPublisherName(session.getAttribute("nickname").toString());
+        AccountEntity publisher = (AccountEntity)session.getAttribute("user");
+        app.setPublisherName(publisher.getNormalName());
         app.setVisitCnt(0);
         AccountEntity ae=(AccountEntity)session.getAttribute("user");
         app.setPublisherId(ae.getUserId());
         app.setChecked("F");
         appdb.InsertApp(app);
         session.setAttribute("app",app);
+        appdb.UpdateAppIcourl(app.getId(),request.getContextPath() + "/imgs/appDafultLogo.jpg");
         return "upload/AppUploadForm";
     }
     //重新上传app资料
