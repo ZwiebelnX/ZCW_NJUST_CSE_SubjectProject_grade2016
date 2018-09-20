@@ -155,7 +155,7 @@
                 <a href="<%=request.getContextPath()%>/askforC.manager">申请成为管理员</a>
             </c:when>
             <c:when test="${pageScope.userType == '管理员'}">
-                <p><<strong>您已拥有最高权限，无需申请！</strong></p>
+                <p><strong>您已拥有最高权限，无需申请！</strong></p>
             </c:when>
         </c:choose>
     </div>

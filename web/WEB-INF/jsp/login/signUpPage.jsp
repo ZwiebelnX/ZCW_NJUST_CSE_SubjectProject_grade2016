@@ -80,7 +80,7 @@
                             <img src="<%=request.getContextPath()%>/imgs/Female.gif" alt="alt"/>女
                         </td>
                         <td width="250">&nbsp;</td>
-                        <td width="100" style="color: aliceblue;">用户名<span style="color: red;">*</span>：</td>
+                        <td width="100" style="color: aliceblue;">用户名 <span style="color: red;">*</span> ：</td>
                         <td width="235" style="text-align: left"><form:input id="p0" path="userName" /></td>
 
 
@@ -89,7 +89,7 @@
                         <td style="color: aliceblue;" >QQ号：</td>
                         <td><form:input id="qq" path="qq" /></td>
                         <td>&nbsp;</td>
-                        <td style="color: aliceblue;">昵 称<span style="color: red;">*</span>：</td>
+                        <td style="color: aliceblue;">昵 称 <span style="color: red;">*</span> ：</td>
                         <td style="text-align: left"><form:input id="p5" path="normalName" /></td>
 
                     </tr>
@@ -97,7 +97,7 @@
                         <td style="color: aliceblue;">手机号：</td>
                         <td><form:input id="tel" path="tel" /> </td>
                         <td>&nbsp;</td>
-                        <td style="color: aliceblue;">邮 箱<span style="color: red;">*</span>：</td>
+                        <td style="color: aliceblue;">邮 箱 <span style="color: red;">*</span> ：</td>
                         <td style="text-align: left"><form:input id="p3" onkeyup="check3()" path="mail" /></td>
                         <td style="text-align: left"><div id=check_tip3></div></td>
                     </tr>
@@ -105,7 +105,7 @@
                         <td style="color: aliceblue;">身份证号：</td>
                         <td><form:input id="idcard" path="identityCard" /></td>
                         <td>&nbsp;</td>
-                        <td style="color: aliceblue;">密 码<span style="color: red;">*</span>：</td>
+                        <td style="color: aliceblue;">密 码 <span style="color: red;">*</span> ：</td>
                         <td style="text-align: left"><form:password onkeyup="check1()" id="p1" path="pwd" /></td>
                         <td style="text-align: left"><div id=check_tip1></div> </td>
 
@@ -114,7 +114,7 @@
                         <td width="123" style="color: aliceblue;">身份证姓名：</td>
                         <td><form:input id="idname" path="idName" /></td>
                         <td>&nbsp;</td>
-                        <td style="color: aliceblue;">确认密码<span style="color: red;">*</span>：</td>
+                        <td style="color: aliceblue;">确认密码 <span style="color: red;">*</span> ：</td>
                         <td style="text-align: left"><input  onkeyup="check2()" id="p2" type="password" /> </td>
                         <td style="text-align: left"><div id=check_tip2></div></td>
                     <tr><td colspan="5"  style="height: 30px;">&nbsp;</td> </tr>
