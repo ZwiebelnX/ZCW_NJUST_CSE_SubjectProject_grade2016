@@ -79,15 +79,14 @@
             <div id="global">
                 <div class="titleText">
                     <h2>用户列表</h2>
-                    <h4 style="color:grey;">N:代表普通用户&nbsp;K:代表开发商用户&nbsp;C:代表管理员</h4>
                 </div>
                     <div class="accountListDiv">
                         <table>
                             <tr>
-                                <th>用户名</th>
-                                <th>权限等级</th>
-                                <th>详细信息</th>
-                                <th colspan="4">操作</th>
+                                <th style="font-size: 22px;">用户名</th>
+                                <th style="font-size: 22px;">权限等级</th>
+                                <th style="font-size: 22px;">详细信息</th>
+                                <th colspan="4" style="font-size: 22px;">操作</th>
                             </tr>
                             <e:forEach items="${Accountlist}" var="Accountlist">
                                 <tr>
@@ -118,8 +117,10 @@
                             </e:forEach>
                         </table>
                     </div>
+                <div style="text-align: center;padding-top: 80px;">
+                    <h4 style="color:#629392;">* N:代表普通用户&nbsp;K:代表开发商用户&nbsp;C:代表管理员</h4>
+                </div>
             </div>
-
             <div class="clearfix"></div >
         </div>
     </div>

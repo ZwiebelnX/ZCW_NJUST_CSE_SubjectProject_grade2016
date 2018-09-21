@@ -22,7 +22,7 @@ input:focus{
     text-align: center;
     width: 900px;
     position: relative;
-    top:  60px;
+    top:  70px;
     left: 50%;
     margin-left: -450px;
 
@@ -35,6 +35,7 @@ input:focus{
 }
 #form select{
     color: #037f74;
+    font-size: 15px;
 }
 
 .buttom {
@@ -46,23 +47,4 @@ input:focus{
     font-size: 14px;
     font-weight: bold;
     color: #fff;
-}
-.apply{
-    width: 100%;
-    position: relative;
-    top: 170px;
-    text-align: center;
-    font-size: 17px;
-
-}
-
-.apply a{
-    color: #dee2a9;
-    margin: 20px;
-    font-size: 20px;
-    text-align: center;
-}
-.apply a:hover{
-    color: #05b7a7;
-    font-size: 17px;
 }

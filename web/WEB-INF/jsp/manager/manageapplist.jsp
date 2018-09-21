@@ -11,7 +11,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="e" %>
 <html>
 <head>
-    <title>应用列表</title>
+    <title>应用管理列表</title>
+    <link href="<%=request.getContextPath()%>/css/ZCW/applyauthority.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,24 +75,28 @@
         </div>
     </div>
 </div>
-<div class="slider_bg" style="min-height: 650px; width:100%;">
-    <div class="container" id="mainContainer">
-        <h2 class="titleText">应用管理列表</h2>
-            <div class="appListDiv">
+<div class="slider_bg" id="mainContainer"><!-- start slider -->
+    <div class="container">
+        <div class="welcomeDiv1"><h2 >应用管理列表</h2></div>
+        <div id="form">
                 <table>
                     <tr>
-                        <th>序号</th>
-                        <th>名称</th>
-                        <th>详情</th>
-                        <th colspan="2">操作</th>
+                        <td style="font-size: 22px;">序号</td>
+                        <td style="font-size: 22px;">名称</td>
+                        <td style="font-size: 22px;">详情</td>
+                        <td style="font-size: 22px;">操作</td>
                     </tr>
                     <e:forEach items="${applist}" var="appList">
                         <tr>
                             <td>${appList.id}</td>
                             <td>${appList.name}</td>
                             <td><a href="<%=request.getContextPath()%>/appinformation/${appList.id}.manager">查看详情</a></td>
-                            <td><a href="<%=request.getContextPath()%>/appedit/${appList.id}.manager">重新编辑</a></td>
-                            <td><a href="<%=request.getContextPath()%>/appdelete/${appList.id}.manager">删除</a></td>
+                            <td><button class="buttom" onclick="
+                                    window.location.href=('<%=request.getContextPath()%>/appedit/${appList.id}.manager');
+                                    ">更新</button>&nbsp;
+                                <button class="buttom" onclick="
+                                        window.location.href=('<%=request.getContextPath()%>/appdelete/${appList.id}.manager');
+                                        ">下架</button></td>
                         </tr>
                     </e:forEach>
                 </table>

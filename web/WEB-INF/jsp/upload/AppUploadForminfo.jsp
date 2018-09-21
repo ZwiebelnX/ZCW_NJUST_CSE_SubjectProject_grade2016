@@ -53,10 +53,10 @@
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
+                    <li><a href="<%=request.getContextPath()%>/toMainPage.login">main page</a></li>
                     <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/index.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
+                    <li class="page-scroll"><a href="#">about us</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
             </nav>
@@ -72,13 +72,16 @@
                 <table>
                     <tr>
                         <td style="color: aliceblue;text-align: right;">应用名称 <span style="color: red;">*</span> ：</td>
-                        <td style="text-align: center;width: 250px;"><input type="text" name="appname" id="appname" /></td>
+                        <td><input type="text" name="appname" id="appname" /></td>
+                        <td width="292px;">&nbsp;</td>
+                        <td style="color: aliceblue; ">图标 <span style="color: red;">*</span> ：</td>
+                        <td><input type="file" name="iconFile" style="width: 220px; color: #05b7a7"/></td>
                     </tr>
                     <tr>
                         <td style="color: aliceblue; ">应用类型 <span style="color: red;">*</span> ：</td>
-                        <td style="text-align: center">
+                        <td>
                             <select name="type" id="type" style="width: 199px; border-radius: 5px;">
-                                <option value="-1" selected="selected">[请选择相应类型]</option>
+                                <option value="-1" selected="selected">请选择相应类型</option>
                                 <option value="游戏">游戏</option>
                                 <option value="视频">视频</option>
                                 <option value="聊天">聊天</option>
@@ -91,34 +94,27 @@
                                 <option value="音乐">音乐</option>
                             </select>
                         </td>
-                    </tr>
+                         </tr>
                     <tr>
                         <td style="color: aliceblue;">适宜年龄：</td>
-                        <td style="text-align: center"><input type="text" name="limitAge" /></td>
+                        <td><input type="text" name="limitAge" /></td>
+                        <td>&nbsp;</td>
+                        <td style="color: aliceblue; ">Apk文件 <span style="color: red;">*</span> ：</td>
+                        <td><input type="file" name="apkFile" style="width: 220px; color: #05b7a7"/></td>
                     </tr>
                     <tr>
                         <td style="color: aliceblue;">兼容性：</td>
-                        <td style="text-align: center"><input type="text" name="compability" /></td>
+                        <td><input type="text" name="compability" /></td>
                     </tr>
                     <tr>
                         <td style="color: aliceblue;">语  言：</td>
-                        <td style="text-align: center"><input type="text" name="language"/></td>
-                    </tr>
-                    <tr rowspan="3">
-                        <td style="color: aliceblue;height: 110px;">介  绍 <span style="color: red;">*</span> ：</td>
-                        <td style="text-align: center"><textarea name="introduction" id="introduction" cols="39" rows="4" placeholder="请输入相关应用的介绍" style="width: 199px; border-radius: 5px;"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>Apk文件<span style="color: red;">*</span> ：</td>
-                        <td><input type="file" name="apkFile" /></td>
+                        <td><input type="text" name="language"/></td>
+                        <td>&nbsp;</td>
+                        <td style="color: aliceblue;height: 80px;">介  绍 <span style="color: red;">*</span> ：</td>
+                        <td><textarea name="introduction" id="introduction" cols="300" rows="3" placeholder="请输入相关应用的介绍" style="width: 225px; border-radius: 15px;color: #037f74;"></textarea></td>
                     </tr>
                     <tr>
-                        <td>图标：</td>
-                        <td><input type="file" name="iconFile" /></td>
-                    </tr>
-                    <tr>
-                        <td width="120">&nbsp;</td>
-0                       <td style="text-align: center"><input type="submit" value="提交" class="buttom"></td>
+0                       <td colspan="5" style="text-align: center;padding-top: 30px;"><input type="submit" value="提交" class="buttom"></td>
                     </tr>
                 </table>
             </form>
