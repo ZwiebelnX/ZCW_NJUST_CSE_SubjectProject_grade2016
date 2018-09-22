@@ -2,7 +2,7 @@
     font-size: 30px;
     text-align: center;
     position: relative;
-    top: 50px;
+    top: 35px;
     color: aliceblue;
 }
 #personalInformation{
@@ -10,7 +10,7 @@
     height: 380px;
     float: left;
     position: relative;
-    top: 65px;
+    top: 45px;
 }
 #form{
     text-align: center;
@@ -29,7 +29,7 @@
     width: 350px;
     height: 380px;
     position: relative;
-    top: 90px;
+    top: 110px;
     float: right;
 }
 #form1{

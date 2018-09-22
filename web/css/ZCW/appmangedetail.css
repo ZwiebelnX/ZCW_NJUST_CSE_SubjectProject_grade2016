@@ -20,11 +20,11 @@ input:focus{
 
 #form{
     text-align: center;
-    width: 1000px;
+    width: 400px;
     position: relative;
     top:  60px;
     left: 50%;
-    margin-left: -500px;
+    margin-left: -200px;
 
 }
 
@@ -32,6 +32,8 @@ input:focus{
     height: 50px;
     text-align: right;
     font-size: 17px;;
+    color: aliceblue;
+    vertical-align: top;
 }
 #form select{
     color: #037f74;
@@ -46,23 +48,4 @@ input:focus{
     font-size: 14px;
     font-weight: bold;
     color: #fff;
-}
-.apply{
-    width: 100%;
-    position: relative;
-    top: 170px;
-    text-align: center;
-    font-size: 17px;
-
-}
-
-.apply a{
-    color: #dee2a9;
-    margin: 20px;
-    font-size: 20px;
-    text-align: center;
-}
-.apply a:hover{
-    color: #05b7a7;
-    font-size: 17px;
 }

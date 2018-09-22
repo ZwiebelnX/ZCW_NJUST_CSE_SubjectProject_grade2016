@@ -70,7 +70,7 @@
             </c:choose>
             <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
               <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-            <li class="page-scroll"><a href="#">about us</a></li>
+            <li class="page-scroll"><a href="<%=request.getContextPath()%>/aboutus.login">about us</a></li>
           </ul>
           <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
         </nav>
@@ -80,6 +80,7 @@
   </div>
   <div class="slider_bg" style="min-height: 650px; width:100%;">
     <div class="container" id="mainContainer">
+      <div class="mainDiv">
       <c:choose>
         <c:when  test="${sessionScope.user != null}">
           <%
@@ -98,8 +99,8 @@
           %>
           <div class="welcomeDiv">
             <h2><strong>欢迎使用：${pageScope.nickName}</strong></h2>
-            <h4>———————${pageScope.userType}———————</h4>
-            <a href="<%=request.getContextPath()%>/accountmanage.manager" style="color:grey;">个人管理</a>
+            <h3>——————${pageScope.userType}——————</h3>
+            <a href="<%=request.getContextPath()%>/accountmanage.manager">个人管理中心</a>
           </div>
           <div class="actionDiv">
             <div class="appSearchAction">
@@ -130,8 +131,6 @@
                       <li><a href="<%=request.getContextPath()%>/AppUpload.upload">应用上传</a></li>
                       <li><a href="<%=request.getContextPath()%>/AppManage.manager">应用管理</a></li>
                   </ul>
-
-
               </div>
             </c:if>
           </div>
@@ -147,6 +146,7 @@
         </c:otherwise>
       </c:choose>
       <div class="clearfix"></div >
+      </div>
       </div>
     </div>
   <div class="footer_bg" id="contact">

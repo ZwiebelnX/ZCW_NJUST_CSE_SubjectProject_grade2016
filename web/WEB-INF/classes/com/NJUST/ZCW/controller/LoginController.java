@@ -203,6 +203,11 @@ public class LoginController {
 
     }
 
+    @RequestMapping(value = "aboutus.login")
+    public String AboutUs(){
+        return "aboutus";
+    }
+
     private String getRandomNumber() {
         Random random = new Random();
         String fourRandom = random.nextInt(10000) + "";
@@ -213,4 +218,6 @@ public class LoginController {
         }
         return fourRandom;
     }
+
+
 }

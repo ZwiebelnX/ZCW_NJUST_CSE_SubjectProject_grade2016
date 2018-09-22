@@ -1,18 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 10447
-  Date: 2018/9/12
-  Time: 22:01
+  User: Wwwys
+  Date: 2018/9/22
+  Time: 14:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="e" %>
 <html>
 <head>
-    <title>应用管理列表</title>
-    <link href="<%=request.getContextPath()%>/css/ZCW/applyauthority.css" rel="stylesheet" type="text/css">
+    <title>ABOUT US</title>
     <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,16 +18,12 @@
         function hideURLbar(){ window.scrollTo(0,1);
         }
 
-        if(${sessionScope.user == null}){
-            alert("请先登录！");
-            window.location.replace("<%=request.getContextPath()%>/index.login");
+        // 如果用户已经登录则跳转至用户主界面
+        if(${sessionScope.user !=null}){
+            window.location.replace("<%=request.getContextPath()%>/toMainPage.login")
         }
-        if(${sessionScope.userType == "N"}){
-            alert("对不起，您没有权限进行操作！");
-            window.location.replace("<%=request.getContextPath()%>/toMainPage.login");
-        }
-
     </script>
+    <link href="http://fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
     <script>
@@ -51,12 +43,10 @@
             });
         });
     </script>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/manageAppList.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/global.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css">
 </head>
 <body>
-<div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
+<div class="header_bg" id="home"><!-- start header -->
     <div class="container">
         <div class="row header text-center specials">
             <div class="h_logo">
@@ -64,10 +54,10 @@
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li><a href="<%=request.getContextPath()%>/toMainPage.login">back to main</a></li>
-                    <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
+                    <li><a href="<%=request.getContextPath()%>/loginPage.login">LOGIN</a></li>
+                    <li class="logo page-scroll"><a title="返回主页" href="<%=request.getContextPath()%>/index.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li class="page-scroll"><a href="#">about us</a></li>
+                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
             </nav>
@@ -75,35 +65,37 @@
         </div>
     </div>
 </div>
-<div class="slider_bg" id="mainContainer"><!-- start slider -->
+<div class="slider_bg" style="height: 750px;">
     <div class="container">
-        <div class="welcomeDiv1"><h2 >应用管理列表</h2></div>
-        <div id="form">
-                <table>
-                    <tr>
-                        <td style="font-size: 22px;">序号</td>
-                        <td style="font-size: 22px;">名称</td>
-                        <td style="font-size: 22px;">详情</td>
-                        <td style="font-size: 22px;">操作</td>
-                    </tr>
-                    <e:forEach items="${applist}" var="appList">
-                        <tr>
-                            <td>${appList.id}</td>
-                            <td>${appList.name}</td>
-                            <td><a href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${appList.id}.manager', '应用详情',
-                                    'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')">查看详情</a></td>
-
-                            <td><button class="buttom" onclick="
-                                    window.location.href=('<%=request.getContextPath()%>/appedit/${appList.id}.manager');
-                                    ">更新</button>&nbsp;
-                                <button class="buttom" onclick="
-                                        window.location.href=('<%=request.getContextPath()%>/appdelete/${appList.id}.manager');
-                                        ">下架</button></td>
-                        </tr>
-                    </e:forEach>
-                </table>
+        <div class="row slider">
+            <div class="wmuSlider example1">
+                <div class="wmuSliderWrapper">
+                    <article style="position: absolute; width: 100%; opacity: 0;">
+                        <div class="slider_img text-center">
+                            <ul class="list-unstyled list_imgs">
+                                <li><img src="<%=request.getContextPath()%>/imgs/slider.jpg" alt="" class="responsive"/></li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article style="position: relative; width: 100%; opacity: 1;">
+                        <div class="slider_img text-center">
+                            <ul class="list-unstyled list_imgs">
+                                <li><img src="<%=request.getContextPath()%>/imgs/slider1.jpg" alt="" class="responsive"/></li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+                <ul class="wmuSliderPagination">
+                    <li><a href="#" class="">0</a></li>
+                    <li><a href="#" class="">1</a></li>
+                </ul>
+                <script src="<%=request.getContextPath()%>/js/jquery.wmuSlider.js"></script>
+                <script>
+                    $('.example1').wmuSlider();
+                </script>
             </div>
-        <div class="clearfix"></div >
+            <div class="clearfix"></div>
+        </div>
     </div>
 </div>
 <div class="footer_bg" id="contact">
@@ -136,6 +128,7 @@
         </script>
     </div>
 </div>
-
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+<br>
 </body>
 </html>

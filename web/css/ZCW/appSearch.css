@@ -1,7 +1,7 @@
 .appSearchInputDiv{
     position:relative;
     top:80px;
-    left:20%;
+    left:25%;
 
     margin-left:-150px;
 
@@ -26,7 +26,7 @@
 .appKindSearchInput{
     position:relative;
     top:50px;
-    left:20%;
+    left:25%;
 
     margin-left:-150px;
 
@@ -45,33 +45,33 @@
 .appListDiv{
     position:absolute;
     right:70px;
-    top:130px;
-
+    top:120px;
     margin-left:-300px;
-
-    width:600px;
-    min-height: 500px;
-
+    width:700px;
+    min-height: 520px;
     border: solid 2px;
 }
 
 .appListDiv table tr td{
-    width: 100px;
+    width: 120px;
     padding-bottom: 7px;
     text-align: center;
     color: white;
 }
 
 .appListDiv table tr th{
-    width: 100px;
+    width: 120px;
     color: #b7f0ff;
     text-align: center;
     padding-bottom: 15px;
 
-}
+}.appListDiv table th{
+    font-size: 20px;
+    padding-top: 10px;
+ }
 
 .pageDiv{
     position: absolute;
     right:10px;
-    top: 650px;
+    top: 640px;
 }

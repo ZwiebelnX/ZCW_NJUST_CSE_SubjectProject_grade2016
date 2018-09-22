@@ -36,3 +36,12 @@
     color:white;
     padding:10px;
 }
+.accountListDiv a {
+    color: #05b7a7;
+    margin: 10px;
+    font-size: 17px;
+    text-align: center;
+}
+.accountListDiv a:hover{
+    color: #07e1ce;
+}

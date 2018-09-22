@@ -92,9 +92,10 @@
                                 <tr>
                                     <td style="width: 120px">${Accountlist.userName}</td>
                                     <td>${Accountlist.isManager}</td>
-                                    <td><button class="button" style="width: 150px" onclick="
-                                            window.open('<%=request.getContextPath()%>/accountinformation/${Accountlist.userId}.manager');
-                                            ">查看</button></td>
+                                    <td><a href="#" onclick="
+                                            window.open('<%=request.getContextPath()%>/accountinformation/${Accountlist.userId}.manager','用户详情',
+                                            'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')">
+                                            查看</a></td>
                                     <td><button class="button" style="width: 130px" onclick="
                                             window.location.href=('<%=request.getContextPath()%>/askforN/${Accountlist.userId}.manager');
                                             ">更改成普通用户</button>
