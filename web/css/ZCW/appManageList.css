@@ -16,7 +16,7 @@
 
 .accountListDiv{
     position: relative;
-    top:55px;
+    top:25px;
     left:50%;
 
     width:1000px;
@@ -44,4 +44,16 @@
 }
 .accountListDiv a:hover{
     color: #07e1ce;
+}
+
+.pageDiv{
+    position: absolute;
+    top:570px;
+    left:50%;
+
+    width:800px;
+
+    margin-left: -330px;
+    color:white;
+
 }

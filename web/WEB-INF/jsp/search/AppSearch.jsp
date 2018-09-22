@@ -45,6 +45,46 @@
                 }
             });
         });
+
+        var theTable = document.getElementById("theTable");
+        var txtValue = document.getElementById("Text1").value;
+        function changepage() {
+            var txtValue2 = document.getElementById("Text1").value;
+            if (txtValue != txtValue2) {
+                if (txtValue2 > pageCount()) {
+
+                }
+                else if (txtValue2 <= 0) {
+
+                }
+                else if (txtValue2 == 1) {
+                    first();
+                }
+                else if (txtValue2 == pageCount()) {
+                    last();
+                }
+                else {
+                    hideTable();
+                    page = txtValue2;
+                    pageNum2.value = page;
+
+                    currentRow = pageSize * page;
+                    maxRow = currentRow - pageSize;
+                    if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+                    for (var i = maxRow; i < currentRow; i++) {
+                        theTable.rows[i].style.display = '';
+                    }
+                    if (maxRow == 0) { preText(); firstText(); }
+                    showPage();
+                    nextLink();
+                    lastLink();
+                    preLink();
+                    firstLink();
+                }
+
+                txtValue = txtValue2;
+            }
+        }
     </script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/appSearch.css" />
@@ -188,50 +228,51 @@
                 <span  id="spanLast">尾页</span>
             </div>
         </div>
-    </c:if>
-            <script type="text/javascript">
-                var theTable = document.getElementById("theTable");
-                var txtValue = document.getElementById("Text1").value;
-                function changepage() {
-                    var txtValue2 = document.getElementById("Text1").value;
-                    if (txtValue != txtValue2) {
-                        if (txtValue2 > pageCount()) {
+        <script type="text/javascript">
+            var theTable = document.getElementById("theTable");
+            var txtValue = document.getElementById("Text1").value;
+            function changepage() {
+                var txtValue2 = document.getElementById("Text1").value;
+                if (txtValue != txtValue2) {
+                    if (txtValue2 > pageCount()) {
 
-                        }
-                        else if (txtValue2 <= 0) {
-
-                        }
-                        else if (txtValue2 == 1) {
-                            first();
-                        }
-                        else if (txtValue2 == pageCount()) {
-                            last();
-                        }
-                        else {
-                            hideTable();
-                            page = txtValue2;
-                            pageNum2.value = page;
-
-                            currentRow = pageSize * page;
-                            maxRow = currentRow - pageSize;
-                            if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
-                            for (var i = maxRow; i < currentRow; i++) {
-                                theTable.rows[i].style.display = '';
-                            }
-                            if (maxRow == 0) { preText(); firstText(); }
-                            showPage();
-                            nextLink();
-                            lastLink();
-                            preLink();
-                            firstLink();
-                        }
-
-                        txtValue = txtValue2;
                     }
-                }
+                    else if (txtValue2 <= 0) {
 
-            </script>
-            <script type="text/javascript" src="<%=request.getContextPath()%>/js/pagging.js"></script>
+                    }
+                    else if (txtValue2 == 1) {
+                        first();
+                    }
+                    else if (txtValue2 == pageCount()) {
+                        last();
+                    }
+                    else {
+                        hideTable();
+                        page = txtValue2;
+                        pageNum2.value = page;
+
+                        currentRow = pageSize * page;
+                        maxRow = currentRow - pageSize;
+                        if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+                        for (var i = maxRow; i < currentRow; i++) {
+                            theTable.rows[i].style.display = '';
+                        }
+                        if (maxRow == 0) { preText(); firstText(); }
+                        showPage();
+                        nextLink();
+                        lastLink();
+                        preLink();
+                        firstLink();
+                    }
+
+                    txtValue = txtValue2;
+                }
+            }
+
+        </script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/pagging.js"></script>
+    </c:if>
+
         </div>
         <!--
         <h3>为您推荐</h3>

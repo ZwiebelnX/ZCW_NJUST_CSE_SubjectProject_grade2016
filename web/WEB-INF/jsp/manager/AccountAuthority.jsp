@@ -20,6 +20,12 @@
         }, false);
         function hideURLbar(){ window.scrollTo(0,1);
         }
+
+        //登录检查
+        if(${sessionScope.user == null}){
+            alert("请先登录！");
+            window.location.replace("<%=request.getContextPath()%>/index.login");
+        }
     </script>
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
@@ -41,12 +47,6 @@
         });
     </script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css">
-    <script type="text/javascript">
-        if(${sessionScope.user == null}){
-            alert("请先登录！");
-            window.location.replace("<%=request.getContextPath()%>/index.login");
-        }
-    </script>
 </head>
 <body>
 <%

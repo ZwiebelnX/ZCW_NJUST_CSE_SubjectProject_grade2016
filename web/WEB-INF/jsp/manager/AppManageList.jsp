@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Zwiebeln_Chan
   Date: 2018/9/7
@@ -21,10 +21,13 @@
         function hideURLbar(){ window.scrollTo(0,1);
         }
 
+        //登录检查
         if(${sessionScope.user == null}){
             alert("请先登录！");
             window.location.replace("<%=request.getContextPath()%>/index.login");
         }
+
+        //权限检查
         if(${!sessionScope.userType == "C"}){
             alert("对不起，您没有权限进行操作！");
             window.location.replace("<%=request.getContextPath()%>/toMainPage.login");
@@ -81,14 +84,26 @@
                     <h2>用户列表</h2>
                 </div>
                     <div class="accountListDiv">
-                        <table>
+                    <%
+                        List accountList = (List) request.getAttribute("accountList");
+                        if(accountList != null){
+                            int accountsPerPage = 5;
+                            int totalPages = accountList.size() % accountsPerPage == 0 ? accountList.size() / accountsPerPage : accountList.size() / accountsPerPage + 1;
+                            pageContext.setAttribute("accountList", accountList);
+                            pageContext.setAttribute("curPage", 1);
+                            pageContext.setAttribute("totalPages", totalPages);
+                            pageContext.setAttribute("totalAccounts", accountList.size());
+                        }
+
+                    %>
+                        <table id="theTable">
                             <tr>
                                 <th style="font-size: 22px;">用户名</th>
                                 <th style="font-size: 22px;">权限等级</th>
                                 <th style="font-size: 22px;">详细信息</th>
                                 <th colspan="4" style="font-size: 22px;">操作</th>
                             </tr>
-                            <e:forEach items="${Accountlist}" var="Accountlist">
+                            <e:forEach items="${pageScope.accountList}" var="Accountlist">
                                 <tr>
                                     <td style="width: 120px">${Accountlist.userName}</td>
                                     <td>${Accountlist.isManager}</td>
@@ -121,6 +136,64 @@
                 <div style="text-align: center;padding-top: 80px;">
                     <h4 style="color:#629392;">* N:代表普通用户&nbsp;K:代表开发商用户&nbsp;C:代表管理员</h4>
                 </div>
+                <div class="pageDiv">
+                    <div class="gridItem" style="padding: 5px; width: 300px; float: left; text-align: center; height: 20px; font-size: 15px;" >
+                        共 <span id="spanTotalInfor">${totalAccounts}</span> 条记录&nbsp; &nbsp;
+                        当前第 <span id="spanPageNum">${curPage}</span> 页
+                        &nbsp; &nbsp; &nbsp; 共 <span id="spanTotalPage">${totalPages}</span> 页
+                    </div>
+                    <div class="gridItem" style="margin-left:25px;  padding: 5px; width: 400px; float: left; text-align: center; height: 20px; vertical-align: middle; font-size: 15px;">
+                        <span id="spanFirst" >首页</span> &nbsp;
+                        <span id="spanPre">上一页</span>&nbsp;
+                        <span id="spanInput" style="margin: 0; padding: 0 0 4px 0; height:100%; ">
+                第<input id="Text1" type="text" class="TextBox" onkeyup="changepage()"   style="height:20px; text-align: center;width:50px; color: black;" />页
+            </span>&nbsp;
+                        <span id="spanNext">下一页</span> &nbsp;
+                        <span  id="spanLast">尾页</span>
+                    </div>
+                </div>
+                <script type="text/javascript" src="<%=request.getContextPath()%>/js/pagging.js"></script>
+                <script type="text/javascript">
+                    var theTable = document.getElementById("theTable");
+                    var txtValue = document.getElementById("Text1").value;
+                    function changepage() {
+                        var txtValue2 = document.getElementById("Text1").value;
+                        if (txtValue != txtValue2) {
+                            if (txtValue2 > pageCount()) {
+
+                            }
+                            else if (txtValue2 <= 0) {
+
+                            }
+                            else if (txtValue2 == 1) {
+                                first();
+                            }
+                            else if (txtValue2 == pageCount()) {
+                                last();
+                            }
+                            else {
+                                hideTable();
+                                page = txtValue2;
+                                pageNum2.value = page;
+
+                                currentRow = pageSize * page;
+                                maxRow = currentRow - pageSize;
+                                if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+                                for (var i = maxRow; i < currentRow; i++) {
+                                    theTable.rows[i].style.display = '';
+                                }
+                                if (maxRow == 0) { preText(); firstText(); }
+                                showPage();
+                                nextLink();
+                                lastLink();
+                                preLink();
+                                firstLink();
+                            }
+
+                            txtValue = txtValue2;
+                        }
+                    }
+                </script>
             </div>
             <div class="clearfix"></div >
         </div>

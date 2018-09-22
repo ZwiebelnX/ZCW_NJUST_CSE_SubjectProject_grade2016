@@ -114,7 +114,7 @@
                         <td><textarea name="introduction" id="introduction" cols="300" rows="3" placeholder="请输入相关应用的介绍" style="width: 225px; border-radius: 15px;color: #037f74;"></textarea></td>
                     </tr>
                     <tr>
-0                       <td colspan="5" style="text-align: center;padding-top: 30px;"><input type="submit" value="提交" class="buttom"></td>
+                     <td colspan="5" style="text-align: center;padding-top: 30px;"><input type="submit" value="提交" class="buttom"></td>
                     </tr>
                 </table>
             </form>

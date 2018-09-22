@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Zwiebeln_Chan
@@ -73,10 +74,10 @@
                     <tr>
                         <td style="color: aliceblue;">性 别：</td>
                         <td style="text-align: left; color: aliceblue;">
-                            &nbsp;&nbsp;<input type="radio" name="gen" value="男"/>
+                            &nbsp;&nbsp;<form:radiobutton path="gender" name="gen" value="M"/>
                             <img src="<%=request.getContextPath()%>/imgs/Male.gif" alt="alt"/>男
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="gen" value="女"/>
+                            <form:radiobutton path="gender" name="gen" value="F"/>
                             <img src="<%=request.getContextPath()%>/imgs/Female.gif" alt="alt"/>女
                         </td>
                         <td width="250">&nbsp;</td>
@@ -158,7 +159,6 @@
             </script>
         </div>
     </div>
-    <div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
     <br>
 </body>
 <script type="text/javascript">

@@ -128,7 +128,7 @@ public class ManagerController {
     }
     @RequestMapping(value = "Accountlist.manager")
     public String getAccountInformation(Model model){
-        model.addAttribute("Accountlist",db.getAllAccounts());
+        model.addAttribute("accountList",db.getAllAccounts());
         return "manager/AppManageList";
     }
 
