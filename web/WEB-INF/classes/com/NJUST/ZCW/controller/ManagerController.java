@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 
@@ -79,23 +80,25 @@ public class ManagerController {
             return "manager/jumptpAccuntManage";
     }
 
-    @RequestMapping(value = "askforK.manager")
-    public String doAskforK(HttpSession session){
+    @RequestMapping(value = "askfor{authority}.manager")
+    public String doAskForAuthority(HttpSession session, HttpServletRequest request,
+                                    HttpServletResponse response, @PathVariable String authority) throws Exception{
+        String path = request.getContextPath();
+        response.setContentType("text/html;charset=gb2312");
+
         AccountEntity ae=(AccountEntity) session.getAttribute("user");
         int f=ae.getUserId();
-        if(db.InsertforAuthorityQuery(f,"K",ae.getUserName()))
-            return "manager/AskforSuccess";
-        else
-            return "manager/AskforFailed";
-    }
-    @RequestMapping(value = "askforC.manager")
-    public String doAskforC(HttpSession session){
-        AccountEntity ae=(AccountEntity) session.getAttribute("user");
-        int f=ae.getUserId();
-        if(db.InsertforAuthorityQuery(f,"C",ae.getUserName()))
-        return "manager/AskforSuccess";
-        else
-            return "manager/AskforFailed";
+
+        if(db.InsertforAuthorityQuery(f,authority,ae.getUserName())){
+            response.getWriter().print("<script language=\"javascript\">alert('申请权限成功，请等待管理员审核。');" +
+                    "window.location.href='" + path + "/accountmanage.manager'</script>");
+            return null;
+        }
+        else{
+            response.getWriter().print("<script language=\"javascript\">alert('申请失败，您已提交过申请。');" +
+                    "window.location.href='" + path + "/accountauthority.manager'</script>");
+            return null;
+        }
     }
 
     @RequestMapping(value = "AuthorityManagee.manager")
@@ -150,49 +153,35 @@ public class ManagerController {
     @RequestMapping(value = "accountdelete/{id}.manager")//用户删除
     public String deleteaccount(Model model, @PathVariable int id){
         db.deleteAccount(id);
-        model.addAttribute("Accountlist",db.getAllAccounts());
+        model.addAttribute("accountList",db.getAllAccounts());
         return "manager/AppManageList";
     }
 
-    @RequestMapping(value = "askforN/{id}.manager")//更改成为普通用户
-    public String doN(Model model, @PathVariable int id){
-        db.doChangeAuthority(id,"N");
-        model.addAttribute("Accountlist",db.getAllAccounts());
-        return "manager/AppManageList";
-    }
-
-    @RequestMapping(value = "askforK/{id}.manager")//更改成为普通用户
-    public String doK(Model model, @PathVariable int id){
-        db.doChangeAuthority(id,"K");
-        model.addAttribute("Accountlist",db.getAllAccounts());
-        return "manager/AppManageList";
-    }
-
-    @RequestMapping(value = "askforC/{id}.manager")//更改成为普通用户
-    public String doC(Model model, @PathVariable int id){
-        db.doChangeAuthority(id,"C");
-        model.addAttribute("Accountlist",db.getAllAccounts());
+    @RequestMapping(value = "askfor{authority}/{id}.manager")//更改成为普通用户
+    public String doN(Model model, @PathVariable int id, @PathVariable String authority){
+        db.doChangeAuthority(id,authority);
+        model.addAttribute("accountList",db.getAllAccounts());
         return "manager/AppManageList";
     }
 
     //应用审核
     @RequestMapping(value="AppCheck.manager")
     public String getAllCheckApps(Model model){
-        model.addAttribute("list",appdb.getAllCheckApps("F"));
+        model.addAttribute("appCheckList",appdb.getAllCheckApps("F"));
         return "manager/checkedapplist";
     }
 
     @RequestMapping(value = "appac/{id}.manager")//审核通过
     public String appAccepted(Model model, @PathVariable int id){
         appdb.ChangeChecked(id,"Y");
-        model.addAttribute("list",appdb.getAllCheckApps("F"));
+        model.addAttribute("appCheckList",appdb.getAllCheckApps("F"));
         return "manager/checkedapplist";
     }
 
     @RequestMapping(value = "appwa/{id}.manager")//审核不通过
     public String appRefused(Model model, @PathVariable int id){
         appdb.ChangeChecked(id,"N");
-        model.addAttribute("list",appdb.getAllCheckApps("F"));
+        model.addAttribute("appCheckList",appdb.getAllCheckApps("F"));
         return "manager/checkedapplist";
     }
     @RequestMapping(value = "appinformation/{id}.manager")//详细信息
@@ -219,9 +208,9 @@ public class ManagerController {
     public String getAllCheckApps(Model model,HttpSession session){
         AccountEntity ae=(AccountEntity) session.getAttribute("user");
         if(ae.getIsManager().equals("C"))
-            model.addAttribute("applist",appdb.getAllApps());
+            model.addAttribute("appList",appdb.getAllApps());
         else if(ae.getIsManager().equals("K"))
-            model.addAttribute("applist",appdb.getAppbyPublisherid(ae.getUserId()));
+            model.addAttribute("appList",appdb.getAppbyPublisherid(ae.getUserId()));
         return "manager/manageapplist";
     }
 
