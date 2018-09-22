@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: 10447
   Date: 2018/9/12
@@ -80,15 +80,28 @@
     <div class="container">
         <div class="welcomeDiv1"><h2 >应用审核列表</h2></div>
         <div id="form">
-    <fieldset>
-        <table>
+            <%
+
+
+                List appList = (List) request.getAttribute("appCheckList");
+                if(appList != null){
+                    int appsPerPage = 8;
+                    int totalPages = appList.size() % appsPerPage == 0 ? appList.size() / appsPerPage : appList.size() / appsPerPage + 1;
+                    pageContext.setAttribute("appList", appList);
+                    pageContext.setAttribute("curPage", 1);
+                    pageContext.setAttribute("totalPages", totalPages);
+                    pageContext.setAttribute("totalApps", appList.size());
+                }
+
+            %>
+        <table id="theTable">
             <tr>
                 <td style="font-size: 22px;">序号</td>
                 <td style="font-size: 22px;">名称</td>
                 <td style="font-size: 22px;">详情</td>
                 <td style="font-size: 22px;">操作</td>
             </tr>
-            <e:forEach items="${list}" var="list">
+            <e:forEach items="${appCheckList}" var="list">
                 <tr>
                     <td>${list.id}</td>
                     <td>${list.name}</td>
@@ -102,8 +115,66 @@
                 </tr>
             </e:forEach>
         </table>
-    </fieldset>
         </div>
+        <div class="pageDiv" style="top:550px;">
+            <div class="gridItem" style="padding: 5px; width: 250px; float: left; text-align: center; height: 20px; font-size: 15px;" >
+                共<span id="spanTotalInfor">${totalApps}</span> 条记录&nbsp; &nbsp;
+                当前第<span id="spanPageNum">${curPage}</span>页
+                &nbsp; &nbsp; &nbsp; 共<span id="spanTotalPage">${totalPages}</span>页
+            </div>
+            <div class="gridItem" style="margin-left:25px;  padding: 5px; width: 400px; float: left; text-align: center; height: 20px; vertical-align: middle; font-size: 15px;">
+                <span id="spanFirst" >首页</span> &nbsp;
+                <span id="spanPre">上一页</span>&nbsp;
+                <span id="spanInput" style="margin: 0; padding: 0 0 4px 0; height:100%; ">
+                第<input id="Text1" type="text" class="TextBox" onkeyup="changepage()"   style="height:20px; text-align: center;width:50px" />页
+            </span>&nbsp;
+                <span id="spanNext">下一页</span> &nbsp;
+                <span  id="spanLast">尾页</span>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var theTable = document.getElementById("theTable");
+            var txtValue = document.getElementById("Text1").value;
+            function changepage() {
+                var txtValue2 = document.getElementById("Text1").value;
+                if (txtValue != txtValue2) {
+                    if (txtValue2 > pageCount()) {
+
+                    }
+                    else if (txtValue2 <= 0) {
+
+                    }
+                    else if (txtValue2 == 1) {
+                        first();
+                    }
+                    else if (txtValue2 == pageCount()) {
+                        last();
+                    }
+                    else {
+                        hideTable();
+                        page = txtValue2;
+                        pageNum2.value = page;
+
+                        currentRow = pageSize * page;
+                        maxRow = currentRow - pageSize;
+                        if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+                        for (var i = maxRow; i < currentRow; i++) {
+                            theTable.rows[i].style.display = '';
+                        }
+                        if (maxRow == 0) { preText(); firstText(); }
+                        showPage();
+                        nextLink();
+                        lastLink();
+                        preLink();
+                        firstLink();
+                    }
+
+                    txtValue = txtValue2;
+                }
+            }
+
+        </script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/pagging.js"></script>
     </div>
 </div>
 <div class="footer_bg" id="contact">
