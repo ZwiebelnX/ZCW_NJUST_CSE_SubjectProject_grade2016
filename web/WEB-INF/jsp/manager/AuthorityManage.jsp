@@ -1,4 +1,5 @@
-<%@ page import="com.NJUST.ZCW.Entities.AccountEntity" %><%--
+<%@ page import="com.NJUST.ZCW.Entities.AccountEntity" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Zwiebeln_Chan
   Date: 2018/9/7
@@ -41,6 +42,18 @@
                 }
             });
         });
+
+        //登录检查
+        if(${sessionScope.user == null}){
+            alert("请先登录！");
+            window.location.replace("<%=request.getContextPath()%>/index.login");
+        }
+
+        //权限检查
+        if(${!sessionScope.userType == "C"}){
+            alert("对不起，您没有权限进行操作！");
+            window.location.replace("<%=request.getContextPath()%>/toMainPage.login");
+        }
     </script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css">
 </head>
@@ -68,8 +81,21 @@
     <div class="container">
         <div class="welcomeDiv1"><h2 >申请权限列表</h2></div>
     <div id="form">
-    <fieldset>
-    <table width="600px;">
+    <table width="600px;" id="theTable">
+        <%
+
+
+            List Querylist = (List) request.getAttribute("Querylist");
+            if(Querylist != null){
+                int appsPerPage = 5;
+                int totalPages = Querylist.size() % appsPerPage == 0 ? Querylist.size() / appsPerPage : Querylist.size() / appsPerPage + 1;
+                pageContext.setAttribute("Querylist", Querylist);
+                pageContext.setAttribute("curPage", 1);
+                pageContext.setAttribute("totalPages", totalPages);
+                pageContext.setAttribute("totalQueries", Querylist.size());
+            }
+
+        %>
         <tr>
             <td style="font-size: 22px;">申请者</td>
             <td style="font-size: 22px;">申请权限</td>
@@ -89,7 +115,65 @@
             </tr>
         </e:forEach>
     </table>
-    </fieldset>
+        <div class="pageDiv">
+            <div class="gridItem" style="padding: 5px; width: 250px; float: left; text-align: center; height: 20px; font-size: 15px;" >
+                共<span id="spanTotalInfor">${totalQueries}</span> 条记录&nbsp; &nbsp;
+                当前第<span id="spanPageNum">${curPage}</span>页
+                &nbsp; &nbsp; &nbsp; 共<span id="spanTotalPage">${totalPages}</span>页
+            </div>
+            <div class="gridItem" style="margin-left:25px;  padding: 5px; width: 400px; float: left; text-align: center; height: 20px; vertical-align: middle; font-size: 15px;">
+                <span id="spanFirst" >首页</span> &nbsp;
+                <span id="spanPre">上一页</span>&nbsp;
+                <span id="spanInput" style="margin: 0; padding: 0 0 4px 0; height:100%; ">
+                第<input id="Text1" type="text" class="TextBox" onkeyup="changepage()"   style="height:20px; text-align: center;width:50px;color: black;" />页
+            </span>&nbsp;
+                <span id="spanNext">下一页</span> &nbsp;
+                <span  id="spanLast">尾页</span>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var theTable = document.getElementById("theTable");
+            var txtValue = document.getElementById("Text1").value;
+            function changepage() {
+                var txtValue2 = document.getElementById("Text1").value;
+                if (txtValue != txtValue2) {
+                    if (txtValue2 > pageCount()) {
+
+                    }
+                    else if (txtValue2 <= 0) {
+
+                    }
+                    else if (txtValue2 == 1) {
+                        first();
+                    }
+                    else if (txtValue2 == pageCount()) {
+                        last();
+                    }
+                    else {
+                        hideTable();
+                        page = txtValue2;
+                        pageNum2.value = page;
+
+                        currentRow = pageSize * page;
+                        maxRow = currentRow - pageSize;
+                        if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+                        for (var i = maxRow; i < currentRow; i++) {
+                            theTable.rows[i].style.display = '';
+                        }
+                        if (maxRow == 0) { preText(); firstText(); }
+                        showPage();
+                        nextLink();
+                        lastLink();
+                        preLink();
+                        firstLink();
+                    }
+
+                    txtValue = txtValue2;
+                }
+            }
+
+        </script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/pagging.js"></script>
 </div>
     </div>
 </div>
@@ -138,11 +222,4 @@
     </div>
 </div>
 </body>
-
-    <!--<script language="JavaScript">
-        function myrefresh() {
-            window.location.reload();
-        }
-        setTimeout('myrefresh()', 2000);
-    </script>-->
 </html>

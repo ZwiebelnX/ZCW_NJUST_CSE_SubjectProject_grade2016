@@ -32,19 +32,28 @@ public class AppUploadController {
     @RequestMapping(value = "appInfoUpgrade.upload")
     public String doAppUpload(MultipartHttpServletRequest request, HttpSession session,
                               HttpServletResponse response)throws Exception {
+        boolean flag = true;
         String path = request.getContextPath();
         MultipartFile apkFile = request.getFile("apkFile");
         MultipartFile iconFile = request.getFile("iconFile");
-        uploadAppInfo(request, session);
-        if(!iconFile.isEmpty()){
-            uploadAppIcon(request, iconFile, session);
+        flag = uploadAppInfo(request, session); //上传app基本信息
+        if(!iconFile.isEmpty() || flag){
+
+            flag = uploadAppApk(request, apkFile, session);//上传apk文件
         }
-        if(!apkFile.isEmpty()){
-            uploadAppApk(request, apkFile, session);
+        if(!apkFile.isEmpty() || flag){
+            flag = uploadAppIcon(request, iconFile, session); //上传app图标
         }
-        response.setContentType("text/html;charset=gb2312");
-        response.getWriter().print("<script language=\"javascript\">alert('Apk信息上传成功！请等待管理员审核。');" +
-                "window.location.href='" + path + "/toMainPage.login'</script>");
+
+        if(flag){
+            response.setContentType("text/html;charset=gb2312");
+            response.getWriter().print("<script language=\"javascript\">alert('Apk信息上传成功！请等待管理员审核。');" +
+                    "window.location.href='" + path + "/toMainPage.login'</script>");
+        }
+        else{
+            response.getWriter().print("<script language=\"javascript\">alert('Apk信息上传失败！请检查网络连接或稍后再试');" +
+                    "window.location.href='" + path + "/toMainPage.login'</script>");
+        }
         return null;
     }
 
