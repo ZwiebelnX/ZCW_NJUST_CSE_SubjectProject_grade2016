@@ -188,9 +188,17 @@
                             <td><button class="buttom" onclick="
                                     window.location.href=('<%=request.getContextPath()%>/appedit/${appList.id}.manager');
                                     ">更新</button>&nbsp;
-                                <button class="buttom" onclick="
-                                        window.location.href=('<%=request.getContextPath()%>/appdelete/${appList.id}.manager');
-                                        ">下架</button></td>
+                                <script type="text/javascript">
+                                    function deleteapp() {
+                                        if(window.confirm("您确定要下架该应用吗？"))
+                                        {
+                                            window.location.href=('<%=request.getContextPath()%>/AppManage.manager');
+                                        }else{
+                                            return false;
+                                        }
+                                    }
+                                </script>
+                                <button class="buttom" onclick="deleteapp()">下架</button></td>
                         </tr>
                     </e:forEach>
                 </table>
