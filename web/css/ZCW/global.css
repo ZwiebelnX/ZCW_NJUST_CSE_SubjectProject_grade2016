@@ -46,5 +46,18 @@ a:hover, .actionDiv li:hover{
     background-size:cover;
     height: 750px;
     width:100%;
+}
 
+.welcomeText{
+    position:absolute;
+    top:15%;
+    right:-100px;
+
+    width:auto;
+    height: 60px;
+
+    text-align: center;
+    vertical-align: middle;
+
+    color:whitesmoke;
 }

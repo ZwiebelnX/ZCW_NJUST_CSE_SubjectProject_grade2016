@@ -11,7 +11,7 @@ License URL: http//creativecommons.org/licenses/by/3.0/
 body {
 	font-family: 'open_sansregular';
 	background:#ffffff;
-	font-size: 100%;
+	/* font-size: 100%; */
 }
 /* start header */
 .header_bg{
@@ -43,7 +43,8 @@ nav ul {
 nav li {
 	display: inline-block;
 	width:100px;
-	margin: 10px 8px;
+	/* margin: 10px 8px; */
+	margin-top: 7px;
 }
 nav li.active a,nav li  a:hover{
 	text-decoration:none;

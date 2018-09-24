@@ -53,6 +53,7 @@ public class LoginController {
             accountEntity=db.getUser(accountEntity);
             session.setAttribute("user",accountEntity);
             session.setAttribute("userType", accountEntity.getIsManager());
+            session.setAttribute("userNickname", accountEntity.getNormalName());
             return "mainpage";
         }
         else{
