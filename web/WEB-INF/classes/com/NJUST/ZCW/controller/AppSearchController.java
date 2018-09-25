@@ -64,7 +64,7 @@ public class AppSearchController {
         return "search/AppSearch";
     }
 
-    //关键字查找APP
+    //类型查找APP
     @RequestMapping(value = "getappbytp/{tp}.search")
     public String getApplistbytp(Model model, @PathVariable String tp){
         List<ApplicationEntity> applist=appdb.getAllApps();
@@ -78,4 +78,20 @@ public class AppSearchController {
         return "search/AppSearch";
     }
 
+    //类型查找APP
+    @RequestMapping(value = "getappbykeyword.search")
+    public String getApplistbykeyword(Model model,HttpServletRequest request){
+        String keyword=request.getParameter("keyword");
+        System.out.println(keyword);
+        List<ApplicationEntity> applist=appdb.getAllApps();
+        List<ApplicationEntity> ans=new ArrayList<>();
+        if(keyword==null)return "search/AppSearch";
+        for(ApplicationEntity app:applist){
+            if(!app.getName().contains(keyword)||!app.getIntroduction().contains(keyword))
+                continue;
+            ans.add(app);
+        }
+        model.addAttribute("appList",ans);
+        return "search/AppSearch";
+    }
 }

@@ -253,6 +253,17 @@
                 </div>
             </li>
         </ul>
+
+        <form method="post" action="<%=request.getContextPath()%>/getappbykeyword.search">
+            <table style="z-index : 9999;">
+                <tr>
+                    <td><input type="text" name="keyword"></td>
+                    <td colspan="1"><input class="button" type="submit" value="搜索"></td>
+                </tr>
+            </table>
+        </form>
+
+
       <div class="clearfix"></div >
       </div>
       </div>

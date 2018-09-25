@@ -8,7 +8,6 @@ import net.dongliu.apk.parser.bean.ApkMeta;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -111,7 +110,6 @@ public class AppUploadController {
 
     private boolean uploadAppApk(HttpServletRequest request, MultipartFile file, HttpSession session) {
         try {
-            System.out.println("XX");
             if(!file.isEmpty()) {
                 //上传文件路径
                 String path = request.getServletContext().getRealPath("/apps/");
@@ -133,7 +131,6 @@ public class AppUploadController {
                 String version=apkMeta.getVersionName();
                 for(String i:list)
                     s=s+i+'\n';
-                System.out.println("应用上传路径:"+filepath.getAbsolutePath());
                 String minSdkVersion=apkMeta.getMinSdkVersion();
                 appdb.UpdateAppurl(app.getId(), request.getContextPath()+"/apps/"+filename, s,version,minSdkVersion);
             }
