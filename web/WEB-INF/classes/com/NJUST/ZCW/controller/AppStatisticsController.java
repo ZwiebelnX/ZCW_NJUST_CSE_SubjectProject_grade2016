@@ -24,7 +24,17 @@ public class AppStatisticsController {
     private ApplicationDB appdb;
 
     @RequestMapping(value = "app.statistics")
-    public String jumptostatisticspage(){
+    public String jumptostatisticspage(Model model){
+        List<ApplicationEntity> applist=appdb.getAllApps();
+        List<StaticInfo> ans=new ArrayList<>();
+        for(ApplicationEntity app:applist){
+            StaticInfo tmp = new StaticInfo();
+            tmp.setName(app.getName());
+            tmp.setValue(app.getVisitCnt());
+            ans.add(tmp);
+        }
+        model.addAttribute("Method","热度");
+        model.addAttribute("Staticdata",ans);
         return "statistics/AppStatisticForm";
     }
 
