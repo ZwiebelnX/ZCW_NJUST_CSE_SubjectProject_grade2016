@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 @Controller
@@ -36,13 +37,14 @@ public class AppUploadController {
         MultipartFile apkFile = request.getFile("apkFile");
         MultipartFile iconFile = request.getFile("iconFile");
         flag = uploadAppInfo(request, session); //上传app基本信息
+        if(!apkFile.isEmpty() || flag){
+            flag = uploadAppApk(request, apkFile, session); //上传app图标
+        }
         if(!iconFile.isEmpty() || flag){
 
-            flag = uploadAppApk(request, apkFile, session);//上传apk文件
+            //flag = uploadAppIcon(request, iconFile, session);//上传apk文件
         }
-        if(!apkFile.isEmpty() || flag){
-            flag = uploadAppIcon(request, iconFile, session); //上传app图标
-        }
+
 
         if(flag){
             response.setContentType("text/html;charset=gb2312");
@@ -126,6 +128,18 @@ public class AppUploadController {
                 ApplicationEntity app=(ApplicationEntity)session.getAttribute("app");
                 ApkFile apkFile=new ApkFile(filepath.getAbsolutePath());
                 ApkMeta apkMeta=apkFile.getApkMeta();
+
+                String iconame=apkMeta.getName()+".png";
+                path=request.getServletContext().getRealPath("/icos/");
+                File icofile=new File(path+File.separator+iconame);
+                System.out.println(icofile.toString());
+                FileOutputStream fileWriter = new FileOutputStream(icofile);
+                if(apkFile.getIconFile().getData() == null){
+                    appdb.UpdateAppIcourl(app.getId(),request.getContextPath() + "/imgs/appDafultLogo.jpg");
+                    return false;
+                }
+                fileWriter.write(apkFile.getIconFile().getData());
+                fileWriter.close();
                 List<String> list=apkMeta.getUsesPermissions();
                 String s="";
                 String version=apkMeta.getVersionName();
@@ -133,6 +147,7 @@ public class AppUploadController {
                     s=s+i+'\n';
                 String minSdkVersion=apkMeta.getMinSdkVersion();
                 appdb.UpdateAppurl(app.getId(), request.getContextPath()+"/apps/"+filename, s,version,minSdkVersion);
+                appdb.UpdateAppIcourl(app.getId(),request.getContextPath() + "/icos/" + iconame);
             }
         } catch (Exception e) {
             e.printStackTrace();
