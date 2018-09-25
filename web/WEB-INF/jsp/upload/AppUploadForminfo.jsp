@@ -249,10 +249,6 @@
                     alert("请输入App介绍！");
                     return false;
                 }
-                if(apkFile == null){
-                    alert("请选择apk文件！");
-                    return false;
-                }
                 return true;
 
             }
