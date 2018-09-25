@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/appStatisticForm.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/global.css" />
+    <script src="<%=request.getContextPath()%>/js/echarts.min.js"></script>
 </head>
 <body>
 <div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
@@ -151,7 +152,7 @@
 <div class="slider_bg" style="min-height: 650px; width:100%;">
     <div class="container" id="mainContainer">
         <div class="searchDiv">
-            <h2>应用统计（浏览热度）</h2>
+            <h2>应用统计</h2>
             <hr style="padding: 0;margin-top: 0; margin-bottom:5px;" />
             <form method="post" action="<%=request.getContextPath()%>/getapp.statistics">
                 <table>
@@ -162,24 +163,39 @@
                     <tr>
                         <th>类型:</th>
                         <td>
-                            <select name="tp" style="border-radius: 5px;">
-                                <option value="全部">全部</option>
-                                <option value="游戏">游戏</option>
-                                <option value="视频">视频</option>
-                                <option value="聊天">聊天</option>
-                                <option value="浏览器">浏览器</option>
-                                <option value="网购金融">网购金融</option>
-                                <option value="生活">生活</option>
-                                <option value="新闻">新闻</option>
-                                <option value="摄影">摄影</option>
-                                <option value="美食">美食</option>
-                                <option value="音乐">音乐</option>
-                            </select>
                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="tp" value="游戏" />游戏
+                            <input type="checkbox" name="tp" value="视频" /> 视频</td>
+                          <td>  <input type="checkbox" name="tp" value="聊天" />聊天
+                            <input type="checkbox" name="tp" value="浏览器" />浏览器</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="tp" value="网购金融" />网购金融
+                            <input type="checkbox" name="tp" value="生活" /> 生活</td>
+                        <td>
+                            <input type="checkbox" name="tp" value="新闻" />新闻
+                            <input type="checkbox" name="tp" value="摄影" />摄影</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="tp" value="美食" />美食
+                            <input type="checkbox" name="tp" value="音乐" /> 音乐</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th>发布商:</th>
                         <td><input type="text" name="publisher"></td>
+                    </tr>
+                    <tr>
+                        <th>搜索方式:</th>
+                        <td>
+                        <select name="method" style="border-radius: 5px;">
+                        <option value="热度">热度</option>
+                            <option value="数量统计">数量统计</option></select></td>
                     </tr>
                     <tr>
                         <td colspan="2"> <input class="button" type="submit" value="搜索"></td>
@@ -187,12 +203,66 @@
                 </table>
             </form>
         </div>
-        <div class="chartDiv">
-            <c:if test="${not empty chartURLPie}">
-                <img src="${chartURLPie}" width=600 height=400 border=0
-                     color=gray>
-            </c:if>
-        </div>
+        <div class="chartDiv" id="chart" ></div>
+            <script type="text/javascript">
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('chart'),'light');
+
+                // 指定图表的配置项和数据
+                var option = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        x: 'left',
+                        textStyle:{
+                            color:'white'
+                        },
+                        //data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                        data: [<c:forEach items="${Staticdata}" var="staticdata">'${staticdata.name}',</c:forEach>]
+                    },
+                    series: [
+                        {
+                            name:'${Method}',
+                            type:'pie',
+                            radius: ['50%', '70%'],
+                            avoidLabelOverlap: false,
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: '30',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data:[
+                                /*{value:335, name:'直接访问'},
+                                {value:310, name:'邮件营销'},
+                                {value:234, name:'联盟广告'},
+                                {value:135, name:'视频广告'},
+                                {value:1548, name:'搜索引擎'}*/
+                                <c:forEach items="${Staticdata}" var="staticdata">{value:${staticdata.value},name:'${staticdata.name}'},</c:forEach>
+                            ]
+                        }
+                    ]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            </script>
+
         <div class="clearfix"></div >
     </div>
 </div>

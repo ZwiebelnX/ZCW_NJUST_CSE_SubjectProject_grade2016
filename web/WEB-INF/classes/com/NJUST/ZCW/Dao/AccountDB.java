@@ -281,4 +281,14 @@ public class AccountDB {
         tran.commit();
         HibernateSessionFactory.closeSession();
     }
+    public void Directchgpwd(String pwd,int id){
+        Transaction tran = null;
+        Session session = HibernateSessionFactory.currentSession();
+        tran = session.beginTransaction();
+        AccountEntity accountEntity=session.get(AccountEntity.class,id);
+        accountEntity.setPwd(pwd);
+        session.save(accountEntity);
+        tran.commit();
+        HibernateSessionFactory.closeSession();
+    }
 }

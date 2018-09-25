@@ -241,4 +241,29 @@ public class ManagerController {
             model.addAttribute("applist",appdb.getAppbyPublisherid(ae.getUserId()));
         return "manager/manageapplist";
     }
+
+    //修改密码
+    @RequestMapping(value = "pwdchg.manager")
+    public String  dochgpwd(Model model,HttpServletRequest request,HttpSession session,HttpServletResponse response)throws Exception{
+        String a=request.getParameter("pwd");
+        String b=request.getParameter("repwd");
+        AccountEntity accountEntity=(AccountEntity) session.getAttribute("user");
+        int id=accountEntity.getUserId();
+        model.addAttribute("personal",new PersonalInformationInfo());
+        System.out.println("pwd="+b+"ID="+id);
+        if(a.equals(accountEntity.getPwd())){
+            db.Directchgpwd(b,id);
+            String path = request.getContextPath();
+            response.setContentType("text/html;charset=gb2312");
+            response.getWriter().print("<script language=\"javascript\">alert('修改成功！');" +
+                    "window.location.href='" + path + "accountmanage.manager'</script>");
+            return null;
+        }else{
+            String path = request.getContextPath();
+            response.setContentType("text/html;charset=gb2312");
+            response.getWriter().print("<script language=\"javascript\">alert('密码错误！');" +
+                    "window.location.href='" + path + "accountmanage.manager'</script>");
+            return null;
+        }
+    }
 }

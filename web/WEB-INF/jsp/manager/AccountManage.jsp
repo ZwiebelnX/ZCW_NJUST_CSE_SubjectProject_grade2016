@@ -225,11 +225,11 @@
     <table>
         <tr>
             <td width="120" style="color: aliceblue;">旧密码：</td>
-            <td><input type="password" id="pwd"></td>
+            <td><input type="password" id="pwd" name="pwd"></td>
         </tr>
         <tr>
             <td style="color: aliceblue;">新密码：</td>
-            <td><input type="password" id="repwd"></td>
+            <td><input type="password" id="repwd" name="repwd"></td>
         </tr>
         <tr>
             <td>&nbsp;</td>
