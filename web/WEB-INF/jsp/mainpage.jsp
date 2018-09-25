@@ -152,6 +152,84 @@
   </div>
   <div class="slider_bg" style="min-height: 650px; width:100%;">
     <div class="container" id="mainContainer">
+<fieldset>
+    <h3>向您推荐-游戏</h3>
+    <table>
+        <c:forEach items="${list1}" var="List1">
+            <tr>
+                <td>${List1.name}</td>
+                <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                <td><a href="${List1.downloadUrl}">点击下载</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+</fieldset>
+        <fieldset>
+            <h3>向您推荐-视频</h3>
+            <table>
+                <c:forEach items="${list2}" var="List1">
+                    <tr>
+                        <td>${List1.name}</td>
+                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </fieldset>
+        <fieldset>
+            <h3>向您推荐-聊天</h3>
+            <table>
+                <c:forEach items="${list3}" var="List1">
+                    <tr>
+                        <td>${List1.name}</td>
+                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </fieldset>
+        <fieldset>
+            <h3>向您推荐-浏览器</h3>
+            <table>
+                <c:forEach items="${list4}" var="List1">
+                    <tr>
+                        <td>${List1.name}</td>
+                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </fieldset>
+        <fieldset>
+            <h3>向您推荐-网购金融</h3>
+            <table>
+                <c:forEach items="${list5}" var="List1">
+                    <tr>
+                        <td>${List1.name}</td>
+                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </fieldset>
+        <fieldset>
+            <h3>向您推荐-音乐</h3>
+            <table>
+                <c:forEach items="${list6}" var="List1">
+                    <tr>
+                        <td>${List1.name}</td>
+                        <td><img src="${List1.img}" style="width:50px;height: 50px;"  href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </fieldset>
       <div class="mainDiv">
           <div class="welcomeDiv">
             <h2><strong>欢迎使用：${pageScope.nickName}</strong></h2>

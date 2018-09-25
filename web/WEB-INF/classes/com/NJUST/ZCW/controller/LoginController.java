@@ -1,7 +1,9 @@
 package com.NJUST.ZCW.controller;
 
 import com.NJUST.ZCW.Dao.AccountDB;
+import com.NJUST.ZCW.Dao.ApplicationDB;
 import com.NJUST.ZCW.Entities.AccountEntity;
+import com.NJUST.ZCW.Entities.ApplicationEntity;
 import com.NJUST.ZCW.domain.LoginInfo;
 import com.NJUST.ZCW.service.login.MailSystem;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -24,6 +27,8 @@ public class LoginController {
 
     @Resource
     private AccountDB db;
+
+
 
     /*
     展示登录页面
@@ -43,7 +48,7 @@ public class LoginController {
     //TODO Ajax响应
     @RequestMapping(value = "login.login")
     public String Login(@ModelAttribute LoginInfo loginInfo,HttpSession session, HttpServletRequest request,
-                        HttpServletResponse response) throws Exception{
+                        HttpServletResponse response,Model model) throws Exception{
 
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setUserName(loginInfo.getUsername());
@@ -54,6 +59,41 @@ public class LoginController {
             session.setAttribute("user",accountEntity);
             session.setAttribute("userType", accountEntity.getIsManager());
             session.setAttribute("userNickname", accountEntity.getNormalName());
+
+            ApplicationDB appdb=new ApplicationDB();
+            List<ApplicationEntity> applist=appdb.getAllApps();
+            List<ApplicationEntity> ans1=new ArrayList<ApplicationEntity>();
+            List<ApplicationEntity> ans2=new ArrayList<ApplicationEntity>();
+            List<ApplicationEntity> ans3=new ArrayList<ApplicationEntity>();
+            List<ApplicationEntity> ans4=new ArrayList<ApplicationEntity>();
+            List<ApplicationEntity> ans5=new ArrayList<ApplicationEntity>();
+            List<ApplicationEntity> ans6=new ArrayList<ApplicationEntity>();
+            int l=applist.size();
+            l--;
+            for(;l>=0;l--){
+                ApplicationEntity tmp=applist.get(l);
+                System.out.println(tmp.getName()+":"+tmp.getType());
+                if(tmp.getType().equals("游戏")&&ans1.size()<=2)
+                    ans1.add(tmp);
+                if(tmp.getType().equals("视频")&&ans2.size()<=2)
+                    ans2.add(tmp);
+                if(tmp.getType().equals("聊天")&&ans3.size()<=2)
+                    ans3.add(tmp);
+                if(tmp.getType().equals("浏览器")&&ans4.size()<=2)
+                    ans4.add(tmp);
+                if(tmp.getType().equals("网购金融")&&ans5.size()<=2)
+                    ans5.add(tmp);
+                if(tmp.getType().equals("音乐")&&ans6.size()<=2)
+                    ans6.add(tmp);
+            }
+            model.addAttribute("list1",ans1);
+            model.addAttribute("list2",ans2);
+            model.addAttribute("list3",ans3);
+            model.addAttribute("list4",ans4);
+            model.addAttribute("list5",ans5);
+            model.addAttribute("list6",ans6);
+
+
             return "mainpage";
         }
         else{
@@ -106,7 +146,38 @@ public class LoginController {
 
     //跳转至个人主页
     @RequestMapping(value="toMainPage.login")
-    public String toMainPage(){
+    public String toMainPage(Model model){
+        ApplicationDB appdb=new ApplicationDB();
+        List<ApplicationEntity> applist=appdb.getAllApps();
+        List<ApplicationEntity> ans1=new ArrayList<ApplicationEntity>();
+        List<ApplicationEntity> ans2=new ArrayList<ApplicationEntity>();
+        List<ApplicationEntity> ans3=new ArrayList<ApplicationEntity>();
+        List<ApplicationEntity> ans4=new ArrayList<ApplicationEntity>();
+        List<ApplicationEntity> ans5=new ArrayList<ApplicationEntity>();
+        List<ApplicationEntity> ans6=new ArrayList<ApplicationEntity>();
+        int l=applist.size();
+        l--;
+        for(;l>=0;l--){
+            ApplicationEntity tmp=applist.get(l);
+            if(tmp.getType().equals("游戏")&&ans1.size()<=2)
+                ans1.add(tmp);
+            if(tmp.getType().equals("视频")&&ans2.size()<=2)
+                ans2.add(tmp);
+            if(tmp.getType().equals("聊天")&&ans3.size()<=2)
+                ans3.add(tmp);
+            if(tmp.getType().equals("浏览器")&&ans4.size()<=2)
+                ans4.add(tmp);
+            if(tmp.getType().equals("网购金融")&&ans5.size()<=2)
+                ans5.add(tmp);
+            if(tmp.getType().equals("音乐")&&ans6.size()<=2)
+                ans6.add(tmp);
+        }
+        model.addAttribute("list1",ans1);
+        model.addAttribute("list2",ans2);
+        model.addAttribute("list3",ans3);
+        model.addAttribute("list4",ans4);
+        model.addAttribute("list5",ans5);
+        model.addAttribute("list6",ans6);
         return "mainpage";
     }
 
