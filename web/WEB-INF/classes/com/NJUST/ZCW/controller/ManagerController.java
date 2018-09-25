@@ -74,7 +74,6 @@ public class ManagerController {
             AccountEntity accountEntity=db.getUser(tmp);
             session.setAttribute("nickname", accountEntity.getNormalName());
             model.addAttribute("account",accountEntity.getNormalName());
-            //System.out.println(accountEntity.getUserName()+accountEntity.getNormalName());
             session.setAttribute("user",accountEntity);
             session.setAttribute("userid",accountEntity.getUserId());
             return "manager/jumptpAccuntManage";
@@ -115,7 +114,6 @@ public class ManagerController {
     @RequestMapping(value = "authority_ac/{idd}.manager")
     public String acAuthoritychange(Model model, @PathVariable String idd){
         int id=Integer.parseInt(idd);
-        System.out.println("perper"+id);
         db.ChangeAuthority(id);
         model.addAttribute("Querylist",db.getAllAuthorityQuery());
         return "manager/AuthorityManage";
@@ -123,7 +121,6 @@ public class ManagerController {
     @RequestMapping(value = "authority_wa/{idd}.manager")//执行拒绝
     public String waAuthoritychange(Model model, @PathVariable String idd){
         int id=Integer.parseInt(idd);
-        System.out.println("delete"+id);
         db.deleteAuthority(id);
         model.addAttribute("Querylist",db.getAllAuthorityQuery());
         return "manager/AuthorityManage";
@@ -228,7 +225,6 @@ public class ManagerController {
         File filepath=new File( request.getServletContext().getRealPath("")+app.getDownloadUrl());
 
         File imgpath=new File(request.getServletContext().getRealPath("")+app.getImg());
-        //System.out.println(filepath);
         if(filepath.exists()&&filepath.isFile())
             filepath.delete();
         if(imgpath.exists()&&imgpath.isFile())
@@ -236,9 +232,9 @@ public class ManagerController {
         appdb.deleteapp(app);
         AccountEntity ae=(AccountEntity) session.getAttribute("user");
         if(ae.getIsManager().equals("C"))
-            model.addAttribute("applist",appdb.getAllApps());
+            model.addAttribute("appList",appdb.getAllApps());
         else if(ae.getIsManager().equals("K"))
-            model.addAttribute("applist",appdb.getAppbyPublisherid(ae.getUserId()));
+            model.addAttribute("appList",appdb.getAppbyPublisherid(ae.getUserId()));
         return "manager/manageapplist";
     }
 
@@ -250,7 +246,6 @@ public class ManagerController {
         AccountEntity accountEntity=(AccountEntity) session.getAttribute("user");
         int id=accountEntity.getUserId();
         model.addAttribute("personal",new PersonalInformationInfo());
-        System.out.println("pwd="+b+"ID="+id);
         if(a.equals(accountEntity.getPwd())){
             db.Directchgpwd(b,id);
             String path = request.getContextPath();

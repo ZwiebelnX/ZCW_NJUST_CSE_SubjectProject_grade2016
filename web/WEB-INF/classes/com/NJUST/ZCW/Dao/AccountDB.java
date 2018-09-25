@@ -29,11 +29,9 @@ public class AccountDB {
             //List存储查询结果
             List<AccountEntity> list = query.list();
             if(list.isEmpty()){
-                System.out.println("账户不存在");
                 return false;
             }
             else {
-                System.out.println("账户存在");
                 return true;
             }
         }catch(Exception e){
@@ -63,8 +61,6 @@ public class AccountDB {
                     id=a.getUserId();
             }
             id++;
-            System.out.println("正在尝试注册");
-            System.out.println(tmp.getUserName()+"??"+id);
             tmp.setIsManager("N");
             tmp.setAuthority("01011000");//对应上传 查询 管理 统计 分析 用户管理 权限管理和请求审核
             tmp.setUserId(id);//01011000 普通用户_N 11111000开发商用户_K 11111111管理员_C
@@ -99,7 +95,6 @@ public class AccountDB {
         }
     }
     public  void UpdatePersonalInformation(AccountEntity tmp){
-        System.out.println("ID为:"+tmp.getUserId()+"NICKNAME="+tmp.getUserName());
         Transaction tran = null;
         Session session = HibernateSessionFactory.currentSession();
         tran = session.beginTransaction();
@@ -123,7 +118,6 @@ public class AccountDB {
                     return false;
             }
             id++;
-            System.out.println("正在尝试插入");
             AuthorityrequireEntity tmp=new AuthorityrequireEntity();
             tmp.setAskerId(asker);
             tmp.setWantAuthority(tp);
@@ -166,7 +160,6 @@ public class AccountDB {
         AccountEntity ar=session.get(AccountEntity.class,id);
         ar.setIsManager(str);
 
-        //System.out.println(t+";"+u);
 
         session.update(ar);
         tran.commit();
@@ -184,10 +177,8 @@ public class AccountDB {
         AccountEntity ae=session.get(AccountEntity.class,u);
         ae.setIsManager(t);
 
-        //System.out.println(t+";"+u);
 
         session.update(ae);
-        //System.out.println(t+";"+u);
 
         //session.update(ae);
         tran.commit();

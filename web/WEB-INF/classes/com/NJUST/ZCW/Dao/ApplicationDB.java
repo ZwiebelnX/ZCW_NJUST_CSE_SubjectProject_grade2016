@@ -132,7 +132,6 @@ public class ApplicationDB {
     }
     public void Updateapp(ApplicationEntity app){
         try{
-            System.out.println("尝试更新APP"+app.getId());
             Transaction tran = null;
             Session session = HibernateSessionFactory.currentSession();
             tran = session.beginTransaction();
