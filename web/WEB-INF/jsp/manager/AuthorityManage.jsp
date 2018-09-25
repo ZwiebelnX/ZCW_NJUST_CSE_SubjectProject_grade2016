@@ -187,9 +187,17 @@
                 <td><button class="buttom" onclick="
                         window.location.href=('<%=request.getContextPath()%>/authority_ac/${Querylist.id}.manager');
                         ">同意</button>&nbsp;
-                    <button class="buttom" onclick="
-                            window.location.href=('<%=request.getContextPath()%>/authority_wa/${Querylist.id}.manager');
-                            ">拒绝</button></td>
+                    <script type="text/javascript">
+                        function refuse() {
+                            if(window.confirm("您确定要拒绝该申请吗？"))
+                            {
+                                window.location.href=('<%=request.getContextPath()%>/authority_wa/${Querylist.id}.manager');
+                            }else{
+                                return false;
+                            }
+                        }
+                    </script>
+                    <button class="buttom" onclick="refuse() ">拒绝</button></td>
             </tr>
         </e:forEach>
     </table>

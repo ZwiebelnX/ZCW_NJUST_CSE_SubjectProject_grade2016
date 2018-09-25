@@ -68,7 +68,6 @@
     <div class="container" id="mainContainer">
         <div class="titleText">
             <h1 style="margin-bottom: 30px;"><strong>找回密码</strong></h1>
-            <h4>点击下面的链接，向您的邮箱发送一封验证邮件</h4>
         </div>
         <div class="warningText">
             <h3 style="padding: 0;margin: 0;"><strong>${msg}</strong></h3>
@@ -78,11 +77,11 @@
                 <form action="postEmail.login">
                     <table>
                         <tr>
-                            <td><p>请输入您的账号：</p></td>
+                            <td><p>请输入用户名：</p></td>
                             <td><input type="text" name="account" id="account"></td>
                         </tr>
                         <tr align="center">
-                            <td colspan="2"><input class="button" type="submit" value="发送邮件"></td>
+                            <td colspan="2" style="padding-top: 36px;"><input class="button" type="submit" value="发送验证邮件"></td>
                         </tr>
                     </table>
                 </form>

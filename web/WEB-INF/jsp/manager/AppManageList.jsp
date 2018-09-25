@@ -202,6 +202,7 @@
                                                 window.location.href=('<%=request.getContextPath()%>/askforC/${Accountlist.userId}.manager');
                                                 ">更改成管理员</button>
                                     </td>
+
                                     <td>
                                         <button class="button" style="width: 130px" onclick="
                                                 window.location.href=('<%=request.getContextPath()%>/accountdelete/${Accountlist.userId}.manager');
