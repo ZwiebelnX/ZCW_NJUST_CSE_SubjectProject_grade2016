@@ -80,15 +80,14 @@
                         <td><from:password id="password" path="password"  placeholder="请输入密码" class="ipt"/> </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: right;"><a href="signUpPage.login">用户注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="forgetPassword.login">找回密码&nbsp;</a></td>
+                        <td style="text-align: right;"><a href="signUpPage.login">用户注册</a></td>
+                        <td style="text-align: right;"><a href="forgetPassword.login">找回密码&nbsp;</a></td>
                      </tr>
                     <tr>
-                        <td style="text-align: center;"><img src="<%=request.getContextPath()%>/imgs/Male.gif"/></td>
-                        <td  style="text-align: center;"><input type="submit" value="登录" class="buttom"/></td>
+                        <td colspan="2" style="text-align: center;"><input type="submit" value="登录" class="buttom"/></td>
                     </tr>
                     <tr>
-                        <td style="text-align: center"><img src="<%=request.getContextPath()%>/imgs/Female.gif"/>
-                        <td  style="text-align: center;"><input type="reset" value="重置" class="buttom" /></td>
+                        <td colspan="2" style="text-align: center;"><input type="reset" value="重置" class="buttom" /></td>
                     </tr>
                 </table>
             </from:form>

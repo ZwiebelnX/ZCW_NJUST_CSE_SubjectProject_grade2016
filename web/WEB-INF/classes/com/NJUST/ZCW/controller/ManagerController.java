@@ -34,7 +34,9 @@ public class ManagerController {
         return "manager/AccountAuthority";}
 
         @RequestMapping(value = "personal.manager")
-    public String doUpdatepersonalinformation(@ModelAttribute PersonalInformationInfo personalInformationInfo, Model model, HttpSession session){
+    public String doUpdatepersonalinformation(@ModelAttribute PersonalInformationInfo personalInformationInfo,
+                                              Model model, HttpSession session,
+                                              HttpServletRequest request, HttpServletResponse response) throws Exception{
             AccountEntity tmp=new AccountEntity();
             if(personalInformationInfo.getAddress()==null)
                 tmp.setAddress("");
@@ -76,7 +78,12 @@ public class ManagerController {
             model.addAttribute("account",accountEntity.getNormalName());
             session.setAttribute("user",accountEntity);
             session.setAttribute("userid",accountEntity.getUserId());
-            return "manager/jumptpAccuntManage";
+
+            String path = request.getContextPath();
+            response.setContentType("text/html;charset=gb2312");
+            response.getWriter().print("<script language=\"javascript\">alert('个人信息更新成功！');" +
+                    "window.location.href='" + path + "/accountmanage.manager'</script>");
+            return null;
     }
 
     @RequestMapping(value = "askfor{authority}.manager")
@@ -104,11 +111,6 @@ public class ManagerController {
     public String doGetAuthorityQuery(Model model){
         model.addAttribute("Querylist",db.getAllAuthorityQuery());
         return "manager/AuthorityManage";
-    }
-
-    @RequestMapping(value = "AccountManagee.manager")
-    public String doGetUserInformation(){
-        return "manager/jumptpAccuntManage";
     }
 
     @RequestMapping(value = "authority_ac/{idd}.manager")

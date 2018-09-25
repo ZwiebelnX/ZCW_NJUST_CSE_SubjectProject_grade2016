@@ -55,6 +55,14 @@
 <div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
     <div class="container">
         <div class="row header text-center specials">
+            <div class="searchBox">
+                <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/searchbox.css" />
+                <form method="post" action="<%=request.getContextPath()%>/getappbykeyword.search">
+                    <input type="text" placeholder="请输入您要搜索的内容...">
+                    <button type="submit"></button>
+                </form>
+            </div>
             <div class="h_logo">
                 <a href="<%=request.getContextPath()%>/toMainPage.login"><img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a>
             </div>
@@ -87,7 +95,7 @@
                         <c:when test="${sessionScope.userType == 'K'}">
                             <li>
                                 <div class="index-nav-frame-line active" tabindex="-1">
-                                    管理
+                                    开发
                                     <div class="index-nav-frame-line-center">
                                         <div class="index-nav-frame-line-li">
                                             <a href="<%=request.getContextPath()%>/AppUpload.upload">应用上传</a>
@@ -121,7 +129,7 @@
                     <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
                     <li><a href="<%=request.getContextPath()%>/accountmanage.manager">个人中心</a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/aboutus.login">关于我们</a></li>
+                    <li></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
                 <div class="welcomeText">
@@ -155,46 +163,44 @@
             <h2>应用统计</h2>
             <hr style="padding: 0;margin-top: 0; margin-bottom:5px;" />
             <form method="post" action="<%=request.getContextPath()%>/getapp.statistics">
-                <table>
+                <table class="searchTable">
                     <tr>
                         <th>关键字:</th>
-                        <td><input type="text" name="keyword"></td>
+                        <td colspan="6" style="color:black"><input type="text" name="keyword"></td>
                     </tr>
                     <tr>
-                        <th>类型:</th>
-                        <td>
-                        </td>
+                        <th rowspan="5">类型:</th>
+                        <td><input type="checkbox" name="tp" value="游戏" />游戏</td>
+                        <td><input type="checkbox" name="tp" value="视频" />视频</td>
+
                     </tr>
                     <tr>
-                        <td>
-                            <input type="checkbox" name="tp" value="游戏" />游戏
-                            <input type="checkbox" name="tp" value="视频" /> 视频</td>
-                          <td>  <input type="checkbox" name="tp" value="聊天" />聊天
-                            <input type="checkbox" name="tp" value="浏览器" />浏览器</td>
+
+                        <td><input type="checkbox" name="tp" value="摄影" />摄影</td>
+                        <td><input type="checkbox" name="tp" value="美食" />美食</td>
+
                     </tr>
                     <tr>
-                        <td>
-                            <input type="checkbox" name="tp" value="网购金融" />网购金融
-                            <input type="checkbox" name="tp" value="生活" /> 生活</td>
-                        <td>
-                            <input type="checkbox" name="tp" value="新闻" />新闻
-                            <input type="checkbox" name="tp" value="摄影" />摄影</td>
+                        <td><input type="checkbox" name="tp" value="聊天" />聊天</td>
+                        <td><input type="checkbox" name="tp" value="浏览器" />浏览器</td>
                     </tr>
                     <tr>
-                        <td>
-                            <input type="checkbox" name="tp" value="美食" />美食
-                            <input type="checkbox" name="tp" value="音乐" /> 音乐</td>
-                        <td></td>
+                        <td><input type="checkbox" name="tp" value="生活" />生活</td>
+                        <td><input type="checkbox" name="tp" value="新闻" />新闻</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="tp" value="网购金融" />网购金融</td>
+                        <td><input type="checkbox" name="tp" value="音乐" />音乐</td>
                     </tr>
                     <tr>
                         <th>发布商:</th>
-                        <td><input type="text" name="publisher"></td>
+                        <td colspan="6" style="color:black"><input type="text" name="publisher"></td>
                     </tr>
                     <tr>
                         <th>搜索方式:</th>
-                        <td>
+                        <td colspan="2" style="color:black">
                         <select name="method" style="border-radius: 5px;">
-                        <option value="热度">热度</option>
+                        <option value="热度" >热度</option>
                             <option value="数量统计">数量统计</option></select></td>
                     </tr>
                     <tr>

@@ -276,10 +276,6 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "aboutus.login")
-    public String AboutUs(){
-        return "aboutus";
-    }
 
     private String getRandomNumber() {
         Random random = new Random();

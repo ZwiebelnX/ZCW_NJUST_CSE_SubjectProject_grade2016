@@ -62,6 +62,14 @@
 <div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
     <div class="container">
         <div class="row header text-center specials">
+            <div class="searchBox">
+                <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/searchbox.css" />
+                <form method="post" action="<%=request.getContextPath()%>/getappbykeyword.search">
+                    <input type="text" placeholder="请输入您要搜索的内容...">
+                    <button type="submit"></button>
+                </form>
+            </div>
             <div class="h_logo">
                 <a href="<%=request.getContextPath()%>/toMainPage.login"><img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a>
             </div>
@@ -94,7 +102,7 @@
                         <e:when test="${sessionScope.userType == 'K'}">
                             <li>
                                 <div class="index-nav-frame-line active" tabindex="-1">
-                                    管理
+                                    开发
                                     <div class="index-nav-frame-line-center">
                                         <div class="index-nav-frame-line-li">
                                             <a href="<%=request.getContextPath()%>/AppUpload.upload">应用上传</a>
@@ -128,7 +136,7 @@
                     <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
                     <li><a href="<%=request.getContextPath()%>/accountmanage.manager">个人中心</a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/aboutus.login">关于我们</a></li>
+                    <li></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
                 <div class="welcomeText">
@@ -180,12 +188,6 @@
                 <td style="color: aliceblue;">应用名称 <span style="color: red;">*</span> ：</td>
                 <td width="220"><input type="text" name="appname" value="${aname}"/></td>
                 <td width="200">&nbsp;</td>
-                <e:choose>
-                    <e:when test="${pageScope.userType == 'K'}">
-            <td style="color: aliceblue;">更新图标<span style="color: red;">*</span> ：</td>
-            <td width="220;"style="text-align: right;"><input type="file" name="iconFile" style="width: 220px; height: 27px; color: #05b7a7;font-size: 15px;"/></td>
-                    </e:when>
-                </e:choose>
             </tr>
             <tr>
                 <td style="color: aliceblue;">应用类型 <span style="color: red;">*</span> ：</td>

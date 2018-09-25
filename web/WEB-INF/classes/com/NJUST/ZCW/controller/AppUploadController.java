@@ -32,20 +32,12 @@ public class AppUploadController {
     @RequestMapping(value = "appInfoUpgrade.upload")
     public String doAppUpload(MultipartHttpServletRequest request, HttpSession session,
                               HttpServletResponse response)throws Exception {
-        boolean flag = true;
         String path = request.getContextPath();
         MultipartFile apkFile = request.getFile("apkFile");
-        MultipartFile iconFile = request.getFile("iconFile");
-        flag = uploadAppInfo(request, session); //上传app基本信息
+        boolean flag = uploadAppInfo(request, session); //上传app基本信息
         if(!apkFile.isEmpty() || flag){
             flag = uploadAppApk(request, apkFile, session); //上传app图标
         }
-        if(!iconFile.isEmpty() || flag){
-
-            //flag = uploadAppIcon(request, iconFile, session);//上传apk文件
-        }
-
-
         if(flag){
             response.setContentType("text/html;charset=gb2312");
             response.getWriter().print("<script language=\"javascript\">alert('Apk信息上传成功！请等待管理员审核。');" +
@@ -56,37 +48,6 @@ public class AppUploadController {
                     "window.location.href='" + path + "/toMainPage.login'</script>");
         }
         return null;
-    }
-
-    private boolean uploadAppIcon(HttpServletRequest request, MultipartFile file, HttpSession session) {
-        ApplicationEntity app=(ApplicationEntity)session.getAttribute("app");
-        try {
-            if(!file.isEmpty()) {
-                //上传文件路径
-                String path = request.getServletContext().getRealPath("/icos/");
-                //上传文件名
-                String filename = file.getOriginalFilename();
-                String suffix = filename.substring(filename.lastIndexOf(".") + 1);
-                filename=String.valueOf(app.getId());
-                filename=filename+"."+suffix;
-
-                if(!(suffix.equals("png")||suffix.equals("jpg")))
-                    return false;
-                File filepath = new File(path, filename);
-                //判断路径是否存在，如果不存在就创建一个
-                if (!filepath.getParentFile().exists()) {
-                    filepath.getParentFile().mkdirs();
-                }
-                if(filepath.exists())filepath.delete();
-                //将上传文件保存到一个目标文件当中
-                file.transferTo(new File(path + File.separator + filename));
-                appdb.UpdateAppIcourl(app.getId(),request.getContextPath()+"/icos/"+filename);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
     }
 
     private boolean uploadAppInfo(HttpServletRequest request,HttpSession session){

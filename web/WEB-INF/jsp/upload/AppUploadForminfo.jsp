@@ -53,6 +53,14 @@
 <div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
     <div class="container">
         <div class="row header text-center specials">
+            <div class="searchBox">
+                <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/searchbox.css" />
+                <form method="post" action="<%=request.getContextPath()%>/getappbykeyword.search">
+                    <input type="text" placeholder="请输入您要搜索的内容...">
+                    <button type="submit"></button>
+                </form>
+            </div>
             <div class="h_logo">
                 <a href="<%=request.getContextPath()%>/toMainPage.login"><img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a>
             </div>
@@ -85,7 +93,7 @@
                         <c:when test="${sessionScope.userType == 'K'}">
                             <li>
                                 <div class="index-nav-frame-line active" tabindex="-1">
-                                    管理
+                                    开发
                                     <div class="index-nav-frame-line-center">
                                         <div class="index-nav-frame-line-li">
                                             <a href="<%=request.getContextPath()%>/AppUpload.upload">应用上传</a>
@@ -119,7 +127,7 @@
                     <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
                     <li><a href="<%=request.getContextPath()%>/accountmanage.manager">个人中心</a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/aboutus.login">关于我们</a></li>
+                    <li></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
                 <div class="welcomeText">
@@ -157,8 +165,6 @@
                         <td style="color: aliceblue;text-align: right;">应用名称 <span style="color: red;">*</span> ：</td>
                         <td><input type="text" name="appname" id="appname" /></td>
                         <td width="292px;">&nbsp;</td>
-                        <td style="color: aliceblue; ">图标 <span style="color: red;">*</span> ：</td>
-                        <td><input type="file" name="iconFile" style="width: 220px; color: #05b7a7"/></td>
                     </tr>
                     <tr>
                         <td style="color: aliceblue; ">应用类型 <span style="color: red;">*</span> ：</td>
@@ -183,7 +189,7 @@
                         <td><input type="text" name="limitAge" /></td>
                         <td>&nbsp;</td>
                         <td style="color: aliceblue; ">Apk文件 <span style="color: red;">*</span> ：</td>
-                        <td><input type="file" name="apkFile" style="width: 220px; color: #05b7a7"/></td>
+                        <td><input type="file" id="apkFile" name="apkFile" style="width: 220px; color: #05b7a7"/></td>
                     </tr>
                     <tr>
                         <td style="color: aliceblue;">兼容性：</td>
@@ -211,7 +217,7 @@
     <div class="container">
         <div class="row  footer">
             <div class="copy text-center">
-                <p class="link"><span>Copyright &copy; 2018.CZW All rights reserved.</span></p>
+                <p class="link"><span>Copyright &copy; 2018.Company name All rights reserved.</span></p>
                 <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
             </div>
         </div>
@@ -249,8 +255,14 @@
                     alert("请输入App介绍！");
                     return false;
                 }
-                return true;
+                if (/.*\.apk$/.test(document.getElementById("apkFile").value)) {
 
+                }
+                else {
+                    alert('请选择合法的apk文件!');
+                    return false;
+                }
+                return true;
             }
         </script>
     </div>
