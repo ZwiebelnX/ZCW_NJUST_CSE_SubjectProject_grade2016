@@ -127,7 +127,7 @@
                     </li>
                     <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li><a href="<%=request.getContextPath()%>/toMainPage.login">返回主页</a></li>
+                    <li><a href="<%=request.getContextPath()%>/accountmanage.manager">个人中心</a></li>
                     <li class="page-scroll"><a href="<%=request.getContextPath()%>/aboutus.login">关于我们</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
@@ -250,7 +250,7 @@
     <div class="container">
         <div class="row  footer">
             <div class="copy text-center">
-                <p class="link"><span>Copyright &copy; 2018.Company name All rights reserved.</span></p>
+                <p class="link"><span>Copyright &copy; 2018.CZW All rights reserved.</span></p>
                 <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
             </div>
         </div>
