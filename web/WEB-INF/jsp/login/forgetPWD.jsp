@@ -42,7 +42,6 @@
         });
     </script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/forgetPWD.css" />
 </head>
 <body>
 <div class="header_bg" id="home" style="min-width: 1000px;padding: 0;margin:0"><!-- start header -->
@@ -53,10 +52,10 @@
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li style="width:150px;padding: 0;margin:0"><a href="<%=request.getContextPath()%>/loginPage.login">back to login</a></li>
-                    <li style="width:70px;"><a title="回到欢迎页" href="<%=request.getContextPath()%>/index.login">
+                    <li><a href="<%=request.getContextPath()%>/loginPage.login">登录</a></li>
+                    <li><a title="回到欢迎页" href="<%=request.getContextPath()%>/index.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
+                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">注册</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
             </nav>

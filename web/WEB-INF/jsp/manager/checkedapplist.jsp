@@ -64,7 +64,7 @@
                 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/searchbox.css" />
                 <form method="post" action="<%=request.getContextPath()%>/getappbykeyword.search">
-                    <input type="text" placeholder="请输入您要搜索的内容...">
+                    <input type="text" name="keyword" placeholder="请输入您要搜索的内容...">
                     <button type="submit"></button>
                 </form>
             </div>
@@ -190,7 +190,8 @@
                 <tr>
 
                     <td>${list.name}</td>
-                    <td><a href="<%=request.getContextPath()%>/appinformation/${list.id}.manager">查看详情</a></td>
+                    <td><a href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${appList.id}.manager', '应用详情',
+                            'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')">查看详情</a></td>
                     <td><button class="buttom" onclick="
                             window.location.href=('<%=request.getContextPath()%>/appac/${list.id}.manager');
                             ">通过</button>&nbsp;

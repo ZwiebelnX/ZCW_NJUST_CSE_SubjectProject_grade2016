@@ -98,7 +98,7 @@
                 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/searchbox.css" />
                 <form method="post" action="<%=request.getContextPath()%>/getappbykeyword.search">
-                    <input type="text" placeholder="请输入您要搜索的内容...">
+                    <input type="text" name="keyword" placeholder="请输入您要搜索的内容...">
                     <button type="submit"></button>
                 </form>
             </div>

@@ -87,7 +87,7 @@ public class AppSearchController {
         List<ApplicationEntity> ans=new ArrayList<>();
         if(keyword==null)return "search/AppSearch";
         for(ApplicationEntity app:applist){
-            if(!app.getName().contains(keyword)||!app.getIntroduction().contains(keyword))
+            if(!app.getName().contains(keyword) && !app.getIntroduction().contains(keyword))
                 continue;
             ans.add(app);
         }

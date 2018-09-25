@@ -75,7 +75,7 @@
                 <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/searchbox.css" />
                 <form method="post" action="<%=request.getContextPath()%>/getappbykeyword.search">
-                    <input type="text" placeholder="请输入您要搜索的内容...">
+                    <input type="text" name="keyword" placeholder="请输入您要搜索的内容...">
                     <button type="submit"></button>
                 </form>
             </div>
@@ -229,7 +229,7 @@
     <div class="modifyPassword">
         <legend style="font-size: 23px; color: #2DC0F1;">修改密码</legend>
         <div id="form1">
-    <form  action="pwdchg.manager" method="post">
+    <form  action="<%=request.getContextPath()%>/pwdchg.manager" method="post">
     <table>
         <tr>
             <td width="120" style="color: aliceblue;">旧密码：</td>

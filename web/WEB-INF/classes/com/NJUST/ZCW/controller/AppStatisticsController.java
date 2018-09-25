@@ -28,6 +28,8 @@ public class AppStatisticsController {
         List<ApplicationEntity> applist=appdb.getAllApps();
         List<StaticInfo> ans=new ArrayList<>();
         for(ApplicationEntity app:applist){
+            if(!app.getChecked().equals("Y"))
+                continue;
             StaticInfo tmp = new StaticInfo();
             tmp.setName(app.getName());
             tmp.setValue(app.getVisitCnt());

@@ -44,6 +44,7 @@ public class AppUploadController {
                     "window.location.href='" + path + "/toMainPage.login'</script>");
         }
         else{
+            response.setContentType("text/html;charset=gb2312");
             response.getWriter().print("<script language=\"javascript\">alert('Apk信息上传失败！请检查网络连接或稍后再试');" +
                     "window.location.href='" + path + "/toMainPage.login'</script>");
         }
@@ -93,6 +94,10 @@ public class AppUploadController {
                 String iconame=apkMeta.getName()+".png";
                 path=request.getServletContext().getRealPath("/icos/");
                 File icofile=new File(path+File.separator+iconame);
+                if (!icofile.getParentFile().exists()) {
+                    icofile.getParentFile().mkdirs();
+                }
+                if(icofile.exists())filepath.delete();
                 System.out.println(icofile.toString());
                 FileOutputStream fileWriter = new FileOutputStream(icofile);
                 if(apkFile.getIconFile().getData() == null){

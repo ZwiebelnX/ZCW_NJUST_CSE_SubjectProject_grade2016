@@ -52,10 +52,10 @@
             </div>
             <nav class="top-nav">
                 <ul class="top-nav nav_list">
-                    <li><a href="<%=request.getContextPath()%>/index.login">index</a></li>
+                    <li><a href="<%=request.getContextPath()%>/index.login">主页</a></li>
                     <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/index.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">signup</a></li>
+                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/signUpPage.login">注册</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
             </nav>
