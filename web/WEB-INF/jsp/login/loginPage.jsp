@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row  footer">
             <div class="copy text-center">
-                <p class="link"><span>Copyright &copy; 2018.Company name All rights reserved.</span></p>
+                <p class="link"><span>Copyright &copy; 2018.CZW All rights reserved.</span></p>
                 <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
             </div>
         </div>

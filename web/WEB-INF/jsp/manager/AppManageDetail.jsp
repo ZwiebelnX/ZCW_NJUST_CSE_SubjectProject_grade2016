@@ -11,7 +11,45 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="e" %>
 <html>
 <head>
-    <title>用户列表</title>
+    <title>用户详情</title>
+    <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){ window.scrollTo(0,1);
+        }
+
+        if(${sessionScope.user == null}){
+            alert("请先登录！");
+            window.location.replace("<%=request.getContextPath()%>/index.login");
+
+        }
+
+    </script>
+    <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var pull 		= $('#pull');
+            menu 		= $('nav ul');
+            menuHeight	= menu.height();
+            $(pull).on('click', function(e) {
+                e.preventDefault();
+                menu.slideToggle();
+            });
+            $(window).resize(function(){
+                var w = $(window).width();
+                if(w > 320 && menu.is(':hidden')) {
+                    menu.removeAttr('style');
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/appDetail.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/global.css" />
 </head>
 <body>
 <div class="header_bg" id="home"><!-- start header -->
@@ -79,7 +117,7 @@
             <div class="container">
                 <div class="row  footer">
                     <div class="copy text-center">
-                        <p class="link"><span>Copyright &copy; 2018.Company name All rights reserved.</span></p>
+                        <p class="link"><span>Copyright &copy; 2018.CZW All rights reserved.</span></p>
                         <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
                     </div>
                 </div>
