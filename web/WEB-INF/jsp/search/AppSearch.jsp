@@ -257,7 +257,7 @@
 
                 List appList = (List) request.getAttribute("appList");
                 if(appList != null){
-                    int appsPerPage = 8;
+                    int appsPerPage = 6;
                     int totalPages = appList.size() % appsPerPage == 0 ? appList.size() / appsPerPage : appList.size() / appsPerPage + 1;
                     pageContext.setAttribute("appList", appList);
                     pageContext.setAttribute("curPage", 1);

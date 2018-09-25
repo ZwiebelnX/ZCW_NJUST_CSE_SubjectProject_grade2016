@@ -159,6 +159,9 @@ public class LoginController {
         l--;
         for(;l>=0;l--){
             ApplicationEntity tmp=applist.get(l);
+            if(tmp.getChecked().equals("N")){
+                continue;
+            }
             if(tmp.getType().equals("游戏")&&ans1.size()<=2)
                 ans1.add(tmp);
             if(tmp.getType().equals("视频")&&ans2.size()<=2)
@@ -224,11 +227,9 @@ public class LoginController {
                 session.setAttribute("forgetPasswordUser",ae);
             }
         }
-        //out.println("userid="+id);
         MailSystem sender=new MailSystem();
         try {
             if(to.equals("")) {
-                //out.println("无当前账号");
                 response.getWriter().print("<script language=\"javascript\">alert('无当前账号！');" +
                         "window.location.href='" + path + "/forgetPassword.login'</script>");
                 return null;

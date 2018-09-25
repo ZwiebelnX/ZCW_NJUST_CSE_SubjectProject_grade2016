@@ -15,14 +15,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+
+
 @Controller
 public class AppStatisticsController {
     @Resource
-   private ApplicationDB appdb;
+    private ApplicationDB appdb;
 
     @RequestMapping(value = "app.statistics")
     public String jumptostatisticspage(){
-        System.out.println("FFFF~~~");
         return "statistics/AppStatisticForm";
     }
 
@@ -110,4 +112,6 @@ public class AppStatisticsController {
         model.addAttribute("Staticdata",ans);
         return "statistics/AppStatisticForm";
     }
+
+
 }

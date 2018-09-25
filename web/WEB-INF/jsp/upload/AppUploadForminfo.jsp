@@ -22,7 +22,6 @@
         function hideURLbar(){ window.scrollTo(0,1);
         }
     </script>
-    <link href="<%=request.getContextPath()%>/http//fonts.googleapis.com/css?family=Kreon:300,400,700" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
     <script>
@@ -153,6 +152,7 @@
                 var appName = $("#appname").val();
                 var appType = $("#type").val();
                 var appIntroduction = $("#introduction").val();
+                var apkFile = $("#apkFile").val();
                 if(appName === "" || appName == null){
                     alert("请输入App名称！");
                     return false;
@@ -165,11 +165,15 @@
                     alert("请输入App介绍！");
                     return false;
                 }
+                if(apkFile == null){
+                    alert("请选择apk文件！");
+                    return false;
+                }
                 return true;
+
             }
         </script>
     </div>
 </div>
-<div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>

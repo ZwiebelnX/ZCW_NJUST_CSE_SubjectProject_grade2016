@@ -19,7 +19,16 @@ public class AppSearchController {
     private ApplicationDB appdb;
 
     @RequestMapping(value = "app.search")
-    public String jumptoAppSearch(){
+    public String jumptoAppSearch(Model model){
+        List<ApplicationEntity> appList=appdb.getAllApps();
+        List<ApplicationEntity> ans=new ArrayList<>();
+        for(ApplicationEntity app:appList){
+
+            if(!app.getChecked().equals("Y"))
+                continue;
+            ans.add(app);
+        }
+        model.addAttribute("appList",ans);
         return "search/AppSearch";
     }
 

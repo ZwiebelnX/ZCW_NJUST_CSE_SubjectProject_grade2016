@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.NJUST.ZCW.Entities.AccountEntity" %>
 <%--
   Created by IntelliJ IDEA.
   User: Zwiebeln_Chan
@@ -46,8 +45,6 @@
             });
         });
     </script>
-      <c:choose>
-      <c:when  test="${sessionScope.user != null}">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/mainPage.css" />
      <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/global.css" />
@@ -152,133 +149,110 @@
   </div>
   <div class="slider_bg" style="min-height: 650px; width:100%;">
     <div class="container" id="mainContainer">
-<fieldset>
-    <h3>向您推荐-游戏</h3>
-    <table>
-        <c:forEach items="${list1}" var="List1">
-            <tr>
-                <td>${List1.name}</td>
-                <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
-                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
-                <td><a href="${List1.downloadUrl}">点击下载</a></td>
-            </tr>
-        </c:forEach>
-    </table>
-</fieldset>
-        <fieldset>
-            <h3>向您推荐-视频</h3>
-            <table>
-                <c:forEach items="${list2}" var="List1">
-                    <tr>
-                        <td>${List1.name}</td>
-                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
-                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
-                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </fieldset>
-        <fieldset>
-            <h3>向您推荐-聊天</h3>
-            <table>
-                <c:forEach items="${list3}" var="List1">
-                    <tr>
-                        <td>${List1.name}</td>
-                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
-                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
-                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </fieldset>
-        <fieldset>
-            <h3>向您推荐-浏览器</h3>
-            <table>
-                <c:forEach items="${list4}" var="List1">
-                    <tr>
-                        <td>${List1.name}</td>
-                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
-                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
-                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </fieldset>
-        <fieldset>
-            <h3>向您推荐-网购金融</h3>
-            <table>
-                <c:forEach items="${list5}" var="List1">
-                    <tr>
-                        <td>${List1.name}</td>
-                        <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
-                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
-                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </fieldset>
-        <fieldset>
-            <h3>向您推荐-音乐</h3>
-            <table>
-                <c:forEach items="${list6}" var="List1">
-                    <tr>
-                        <td>${List1.name}</td>
-                        <td><img src="${List1.img}" style="width:50px;height: 50px;"  href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
-                                'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
-                        <td><a href="${List1.downloadUrl}">点击下载</a></td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </fieldset>
-      <div class="mainDiv">
-          <div class="welcomeDiv">
-            <h2><strong>欢迎使用：${pageScope.nickName}</strong></h2>
-            <h3>——————${pageScope.userType}——————</h3>
-            <a href="<%=request.getContextPath()%>/accountmanage.manager">个人管理中心</a>
-          </div>
-          <div class="actionDiv">
-            <div class="appSearchAction">
-              <h3 style="padding: 0; margin-bottom: 3px; color:white"><strong>查询</strong></h3>
-                <hr style="padding: 0;margin-top: 0;" />
-              <ul>
-                <li><a href="<%=request.getContextPath()%>/app.search">应用查询</a></li>
-                <li><a href="<%=request.getContextPath()%>/app.statistics">应用统计</a></li>
-              </ul>
-            </div>
-            <c:if test="${userType.equals('管理员')}">
-              <div class="managerDiv">
-                  <h3 style="padding: 0;margin-bottom: 3px;margin-top:0; color:white"><strong>管理</strong></h3>
-                  <hr style="padding: 0;margin-top: 0;" />
-                  <ul>
-                      <li><a href="<%=request.getContextPath()%>/AuthorityManagee.manager">权限管理</a></li>
-                      <li><a href="<%=request.getContextPath()%>/Accountlist.manager">用户管理</a></li>
-                      <li><a href="<%=request.getContextPath()%>/AppCheck.manager">应用审核</a></li>
-                      <li><a href="<%=request.getContextPath()%>/AppManage.manager">应用管理</a></li>
-                  </ul>
-              </div>
-            </c:if>
-            <c:if test="${userType.equals('开发者')}">
-              <div class="developerDiv">
-                  <h3 style="padding: 0; margin-bottom: 3px; color:white"><strong>开发</strong></h3>
-                  <hr style="padding: 0;margin-top: 0;" />
-                  <ul>
-                      <li><a href="<%=request.getContextPath()%>/AppUpload.upload">应用上传</a></li>
-                      <li><a href="<%=request.getContextPath()%>/AppManage.manager">应用管理</a></li>
-                  </ul>
-              </div>
-            </c:if>
-          </div>
-        </c:when>
-        <c:otherwise>
-          <div class="loginText">
-            <h1><strong style="color: white">您尚未登录</strong></h1>
-            <div class="logAction">
-              <h4><a href="<%=request.getContextPath()%>/loginPage.login">登录 </a></h4>
-              <h4 style="color:grey">没有账号？<a href="<%=request.getContextPath()%>/signUpPage.login">注册</a></h4>
-            </div>
-          </div>
-        </c:otherwise>
-      </c:choose>
+        <ul class="apkListDiv">
+            <li>
+                <div class="ApkDiv">
+                    <h3>向您推荐-游戏</h3>
+                    <hr style="padding: 0;margin-top: 0;margin-bottom:5px;" />
+                    <table>
+                        <c:forEach items="${list1}" var="List1">
+                            <tr>
+
+                                <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                                <td>${List1.name}</td>
+                                <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="ApkDiv">
+                    <h3>向您推荐-视频</h3>
+                    <hr style="padding: 0;margin-top: 0;margin-bottom:5px;" />
+                    <table>
+                        <c:forEach items="${list2}" var="List1">
+                            <tr>
+
+                                <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                                <td>${List1.name}</td>
+                                <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="ApkDiv">
+                    <h3>向您推荐-聊天</h3>
+                    <hr style="padding: 0;margin-top: 0;margin-bottom:5px;" />
+                    <table>
+                        <c:forEach items="${list3}" var="List1">
+                            <tr>
+
+                                <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                                <td>${List1.name}</td>
+                                <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="ApkDiv">
+                    <h3>向您推荐-浏览器</h3>
+                    <hr style="padding: 0;margin-top: 0;margin-bottom:5px;" />
+                    <table>
+                        <c:forEach items="${list4}" var="List1">
+                            <tr>
+
+                                <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                                <td>${List1.name}</td>
+                                <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="ApkDiv">
+                    <h3>向您推荐-网购金融</h3>
+                    <hr style="padding: 0;margin-top: 0;margin-bottom:5px;" />
+                    <table>
+                        <c:forEach items="${list5}" var="List1">
+                            <tr>
+
+                                <td><img src="${List1.img}" style="width:50px;height: 50px;" href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                                <td>${List1.name}</td>
+                                <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </li>
+            <li>
+                <div class="ApkDiv">
+                    <h3>向您推荐-音乐</h3>
+                    <hr style="padding: 0;margin-top: 0;margin-bottom:5px;" />
+                    <table>
+                        <c:forEach items="${list6}" var="List1">
+                            <tr>
+
+                                <td><img src="${List1.img}" style="width:50px;height: 50px;"  href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${List1.id}.manager', '应用详情',
+                                        'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"/></td>
+                                <td>${List1.name}</td>
+                                <td><a href="${List1.downloadUrl}">点击下载</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </li>
+        </ul>
       <div class="clearfix"></div >
       </div>
       </div>
