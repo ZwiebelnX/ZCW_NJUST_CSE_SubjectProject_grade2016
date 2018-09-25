@@ -47,22 +47,3 @@ input:focus{
     font-weight: bold;
     color: #fff;
 }
-.apply{
-    width: 100%;
-    position: relative;
-    top: 170px;
-    text-align: center;
-    font-size: 17px;
-
-}
-
-.apply a{
-    color: #dee2a9;
-    margin: 20px;
-    font-size: 20px;
-    text-align: center;
-}
-.apply a:hover{
-    color: #05b7a7;
-    font-size: 17px;
-}

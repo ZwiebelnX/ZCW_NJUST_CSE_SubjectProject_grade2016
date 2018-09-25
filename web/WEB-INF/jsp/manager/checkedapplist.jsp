@@ -125,7 +125,7 @@
                     </li>
                     <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li><a href="<%=request.getContextPath()%>/toMainPage.login">返回主页</a></li>
+                    <li><a href="<%=request.getContextPath()%>/accountmanage.manager">个人中心</a></li>
                     <li class="page-scroll"><a href="<%=request.getContextPath()%>/aboutus.login">关于我们</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
@@ -174,22 +174,29 @@
             %>
         <table id="theTable">
             <tr>
-                <td style="font-size: 22px;">序号</td>
                 <td style="font-size: 22px;">名称</td>
                 <td style="font-size: 22px;">详情</td>
                 <td style="font-size: 22px;">操作</td>
             </tr>
             <e:forEach items="${appCheckList}" var="list">
                 <tr>
-                    <td>${list.id}</td>
+
                     <td>${list.name}</td>
                     <td><a href="<%=request.getContextPath()%>/appinformation/${list.id}.manager">查看详情</a></td>
                     <td><button class="buttom" onclick="
                             window.location.href=('<%=request.getContextPath()%>/appac/${list.id}.manager');
                             ">通过</button>&nbsp;
-                        <button class="buttom" onclick="
-                                window.location.href=('<%=request.getContextPath()%>/appwa/${list.id}.manager');
-                                ">拒绝</button></td>
+                        <script type="text/javascript">
+                            function refuse() {
+                                if(window.confirm("您确定要拒绝该应用吗？"))
+                                {
+                                    window.location.href=('<%=request.getContextPath()%>/appwa/${list.id}.manager');
+                                }else{
+                                    return false;
+                                }
+                            }
+                        </script>
+                        <button class="buttom" onclick="refuse() ">拒绝</button></td>
                 </tr>
             </e:forEach>
         </table>

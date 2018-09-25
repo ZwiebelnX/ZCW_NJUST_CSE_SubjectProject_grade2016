@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -40,24 +41,107 @@
                 }
             });
         });
+
+        //登录检查
+        if(${sessionScope.user == null}){
+            alert("请先登录！");
+            window.location.replace("<%=request.getContextPath()%>/index.login");
+        }
     </script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/fonts/css/font-awesome.min.css">
 </head>
-<body>
-<div class="header_bg" id="home"><!-- start header -->
+<div class="header_bg" id="home" style="min-width: 1000px;"><!-- start header -->
     <div class="container">
         <div class="row header text-center specials">
             <div class="h_logo">
                 <a href="<%=request.getContextPath()%>/toMainPage.login"><img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a>
             </div>
             <nav class="top-nav">
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ZCW/nav.css" />
                 <ul class="top-nav nav_list">
-                    <li><a href="<%=request.getContextPath()%>/toMainPage.login">main page</a></li>
-                    <li class="logo page-scroll"><a title="hexa" href="<%=request.getContextPath()%>/index.login">
+                    <c:choose>
+                        <c:when test="${sessionScope.userType == 'C'}">
+                            <li>
+                                <div class="index-nav-frame-line active" tabindex="-1">
+                                    管理
+                                    <div class="index-nav-frame-line-center">
+                                        <div class="index-nav-frame-line-li">
+                                            <a href="<%=request.getContextPath()%>/AuthorityManagee.manager">权限管理</a>
+                                        </div>
+                                        <div class="index-nav-frame-line-li">
+                                            <a href="<%=request.getContextPath()%>/Accountlist.manager">用户管理</a>
+                                        </div>
+                                        <div class="index-nav-frame-line-li">
+                                            <a href="<%=request.getContextPath()%>/AppCheck.manager">应用审核</a>
+                                        </div>
+                                        <div class="index-nav-frame-line-li">
+                                            <a href="<%=request.getContextPath()%>/AppManage.manager">应用管理</a>
+                                        </div>
+                                    </div>
+                                    <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:when test="${sessionScope.userType == 'K'}">
+                            <li>
+                                <div class="index-nav-frame-line active" tabindex="-1">
+                                    管理
+                                    <div class="index-nav-frame-line-center">
+                                        <div class="index-nav-frame-line-li">
+                                            <a href="<%=request.getContextPath()%>/AppUpload.upload">应用上传</a>
+                                        </div>
+                                        <div class="index-nav-frame-line-li">
+                                            <a href="<%=request.getContextPath()%>/AppManage.manager">应用管理</a>
+                                        </div>
+                                    </div>
+                                    <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li></li>
+                        </c:otherwise>
+                    </c:choose>
+                    <li>
+                        <div class="index-nav-frame-line active" tabindex="-1">
+                            查询
+                            <div class="index-nav-frame-line-center">
+                                <div class="index-nav-frame-line-li">
+                                    <a href="<%=request.getContextPath()%>/app.search">应用查询</a>
+                                </div>
+                                <div class="index-nav-frame-line-li">
+                                    <a href="<%=request.getContextPath()%>/app.statistics">应用统计</a>
+                                </div>
+                            </div>
+                            <div class="index-nav-frame-line-focus" tabindex="-1"></div>
+                        </div>
+                    </li>
+                    <li class="logo page-scroll"><a title="回到主页" href="<%=request.getContextPath()%>/toMainPage.login">
                         <img src="<%=request.getContextPath()%>/imgs/logo.png" alt="" class="responsive"/></a></li>
-                    <li class="page-scroll"><a href="#">about us</a></li>
+                    <li><a href="<%=request.getContextPath()%>/accountmanage.manager">个人中心</a></li>
+                    <li class="page-scroll"><a href="<%=request.getContextPath()%>/aboutus.login">关于我们</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="<%=request.getContextPath()%>/imgs/nav-icon.png" title="menu" /></a>
+                <div class="welcomeText">
+                    <strong>
+                        欢迎使用：${sessionScope.userNickname}&nbsp;&nbsp;
+                        <a href="<%=request.getContextPath()%>/logout.login">注销</a>
+                    </strong>
+                    <br />
+                    <strong>
+                        <c:choose>
+                            <c:when test="${sessionScope.userType == 'C'}">
+                                ——————管理员——————
+                            </c:when>
+                            <c:when test="${sessionScope.userType == 'K'}">
+                                ——————开发者——————
+                            </c:when>
+                            <c:when test="${sessionScope.userType == 'N'}">
+                                ——————普通用户——————
+                            </c:when>
+                        </c:choose>
+                    </strong>
+                </div>
             </nav>
             <div class="clearfix"></div>
         </div>
