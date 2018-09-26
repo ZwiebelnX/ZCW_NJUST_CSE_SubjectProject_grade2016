@@ -193,7 +193,17 @@
                                 <tr>
                                     <td style="width: 120px">${Accountlist.userName}</td>
                                     <td>
-
+                                        <e:choose>
+                                            <e:if test="${Accountlist.isManager == 'C'}">
+                                                管理员
+                                            </e:if>
+                                            <e:if test="${Accountlist.isManager == 'K'}">
+                                                开发者
+                                            </e:if>
+                                            <e:if test="${Accountlist.isManager == 'N'}">
+                                                一般用户
+                                            </e:if>
+                                        </e:choose>
                                     </td>
                                     <td><a href="#" onclick="
                                             window.open('<%=request.getContextPath()%>/accountinformation/${Accountlist.userId}.manager','用户详情',
