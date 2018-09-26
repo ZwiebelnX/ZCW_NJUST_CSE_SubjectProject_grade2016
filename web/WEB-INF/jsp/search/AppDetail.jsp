@@ -80,6 +80,10 @@
                     <td>${app.name}</td>
                 </tr>
                 <tr>
+                    <th>图标</th>
+                    <td><img src="${app.img}" style="width:50px;height: 50px;"/></td>
+                </tr>
+                <tr>
                     <th>开发商:</th>
                     <td><a href="<%=request.getContextPath()%>/getappbypublisher/${app.publisherId}.manager">${publishername}</a></td>
                 </tr>

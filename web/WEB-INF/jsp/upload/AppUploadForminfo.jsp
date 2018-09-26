@@ -159,7 +159,7 @@
     <div class="container">
         <div class="welcomeDiv1"><h2 style="color: #2DC0F1;">应用上传</h2></div>
         <div id="form">
-            <form action="appInfoUpgrade.upload" enctype="multipart/form-data" method="post" onsubmit="return finalCheck()">
+            <form action="appInfoInsert.upload" enctype="multipart/form-data" method="post" onsubmit="return finalCheck()">
                 <table>
                     <tr>
                         <td style="color: aliceblue;text-align: right;">应用名称 <span style="color: red;">*</span> ：</td>

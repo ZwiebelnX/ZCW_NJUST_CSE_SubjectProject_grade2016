@@ -34,13 +34,22 @@ public class AppUploadController {
                               HttpServletResponse response)throws Exception {
         String path = request.getContextPath();
         MultipartFile apkFile = request.getFile("apkFile");
-        boolean flag = uploadAppInfo(request, session); //上传app基本信息
-        if(!apkFile.isEmpty() || flag){
+        ApplicationEntity app=(ApplicationEntity)session.getAttribute("app");
+        int id=app.getId();
+        app.setType(request.getParameter("type"));
+        app.setIntroduction(request.getParameter("introduction"));
+        app.setName(request.getParameter("appname"));
+        app.setCompatibility(request.getParameter("compability"));
+        app.setLanguage(request.getParameter("language"));
+        appdb.Updateapp(app);
+        boolean flag=true;
+        //uploadAppInfo(request, session); //上传app基本信息
+        if(!apkFile.isEmpty()){
             flag = uploadAppApk(request, apkFile, session); //上传app图标
         }
         if(flag){
             response.setContentType("text/html;charset=gb2312");
-            response.getWriter().print("<script language=\"javascript\">alert('Apk信息上传成功！请等待管理员审核。');" +
+            response.getWriter().print("<script language=\"javascript\">alert('Apk信息更新成功！请等待管理员审核。');" +
                     "window.location.href='" + path + "/toMainPage.login'</script>");
         }
         else{
@@ -120,5 +129,28 @@ public class AppUploadController {
             return false;
         }
         return true;
+    }
+
+    @RequestMapping(value = "appInfoInsert.upload")
+    public String doAppUpload_Insert(MultipartHttpServletRequest request, HttpSession session,
+                              HttpServletResponse response)throws Exception {
+        String path = request.getContextPath();
+        MultipartFile apkFile = request.getFile("apkFile");
+        ApplicationEntity app=(ApplicationEntity)session.getAttribute("app");
+        boolean flag=uploadAppInfo(request, session); //上传app基本信息
+        if(!apkFile.isEmpty()||flag==false){
+            flag = uploadAppApk(request, apkFile, session); //上传app图标
+        }
+        if(flag){
+            response.setContentType("text/html;charset=gb2312");
+            response.getWriter().print("<script language=\"javascript\">alert('Apk信息更新成功！请等待管理员审核。');" +
+                    "window.location.href='" + path + "/toMainPage.login'</script>");
+        }
+        else{
+            response.setContentType("text/html;charset=gb2312");
+            response.getWriter().print("<script language=\"javascript\">alert('Apk信息上传失败！请检查网络连接或稍后再试');" +
+                    "window.location.href='" + path + "/toMainPage.login'</script>");
+        }
+        return null;
     }
 }

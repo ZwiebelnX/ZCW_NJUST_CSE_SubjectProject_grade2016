@@ -179,6 +179,7 @@
 %>
 <div class="slider_bg" id="mainContainer"><!-- start slider -->
     <div class="container">
+    <div class="container">
         <div class="welcomeDiv1"><h2 style="color: #2DC0F1;">应用更新</h2></div>
         <div id="form">
         <fieldset>
