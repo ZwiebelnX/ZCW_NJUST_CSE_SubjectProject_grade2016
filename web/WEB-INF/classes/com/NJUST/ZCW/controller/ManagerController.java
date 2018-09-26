@@ -253,13 +253,13 @@ public class ManagerController {
             String path = request.getContextPath();
             response.setContentType("text/html;charset=gb2312");
             response.getWriter().print("<script language=\"javascript\">alert('修改成功！');" +
-                    "window.location.href='" + path + "accountmanage.manager'</script>");
+                    "window.location.href='" + path + "/accountmanage.manager'</script>");
             return null;
         }else{
             String path = request.getContextPath();
             response.setContentType("text/html;charset=gb2312");
             response.getWriter().print("<script language=\"javascript\">alert('密码错误！');" +
-                    "window.location.href='" + path + "accountmanage.manager'</script>");
+                    "window.location.href='" + path + "/accountmanage.manager'</script>");
             return null;
         }
     }

@@ -190,7 +190,7 @@
                 <tr>
 
                     <td>${list.name}</td>
-                    <td><a href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${appList.id}.manager', '应用详情',
+                    <td><a href="#" onclick="window.open('<%=request.getContextPath()%>/appinformation/${list.id}.manager', '应用详情',
                             'height=700, width=600, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')">查看详情</a></td>
                     <td><button class="buttom" onclick="
                             window.location.href=('<%=request.getContextPath()%>/appac/${list.id}.manager');

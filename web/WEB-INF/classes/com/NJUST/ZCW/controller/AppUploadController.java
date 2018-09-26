@@ -41,6 +41,7 @@ public class AppUploadController {
         app.setName(request.getParameter("appname"));
         app.setCompatibility(request.getParameter("compability"));
         app.setLanguage(request.getParameter("language"));
+        app.setChecked("F");
         appdb.Updateapp(app);
         boolean flag=true;
         //uploadAppInfo(request, session); //上传app基本信息

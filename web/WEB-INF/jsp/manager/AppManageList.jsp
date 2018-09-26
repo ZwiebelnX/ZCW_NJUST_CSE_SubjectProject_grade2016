@@ -201,7 +201,7 @@
                                                 开发者
                                             </e:when>
                                             <e:when test="${Accountlist.isManager == 'N'}">
-                                                一般用户
+                                                普通用户
                                             </e:when>
                                         </e:choose>
                                     </td>
