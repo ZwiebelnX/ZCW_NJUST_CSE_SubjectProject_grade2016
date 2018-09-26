@@ -84,10 +84,12 @@
                         <td style="text-align: right;"><a href="forgetPassword.login">找回密码&nbsp;</a></td>
                      </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center;"><input type="submit" value="登录" class="buttom"/></td>
+                        <td>&nbsp;</td>
+                        <td style="text-align: center;"><input type="submit" value="登录" class="buttom"/></td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center;"><input type="reset" value="重置" class="buttom" /></td>
+                        <td>&nbsp;</td>
+                        <td style="text-align: center;"><input type="reset" value="重置" class="buttom" /></td>
                     </tr>
                 </table>
             </from:form>

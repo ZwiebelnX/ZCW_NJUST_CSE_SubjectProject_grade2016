@@ -1,6 +1,5 @@
 #mainContainer{
     width:800px;
-
 }
 
 #mainContainer li{
@@ -8,17 +7,15 @@
     height: 200px;
     float: left;
     margin-top: 40px;
-    margin-left: 40px;
+    margin-left: 60px;
 }
 
 .apkListDiv{
     position:absolute;
     top: 60px;
-    left: 50px;
-
+    left: 200px;
     width:1500px;
     height:650px;
-
     color: white;
 }
 
