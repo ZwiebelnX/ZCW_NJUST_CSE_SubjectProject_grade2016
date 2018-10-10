@@ -227,7 +227,7 @@ public class ManagerController {
         File filepath=new File( request.getServletContext().getRealPath("")+app.getDownloadUrl());
 
         File imgpath=new File(request.getServletContext().getRealPath("")+app.getImg());
-        if(filepath.exists()&&filepath.isFile())
+        if(filepath.exists())
             filepath.delete();
         if(imgpath.exists()&&imgpath.isFile())
             imgpath.delete();

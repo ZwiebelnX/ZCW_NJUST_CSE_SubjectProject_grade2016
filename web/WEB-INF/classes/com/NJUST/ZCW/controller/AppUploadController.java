@@ -40,6 +40,7 @@ public class AppUploadController {
         app.setIntroduction(request.getParameter("introduction"));
         app.setName(request.getParameter("appname"));
         app.setCompatibility(request.getParameter("compability"));
+        app.setChecked("F");
         app.setLanguage(request.getParameter("language"));
         app.setChecked("F");
         appdb.Updateapp(app);
@@ -95,6 +96,7 @@ public class AppUploadController {
                     filepath.getParentFile().mkdirs();
                 }
                 if(filepath.exists())filepath.delete();
+                System.out.println(filepath+"????");
                 //将上传文件保存到一个目标文件当中
                 file.transferTo(new File(path + File.separator + filename));
                 ApplicationEntity app=(ApplicationEntity)session.getAttribute("app");
